@@ -79,10 +79,8 @@
                                onchange="Sync(this)"> %
                     </td>
                     <td>
-                        <i>
-                            Minimum 100%. Add 100% to the value shown in the
-                            team builder.
-                        </i>
+                        Minimum 100%. Add 100% to the value shown in the team
+                        builder.
                     </td>
                 </tr>
                 <tr>
@@ -104,8 +102,8 @@
                     </td>
                     <td>
                         <input id="cts" type="range" min="0" max="700"
-                               value="500" oninput="Sync(this)">
-                        <input id="ct" type="number" value="500"
+                               value="380" oninput="Sync(this)">
+                        <input id="ct" type="number" value="380"
                                onchange="Sync(this)"> %
                     </td>
                     <td>
@@ -122,10 +120,41 @@
                                onchange="Sync(this)"> %
                     </td>
                     <td>
-                        <i>
-                            The average skill value of the other members in the
-                            room.
-                        </i>
+                        The average skill value of the other members in the
+                        room.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="e">Encore Skill Value</label>
+                    </td>
+                    <td>
+                        <input id="es" type="range" min="0" max="300"
+                               value="180" oninput="Sync(this)">
+                        <input id="e" type="number" value="180"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                        If you do are playing pubs, set this to be the average
+                        Skill Value of all the players. Roughly, (Your SV +
+                        4&times;Other SV) / 5.
+                        <input type="button" value="Calculate Automatically"
+                               onclick="ESV()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="acc">Accuracy</label>
+                    </td>
+                    <td>
+                        <input id="zs" type="range" min="0" max="100"
+                               value="100" oninput="Sync(this)">
+                        <input id="z" type="number" value="100"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                        Multiplier applied to the scores to account for skill
+                        issue.
                     </td>
                 </tr>
                 <tr>
@@ -170,10 +199,8 @@
                         </label>
                     </td>
                     <td>
-                        <i>
-                            Assuming perfect play in all modes and you always
-                            receive the maximum multi score bonus.
-                        </i>
+                        Assuming you always receive the maximum multi score and
+                        life bonus when applicable.
                     </td>
                 </tr>
                 <tr>
@@ -230,6 +257,12 @@
                     <h3>Linear approximation of trade-off:</h3>
                     <div id="sumb">
                     </div>
+                    <div style="margin-top: 2ex;">
+                        <small>
+                            Note: the skill value trade-offs assume you are not
+                            the encorer.
+                        </small>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -244,6 +277,12 @@
                 <td>
                     <h3>Linear approximation of trade-off:</h3>
                     <div id="sumc">
+                    </div>
+                    <div style="margin-top: 2ex;">
+                        <small>
+                            Note: the skill value trade-offs assume you are not
+                            the encorer.
+                        </small>
                     </div>
                 </td>
             </tr>
