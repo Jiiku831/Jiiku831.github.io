@@ -21,16 +21,6 @@ function BA(a, b, c, d, e, f, g, h, w, z) {
         (a * z * (c * h + 4 * d * h + 500 * e * w + 500 * g) + 500 * f) ** 2;
 }
 
-function CA(a, b, c, d, e, f, g, h, w, z) {
-    let s = Val(a, b, c, d, e, f, g, h, w, z);
-    return 500 * (b * f - s) / (a ** 2 * b * h * z);
-}
-
-function CB(a, b, c, d, e, f, g, h, w, z) {
-    let s = Val(a, b, c, d, e, f, g, h, w, z);
-    return -500 * s / (a * b ** 2 * h * z);
-}
-
 function Clear(e) {
     while(e.firstChild){
         e.removeChild(e.firstChild);
@@ -139,23 +129,16 @@ function Table(out, a, b, c, d, e, z, cs, cl) {
     let table = document.createElement("table");
     table.classList.add("st");
     Tr(table.insertRow(), ["", "Multi", "Multi (CC)", "Solo"], "th",
-        [1, 4, 4, 4]);
+        [1, 2, 2, 2]);
     Tr(table.insertRow(), [
         "Strategy",
         "Avg. EP<small><sup>&ddagger;</sup></small>", "BP &harr; EB",
-        "BP &harr; SV", "EB &harr; EB",
         "Avg. EP<small><sup>&ddagger;</sup></small>", "BP &harr; EB",
-        "BP &harr; SV", "EB &harr; SV",
         "Avg. EP<small><sup>&ddagger;</sup></small>", "BP &harr; EB",
-        "BP &harr; SV", "EB &harr; SV",
     ], "th");
     let f = (...x) => Math.round(Val(a, b, ...x, z) / 100).toLocaleString();
     let f1 = (...x) =>
         SumI(a, b, ...x, z, BA, 10000, 10, " BP", "% EB");
-    let f2 = (...x) =>
-        SumI(a, b, ...x, z, CA, 1000, 10, " BP", "% SV");
-    let f3 = (...x) =>
-        SumI(a, b, ...x, z, CB, 1, 10, "% EB", "% SV");
     for (let i = 0; i < params[0].length; ++i) {
         data = [
             params[0][i][0],
@@ -168,10 +151,6 @@ function Table(out, a, b, c, d, e, z, cs, cl) {
                 f(nc, nd, ne, params[j][i][1], params[j][i][2], params[j][i][3], params[j][i][4]));
             data.push(
                 f1(nc, nd, ne, params[j][i][1], params[j][i][2], params[j][i][3], params[j][i][4]));
-            data.push(
-                f2(nc, nd, ne, params[j][i][1], params[j][i][2], params[j][i][3], params[j][i][4]));
-            data.push(
-                f3(nc, nd, ne, params[j][i][1], params[j][i][2], params[j][i][3], params[j][i][4]));
         }
         Tr(table.insertRow(), data, "td");
     }
@@ -265,33 +244,11 @@ function Run() {
         Math.max(0, a - 50000), a + 50000,
         Math.max(100, b - 50), Math.min(b + 50, 500),
         a, b, c, d, e, f, g, h, w, z, BA, "Team Power", "Event Bonus");
-    PlotFn("plotb", fn2, 600, 600,
-        a, c,
-        Math.max(0, a - 50000), a + 50000,
-        Math.max(0, c - 50), Math.min(c + 50, 300),
-        a, b, c, d, e, f, g, h, w, z, CA, "Team Power", "Skill Value");
-    PlotFn("plotc", fn3, 600, 600,
-        b, c,
-        Math.max(100, b - 50), Math.min(b + 50, 500),
-        Math.max(0, c - 50), Math.min(c + 50, 300),
-        a, b, c, d, e, f, g, h, w, z, CB, "Event Bonus", "Skill Value");
     PlotFn("plota-over", fn1, 600, 600,
         a, b,
         0, 375000, 100, 500,
         a, b, c, d, e, f, g, h, w, z, BA, "Team Power", "Event Bonus");
-    PlotFn("plotb-over", fn2, 600, 600,
-        a, c,
-        0, 375000, 0, 300,
-        a, b, c, d, e, f, g, h, w, z, CA, "Team Power", "Skill Value");
-    PlotFn("plotc-over", fn3, 600, 600,
-        b, c,
-        100, 500, 0, 300,
-        a, b, c, d, e, f, g, h, w, z, CB, "Event Bonus", "Skill Value");
     Sum("suma", a, b, c, d, e, f, g, h, w, z, BA, 10000, 10,
         " Team Power", "% Event Bonus");
-    Sum("sumb", a, b, c, d, e, f, g, h, w, z, CA, 1000, 10,
-        " Team Power", "% Skill Value");
-    Sum("sumc", a, b, c, d, e, f, g, h, w, z, CB, 1, 10,
-        "% Event Bonus", "% Skill Value");
     Table("sumt", a, b, c, d, e, z, ct / 5, cl);
 }
