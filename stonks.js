@@ -113,12 +113,15 @@ function Sum(out, a, b, c, d, e, f, g, h, w, z, m, dx, dy, ux, uy) {
     cc.innerHTML = SumI(a, b, c, d, e, f, g, h, w, z, m, dx, dy, ux, uy);
 }
 
-function Tr(row, data, tag, span) {
+function Tr(row, data, tag, span, cls) {
     for (let i = 0; i < data.length; ++i) {
         row.append(document.createElement(tag));
         row.lastChild.innerHTML = data[i];
         if (span != undefined) {
             row.lastChild.colSpan = span[i];
+        }
+        if (cls != undefined && cls[i] != "") {
+            row.lastChild.classList.add(cls[i]);
         }
     }
 }
@@ -143,16 +146,24 @@ function Table(out, a, b, c, d, e, z, cs, cl) {
         data = [
             params[0][i][0],
         ];
+        cls = [""];
         for (let j = 0; j < params.length; ++j) {
+            if (j == 1 && i > 1) {
+                data.push("", "");
+                cls.push("na", "na");
+                continue;
+            }
             let nc = j == 2 ? cs : c;
             let nd = j == 2 ? cs : d;
             let ne = j == 2 ? cl / 100: e;
             data.push(
-                f(nc, nd, ne, params[j][i][1], params[j][i][2], params[j][i][3], params[j][i][4]));
-            data.push(
-                f1(nc, nd, ne, params[j][i][1], params[j][i][2], params[j][i][3], params[j][i][4]));
+                f(nc, nd, ne, params[j][i][1], params[j][i][2],
+                    params[j][i][3], params[j][i][4]),
+                f1(nc, nd, ne, params[j][i][1], params[j][i][2],
+                    params[j][i][3], params[j][i][4]));
+            cls.push("", "");
         }
-        Tr(table.insertRow(), data, "td");
+        Tr(table.insertRow(), data, "td", undefined, cls);
     }
     cc.append(table);
 }
@@ -236,8 +247,6 @@ function Run() {
         Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100).toLocaleString();
 
     let fn1 = (x, y) => Val(x, y, c, d, e, f, g, h, w, z);
-    let fn2 = (x, y) => Val(x, b, y, d, e, f, g, h, w, z);
-    let fn3 = (x, y) => Val(a, x, y, d, e, f, g, h, w, z);
 
     PlotFn("plota", fn1, 600, 600,
         a, b,
