@@ -128,6 +128,15 @@ function P(e, b) {
                         anchor: "bottom-right",
                         tip: true,
                     })),
+                Plot.line(
+                    Object.keys(events).map(x => ({eid: x})),
+                    {
+                        x: e => 0,
+                        y: e => 0,
+                        z: null,
+                        strokeWidth: 0,
+                        stroke: e => events[e.eid].orderedNick,
+                    }),
             ]
         }));
 }
