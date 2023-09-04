@@ -24,6 +24,8 @@ function P(e, b) {
             y: {grid: true},
             x: {grid: true},
             marks: [
+                Plot.ruleY([0]),
+                Plot.ruleX([0]),
                 Plot.ruleX(
                     [timeToCurrentEventEnd],
                     {
