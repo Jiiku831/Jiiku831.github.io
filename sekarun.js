@@ -32,32 +32,12 @@ function P(e, b) {
                     }),
                 Plot.line(
                     filteredData, {
-                        filter: e => e.t == "r" && e.eid == currentEvent,
-                        x: "tfe",
-                        y: "ep",
-                        z: e => "z" + e.eid + e.t + e.b,
-                        stroke: "red",
-                        strokeWidth: 2,
-                        strokeOpacity: 1,
-                    }),
-                Plot.line(
-                    filteredData, {
                         filter: e => e.t == "r" && e.eid != currentEvent,
                         x: "tfe",
                         y: "ep",
                         z: e => "z" + e.eid + e.t + e.b,
                         stroke: e => events[e.eid].orderedNick,
                         strokeWidth: 1,
-                    }),
-                Plot.line(
-                    filteredData, {
-                        filter: e => e.t == "p" && e.eid == currentEvent,
-                        x: "tfe",
-                        y: "ep",
-                        z: e => "z" + e.eid + e.t + e.b,
-                        stroke: "red",
-                        strokeWidth: 1.5,
-                        strokeDasharray: "4 3",
                     }),
                 Plot.line(
                     filteredData, {
@@ -72,6 +52,17 @@ function P(e, b) {
                     }),
                 Plot.dot(
                     filteredData, {
+                        filter: e => e.t == "r" && e.eid != currentEvent,
+                        x: "tfe",
+                        y: "ep",
+                        fill: e => events[e.eid].orderedNick,
+                        symbol: "circle",
+                        strokeWidth: 0,
+                        fillOpacity: 0.5,
+                        r: 1.5,
+                    }),
+                Plot.dot(
+                    filteredData, {
                         filter: e => e.t == "r" && e.eid == currentEvent,
                         x: "tfe",
                         y: "ep",
@@ -81,16 +72,25 @@ function P(e, b) {
                         fillOpacity: 1,
                         r: 3,
                     }),
-                Plot.dot(
+                Plot.line(
                     filteredData, {
-                        filter: e => e.t == "r" && e.eid != currentEvent,
+                        filter: e => e.t == "r" && e.eid == currentEvent,
                         x: "tfe",
                         y: "ep",
-                        fill: e => events[e.eid].orderedNick,
-                        symbol: "circle",
-                        strokeWidth: 0,
-                        fillOpacity: 0.5,
-                        r: 1.5,
+                        z: e => "z" + e.eid + e.t + e.b,
+                        stroke: "red",
+                        strokeWidth: 2,
+                        strokeOpacity: 1,
+                    }),
+                Plot.line(
+                    filteredData, {
+                        filter: e => e.t == "p" && e.eid == currentEvent,
+                        x: "tfe",
+                        y: "ep",
+                        z: e => "z" + e.eid + e.t + e.b,
+                        stroke: "red",
+                        strokeWidth: 1.5,
+                        strokeDasharray: "4 3",
                     }),
                 Plot.crosshair(
                     filteredData, {x: "tfe", y: "ep"}),
