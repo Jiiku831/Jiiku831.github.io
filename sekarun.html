@@ -19,41 +19,46 @@
             h1 {
                 padding-top: 4em;
             }
+
+            div:not(:first-child) {
+                margin-left: 5em;
+            }
         </style>
     </head>
     <body>
         <div style="position: fixed; left: 1ex; top: 1ex; padding: 1em;
                     font-size: large; background-color: white;
                     border: solid black thin;">
-        Info: all data updated manually from Twitter or other sources.
-        <br>
-        Jump to:
-        <a href="#tt50">T50 border</a>
-        <a href="#tt100">T100 border</a>
-        <a href="#tt200">T200 border</a>
-        <a href="#tt300">T300 border</a>
-        <a href="#tt400">T400 border</a>
-        <a href="#tt500">T500 border</a><br>
-        <a href="#tt1k">T1k border</a>
-        <a href="#tt2k">T2k border</a>
-        <a href="#tt3k">T3k border</a>
-        <a href="#tt4k">T4k border</a>
-        <a href="#tt5k">T5k border</a>
-        <a href="#tt10k">T10k border</a>
+            Info: all data updated manually from Twitter or other sources.
+            <br>
+            Jump to:
+            <a href="#t50">T50 border</a>
+            <a href="#t100">T100 border</a>
+            <a href="#t200">T200 border</a>
+            <a href="#t300">T300 border</a>
+            <a href="#t400">T400 border</a>
+            <a href="#t500">T500 border</a><br>
+            <a href="#t1k">T1k border</a>
+            <a href="#t2k">T2k border</a>
+            <a href="#t3k">T3k border</a>
+            <a href="#t4k">T4k border</a>
+            <a href="#t5k">T5k border</a>
+            <a href="#t10k">T10k border</a>
         </div>
-        <h1 id="tt50" style="margin-top: 4em;">T50 border</h1>
-        <div id="t50" style="margin-left: 5em;"></div>
-        <h1 id="tt100">T100 border</h1><div id="t100" style="margin-left: 5em;"></div>
-        <h1 id="tt200">T200 border</h1><div id="t200" style="margin-left: 5em;"></div>
-        <h1 id="tt300">T300 border</h1><div id="t300" style="margin-left: 5em;"></div>
-        <h1 id="tt400">T400 border</h1><div id="t400" style="margin-left: 5em;"></div>
-        <h1 id="tt500">T500 border</h1><div id="t500" style="margin-left: 5em;"></div>
-        <h1 id="tt1k">T1k border</h1><div id="t1k" style="margin-left: 5em;"></div>
-        <h1 id="tt2k">T2k border</h1><div id="t2k" style="margin-left: 5em;"></div>
-        <h1 id="tt3k">T3k border</h1><div id="t3k" style="margin-left: 5em;"></div>
-        <h1 id="tt4k">T4k border</h1><div id="t4k" style="margin-left: 5em;"></div>
-        <h1 id="tt5k">T5k border</h1><div id="t5k" style="margin-left: 5em;"></div>
-        <h1 id="tt10k">T10k border</h1><div id="t10k" style="margin-left: 5em;"></div>
+        <div id="t50" style="margin-top: 4em;">
+            <h1 id="tt100">T50 border</h1>
+        </div>
+        <div id="t100"><h1>T100 border</h1></div>
+        <div id="t200"><h1>T200 border</h1></div>
+        <div id="t300"><h1>T300 border</h1></div>
+        <div id="t400"><h1>T400 border</h1></div>
+        <div id="t500"><h1>T500 border</h1></div>
+        <div id="t1k"><h1>T1k border</h1></div>
+        <div id="t2k"><h1>T2k border</h1></div>
+        <div id="t3k"><h1>T3k border</h1></div>
+        <div id="t4k"><h1>T4k border</h1></div>
+        <div id="t5k"><h1>T5k border</h1></div>
+        <div id="t10k"><h1>T10k border</h1></div>
         <script>
             P("t50", 50);
             P("t100", 100);
