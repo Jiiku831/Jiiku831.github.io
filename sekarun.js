@@ -104,7 +104,7 @@ function P(e, b) {
                         z: "eid",
                         text: e => events[e.eid].nick,
                         textAnchor: "start",
-                        dx: 3
+                        dx: 5
                     })),
                 Plot.text(
                     [[timeToCurrentEventEnd, 0]],
