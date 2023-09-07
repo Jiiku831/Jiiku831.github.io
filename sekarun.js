@@ -7,6 +7,8 @@ data = data.map(x => ({
     b: x[5],
     ts: new Date(x[6] * 1000),
     s: x[7],
+    l: x[8],
+    u: x[9],
 }));
 
 currentEventEnd = new Date(events[currentEvent].end * 1000);
@@ -92,6 +94,19 @@ function P(e, b) {
                         strokeWidth: 2,
                         strokeOpacity: 1,
                     }),
+                Plot.area(
+                    filteredData, {
+                        filter: e => e.t == "p" && e.eid == currentEvent,
+                        x1: "tfe",
+                        y1: "l",
+                        y2: "u",
+                        z: e => "z" + e.eid + e.t + e.b,
+                        stroke: "red",
+                        strokeWidth: 0.5,
+                        strokeOpacity: 0.8,
+                        fill: "red",
+                        fillOpacity: 0.1,
+                    }),
                 Plot.line(
                     filteredData, {
                         filter: e => e.t == "p" && e.eid == currentEvent,
@@ -115,6 +130,22 @@ function P(e, b) {
                     {
                         x: "tfe",
                         y: "ep",
+                    }),
+                Plot.crosshair(
+                    filteredData.filter(
+                        e => e.eid == currentEvent && e.t == "p"),
+                    {
+                        x: "tfe",
+                        y: "l",
+                        maxRadius: 10,
+                    }),
+                Plot.crosshair(
+                    filteredData.filter(
+                        e => e.eid == currentEvent && e.t == "p"),
+                    {
+                        x: "tfe",
+                        y: "u",
+                        maxRadius: 10,
                     }),
                 Plot.text(filteredData,
                     Plot.selectLast({
