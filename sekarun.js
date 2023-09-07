@@ -9,6 +9,7 @@ data = data.map(x => ({
     s: x[7],
     l: x[8],
     u: x[9],
+    n: x[10],
 }));
 
 currentEventEnd = new Date(events[currentEvent].end * 1000);
@@ -174,7 +175,8 @@ function P(e, b) {
                         stroke: e => events[e.eid].orderedNick,
                         channels: {
                             tweetId: e => e.s == 0
-                                ? "<non-Twitter source>" : e.s.toString()
+                                ? "<non-Twitter source>" : e.s.toString(),
+                            notes: e => e.n ? e.n : null,
                         },
                         anchor: "bottom-right",
                         tip: true,
