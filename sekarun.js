@@ -97,7 +97,8 @@ function P(e, b) {
                     }),
                 Plot.area(
                     filteredData, {
-                        filter: e => e.t == "p" && e.eid == currentEvent,
+                        filter: e => e.t == "p" && e.eid == currentEvent
+                            && e.l > 0,
                         x1: "tfe",
                         y1: "l",
                         y2: "u",
