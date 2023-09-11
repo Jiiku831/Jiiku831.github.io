@@ -31,7 +31,7 @@ function T(fn, x1, x2, y1, y2) {
     const b = 200;
     let out = [];
     for (let x = 0; x <= b; ++x) {
-        for (let y = 0; y < b; ++y) {
+        for (let y = 0; y <= b; ++y) {
             let xv = x1 + x * (x2 - x1) / b;
             let yv = y1 + y * (y2 - y1) / b;
             out.push({
