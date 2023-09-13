@@ -25,9 +25,13 @@ function P(e, b) {
             style: "overflow: visible;",
             color: {legend: true},
             y: {grid: true},
-            x: {grid: true},
             marks: [
-                Plot.axisX({anchor: "bottom", label: "Time From End (hrs)"}),
+                Plot.axisX({
+                    anchor: "bottom",
+                    label: "Time From End (hrs)",
+                    interval: 24,
+                }),
+                Plot.gridX({interval: 12}),
                 Plot.axisY({anchor: "left", label: "Event Points"}),
                 Plot.axisY({anchor: "right", label: "Event Points"}),
                 Plot.ruleY([0]),
