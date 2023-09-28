@@ -1,4 +1,4 @@
-const currentPerm = 237;
+const currentPerm = 246;
 const currentFes = 20;
 
 const RollType = {
@@ -91,6 +91,10 @@ class State {
         if (!this.Valid()) return 0;
         switch (type) {
             case RollType.Pity:
+                if (this.params.pool > 250) {
+                    return (1 - 0.004 * this.params.puPool) *
+                        this.rnpw;
+                }
                 return this.rnp / this.params.pool;
             case RollType.PityPu:
                 return 0;
@@ -105,6 +109,7 @@ class State {
         if (!this.Valid()) return 0;
         switch (type) {
             case RollType.Pity:
+                if (this.params.pool > 250) return this.rpu * 0.004;
                 return this.rpu / this.params.pool;
             case RollType.PityPu:
                 return this.rpu / this.params.puPool;
@@ -120,9 +125,8 @@ class State {
         if (this.dupe >= this.params.maxDupes) return 0;
         switch (type) {
             case RollType.Pity:
-                return (this.pu + this.np) / this.params.pool;
             case RollType.PityPu:
-                return this.pu / this.params.puPool;
+                return 1 - this.PuChance(type) - this.NpChance(type);
             case RollType.Multi10:
                 return this.params.puRate10 * this.puw +
                     this.params.npRate10 * this.npw;
@@ -659,6 +663,10 @@ function SetParams(pool, pu, fes, pity, maxRolls, dupesStride, npStride) {
 
 function Fes10PUPreset() {
     SetParams(currentPerm + currentFes, 10, true, false, 1000, 5, 2);
+}
+
+function Fes8PUPreset() {
+    SetParams(currentPerm + currentFes, 8, true, false, 1000, 5, 2);
 }
 
 function Fes6PUPreset() {
