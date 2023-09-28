@@ -280,11 +280,11 @@ function Run() {
     PlotFn("plota", fn1, 600, 600,
         a, b,
         Math.max(0, a - 50000), a + 50000,
-        Math.max(100, b - 50), Math.min(b + 50, 500),
+        Math.max(100, b - 50), Math.min(b + 50, 600),
         a, b, c, d, e, f, g, h, w, z, BA, "Team Power", "Event Bonus");
     PlotFn("plota-over", fn1, 600, 600,
         a, b,
-        0, 375000, 100, 500,
+        0, 400000, 100, 600,
         a, b, c, d, e, f, g, h, w, z, BA, "Team Power", "Event Bonus");
     Sum("suma", a, b, c, d, e, f, g, h, w, z, BA, 10000, 10,
         " Team Power", "% Event Bonus");
