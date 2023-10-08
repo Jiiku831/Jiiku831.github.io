@@ -38,7 +38,7 @@
             Jump to current event borders:<br>
             <a href="#cur1">T1-T10 borders</a>
             <a href="#cur2">T20-T100 borders</a>
-            <a href="#cur3">T200-T1k borders</a>
+            <a href="#cur3">T200-T1.5k borders</a>
             <a href="#cur4">T2k-T10k borders</a>
             <hr>
             Jump to historical event borders:
@@ -54,8 +54,9 @@
             <a href="#t200">T200 border</a>
             <a href="#t300">T300 border</a>
             <a href="#t400">T400 border</a>
-            <a href="#t500">T500 border</a><br>
-            <a href="#t1k">T1k border</a>
+            <a href="#t500">T500 border</a>
+            <a href="#t1k">T1k border</a><br>
+            <a href="#t1k5">T1.5k border</a>
             <a href="#t2k">T2k border</a>
             <a href="#t3k">T3k border</a>
             <a href="#t4k">T4k border</a>
@@ -81,7 +82,9 @@
         <div id="t400"><h1>T400 border</h1></div>
         <div id="t500"><h1>T500 border</h1></div>
         <div id="t1k"><h1>T1k border</h1></div>
+        <div id="t1k5"><h1>T1.5k border</h1></div>
         <div id="t2k"><h1>T2k border</h1></div>
+        <div id="t2k5"><h1>T2.5k border</h1></div>
         <div id="t3k"><h1>T3k border</h1></div>
         <div id="t4k"><h1>T4k border</h1></div>
         <div id="t5k"><h1>T5k border</h1></div>
@@ -89,8 +92,8 @@
         <script>
             C("cur1", [1, 2, 3, 10]);
             C("cur2", [20, 30, 40, 50, 100]);
-            C("cur3", [200, 300, 400, 500, 1000]);
-            C("cur4", [2000, 3000, 4000, 5000, 10000]);
+            C("cur3", [200, 300, 400, 500, 1000, 1500]);
+            C("cur4", [2000, 2500, 3000, 4000, 5000, 10000]);
             P("t1", 1);
             P("t2", 2);
             P("t3", 3);
@@ -105,7 +108,9 @@
             P("t400", 400);
             P("t500", 500);
             P("t1k", 1000);
+            P("t1k5", 1500);
             P("t2k", 2000);
+            P("t2k5", 2500);
             P("t3k", 3000);
             P("t4k", 4000);
             P("t5k", 5000);
