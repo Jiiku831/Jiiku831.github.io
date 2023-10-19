@@ -124,7 +124,11 @@ function Tr(row, data, tag, span, cls, rowspan) {
             row.lastChild.rowSpan = rowspan[i];
         }
         if (cls != undefined && cls[i] != "") {
-            row.lastChild.classList.add(cls[i]);
+            let clss = cls[i].split(/(\s+)/);
+            for (let j = 0; j < clss.length; ++j) {
+                if (clss[j] == " ") continue;
+                row.lastChild.classList.add(clss[j]);
+            }
         }
     }
 }
@@ -190,18 +194,49 @@ function TTable(out, v, av, t) {
             "9x", "10x"], "th");
     Tr(table.insertRow(),
         ["Play Boost", "", "", "", "", "", "", "", "", "", "", "", ""], "th");
+
+    let pl = [];
+    for (let i = 0; i <= 10; ++i) {
+        for (let j = 0; j <= 10; ++j) {
+            let af = j > 0 ? bf[j] : 0;
+            let ae = av * af * ac;
+            let ps = Math.max(0, et - ae) / (bf[i] * v);
+            let b = ps * i + ac * j;
+            let pt = ps * tt / rt;
+            pl.push([b, pt, i, j]);
+        }
+    }
+    pl.sort(function(a, b) {
+        if (a[0] == b[0]) {
+            return a[1] - b[1];
+        }
+        return a[0] - b[0];
+    });
+
     for (let i = 0; i <= 10; ++i) {
         let pr = [`${i}x`, "Plays/d"];
         let tr = ["Play time/d"];
         let br = ["Boosts/d"];
         let gr = ["Gs/d"];
         let cls = [""];
+
         for (let j = 0; j <= 10; ++j) {
             let af = j > 0 ? bf[j] : 0;
             let ae = av * af * ac;
             let ps = Math.max(0, et - ae) / (bf[i] * v);
             let b = ps * i + ac * j;
-            pt = ps * tt / rt;
+            let pt = ps * tt / rt;
+            let kek = false;
+            for (let k = 0; k < pl.length; ++k) {
+                if (pl[k][2] == i && pl[k][3] == j) {
+                    if (k == 0) {
+                        break;
+                    }
+                    if (pl[k-1][0] < pl[k][0] && pl[k-1][1] < pl[k][1]) {
+                        kek = true;
+                    }
+                }
+            }
             let hrs = Math.floor(pt / 3600).toString().padStart(2, '0');
             let mins = Math.floor((pt - hrs * 3600) / 60).toString().padStart(
                 2, '0');
@@ -235,6 +270,9 @@ function TTable(out, v, av, t) {
                 cls.push("normal");
             } else {
                 cls.push("tryhard");
+            }
+            if (kek) {
+                cls[cls.length - 1] += " bad";
             }
         }
         let rs = 4;
@@ -367,7 +405,6 @@ function Run() {
 
     let v = Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100)
     let av = Math.round(Val(a, b, c, d, e, af, ag, ah, aw, z) / 100)
-    console.log(v, av);
     document.getElementById("v").innerText = v.toLocaleString();
 
     let fn1 = (x, y) => Val(x, y, c, d, e, f, g, h, w, z);
