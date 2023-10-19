@@ -245,14 +245,17 @@ function TTable(out, v, av, t) {
             } else {
                 gr.push("--");
             }
+            if (b > 0) {
+                br.push(Math.round(b / rt * 10) / 10);
+            } else {
+                br.push("--");
+            }
             if (ps > 0) {
                 tr.push(`${hrs}:${mins}`);
-                br.push(Math.round(b / rt * 10) / 10);
                 pr.push(Math.round(ps / rt * 10) / 10);
             } else {
                 pr.push("--");
                 tr.push("--");
-                br.push("--");
             }
             if (pt > 3600 * 24 - (182.4 + 30) * (j > 0 ? ac : 0) / rt) {
                 cls.push("infeasible");
