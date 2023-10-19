@@ -219,7 +219,7 @@ function TTable(out, v, av, t) {
                 tr.push("--");
                 br.push("--");
             }
-            if (pt > 3600 * 24) {
+            if (pt > 3600 * 24 - (182.4 + 30) * (j > 0 ? ac : 0) / rt) {
                 cls.push("infeasible");
             } else if (b <= 48 * rt) {
                 cls.push("free");

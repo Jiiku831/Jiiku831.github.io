@@ -360,8 +360,8 @@
                         <label for="rt">Days Remaining</label>
                     </td>
                     <td style="width: 23em;">
-                        <input id="rts" type="range" min="0" max="12" step="0.1"
-                               value="10" oninput="Sync(this)">
+                        <input id="rts" type="range" min="0.1" max="12"
+                               step="0.1" value="10" oninput="Sync(this)">
                         <input id="rt" type="number" value="10"
                                onchange="Sync(this)">
                     </td>
@@ -414,6 +414,13 @@
                     <hr>
                     Tiering Planner
                 </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <i style="display: block; text-align: center;">
+                        Note: Assuming auto HCM with 30s auto menu time.
+                    </i>
+                </td>
             </tr>
             <tr>
                 <td colspan="3">
