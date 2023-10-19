@@ -202,8 +202,9 @@ function TTable(out, v, av, t) {
             let ps = Math.max(0, et - ae) / (bf[i] * v);
             let b = ps * i + ac * j;
             pt = ps * tt / rt;
-            let hrs = Math.floor(pt / 3600);
-            let mins = Math.floor((pt - hrs * 3600) / 60);
+            let hrs = Math.floor(pt / 3600).toString().padStart(2, '0');
+            let mins = Math.floor((pt - hrs * 3600) / 60).toString().padStart(
+                2, '0');
             if (b > 48 * rt) {
                 gr.push(Math.round(Math.max(0, b - rt * 48) / 10.5 / rt) / 100);
             } else {
