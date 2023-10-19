@@ -230,7 +230,7 @@ function TTable(out, v, av, t) {
             for (let k = 0; k < pl.length; ++k) {
                 if (pl[k][2] == i && pl[k][3] == j) {
                     for (l = 0; l < k; ++l) {
-                        if (pl[l][0] < pl[k][0] && pl[l][1] < pl[k][1]) {
+                        if (pl[l][0] <= pl[k][0] && pl[l][1] <= pl[k][1]) {
                             kek = true;
                         }
                     }
