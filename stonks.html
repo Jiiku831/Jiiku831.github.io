@@ -20,7 +20,7 @@
             }
 
             input[type="number"] {
-                width: 5em;
+                width: 6em;
             }
 
             td, th {
@@ -36,11 +36,110 @@
                 vertical-align: middle;
             }
 
+            .tt, .tt > * > tr, .tt > * > * > td, .tt > * > * > th {
+                border-collapse: collapse;
+                border: thin black solid;
+                vertical-align: middle;
+            }
+
             .st tr:nth-child(2n+3) {
                 background: #eee;
             }
 
-            .st {
+            .tt tr:nth-child(8n+3), .tt tr:nth-child(8n+4),
+            .tt tr:nth-child(8n+5), .tt tr:nth-child(8n+6) {
+                background: #eee;
+            }
+
+            .tt tr:nth-child(8n+3) .infeasible,
+            .tt tr:nth-child(8n+4) .infeasible,
+            .tt tr:nth-child(8n+5) .infeasible,
+            .tt tr:nth-child(8n+6) .infeasible {
+                background: hsl(0deg 0% 70%);
+            }
+
+            .tt .infeasible, .tl .infeasible {
+                background: hsl(0deg 0% 75%);
+            }
+
+            .tt tr:nth-child(8n+3) .nosleep,
+            .tt tr:nth-child(8n+4) .nosleep,
+            .tt tr:nth-child(8n+5) .nosleep,
+            .tt tr:nth-child(8n+6) .nosleep {
+                background: hsl(0deg 100% 85%);
+            }
+
+            .tt .nosleep, .tl .nosleep {
+                background: hsl(0deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .tryhard,
+            .tt tr:nth-child(8n+4) .tryhard,
+            .tt tr:nth-child(8n+5) .tryhard,
+            .tt tr:nth-child(8n+6) .tryhard {
+                background: hsl(60deg 100% 85%);
+            }
+
+            .tt .tryhard, .tl .tryhard {
+                background: hsl(60deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .normal,
+            .tt tr:nth-child(8n+4) .normal,
+            .tt tr:nth-child(8n+5) .normal,
+            .tt tr:nth-child(8n+6) .normal {
+                background: hsl(120deg 100% 85%);
+            }
+
+            .tt .normal, .tl .normal {
+                background: hsl(120deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .trivial,
+            .tt tr:nth-child(8n+4) .trivial,
+            .tt tr:nth-child(8n+5) .trivial,
+            .tt tr:nth-child(8n+6) .trivial {
+                background: hsl(180deg 100% 85%);
+            }
+
+            .tt .trivial, .tl .trivial {
+                background: hsl(180deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .walkinthepark,
+            .tt tr:nth-child(8n+4) .walkinthepark,
+            .tt tr:nth-child(8n+5) .walkinthepark,
+            .tt tr:nth-child(8n+6) .walkinthepark {
+                background: hsl(240deg 100% 85%);
+            }
+
+            .tt .walkinthepark, .tl .walkinthepark {
+                background: hsl(240deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .fullauto,
+            .tt tr:nth-child(8n+4) .fullauto,
+            .tt tr:nth-child(8n+5) .fullauto,
+            .tt tr:nth-child(8n+6) .fullauto {
+                background: hsl(300deg 100% 85%);
+            }
+
+            .tt .fullauto, .tl .fullauto {
+                background: hsl(300deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .free,
+            .tt tr:nth-child(8n+4) .free,
+            .tt tr:nth-child(8n+5) .free,
+            .tt tr:nth-child(8n+6) .free {
+                background: hsl(330deg 100% 85%);
+            }
+
+            .tt .free, .tl .free {
+                background: hsl(330deg 100% 90%);
+            }
+
+            .st, .tt, .tl {
                 margin-top: 1ex;
                 margin-left: auto;
                 margin-right: auto;
@@ -218,6 +317,58 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <label for="et">EP Target (mil)</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="ets" type="range" min="1" max="500"
+                               step="0.1" value="50" oninput="Sync(this)">
+                        <input id="et" type="number" value="50"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ac">Auto Count</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="acs" type="range" min="0" max="1200"
+                               value="990" oninput="Sync(this)">
+                        <input id="ac" type="number" value="990"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mt">Menu Time (s)</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="mts" type="range" min="0" max="120"
+                               value="50" oninput="Sync(this)">
+                        <input id="mt" type="number" value="50"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="rt">Days Remaining</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="rts" type="range" min="0" max="12" step="0.1"
+                               value="10" oninput="Sync(this)">
+                        <input id="rt" type="number" value="10"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="3">
                         <p>
                             <sup>&dagger;</sup> Estimate only.
@@ -256,6 +407,33 @@
                     <h3>Linear approximation of trade-off:</h3>
                     <div id="suma">
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <hr>
+                    Tiering Planner
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table class="tl">
+                        <tr>
+                            <th>Legend</th>
+                            <th class="free">No Refills Needed</th>
+                            <th class="fullauto">No Plays Needed</th>
+                            <th class="walkinthepark">&lt;2 hrs/day</th>
+                            <th class="trivial">2~4 hrs/day</th>
+                            <th class="normal">4~8 hrs/day</th>
+                            <th class="tryhard">8~12 hrs/day</th>
+                            <th class="nosleep">12~24 hrs/day</th>
+                            <th class="infeasible">Infeasible</th>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td id="tt" colspan="3">
                 </td>
             </tr>
         </table>
