@@ -235,7 +235,7 @@ function PlotT(out, v, av, t) {
             break;
         }
         data.push({
-            et: et,
+            et: et / 1000000,
             mb: mb / rt,
             mp: mp / 3600,
             eb: Median(bs) / rt,
@@ -244,7 +244,7 @@ function PlotT(out, v, av, t) {
             xp: xp / 3600,
         });
     }
-    let et = Get("et") * 1000000;
+    let et = Get("et");
     let p = Plot.plot({
         style: "overflow: visible; margin: auto;",
         color: {legend: true},
@@ -254,7 +254,7 @@ function PlotT(out, v, av, t) {
         marks: [
             Plot.axisX({
                 anchor: "bottom",
-                label: "EP Target",
+                label: "EP Target (mil)",
             }),
             Plot.axisY({anchor: "left", label: "Boost Cost/d"}),
             Plot.axisY({anchor: "right", label: "Boost Cost/d"}),
@@ -296,7 +296,7 @@ function PlotT(out, v, av, t) {
         marks: [
             Plot.axisX({
                 anchor: "bottom",
-                label: "EP Target",
+                label: "EP Target (mil)",
             }),
             Plot.axisY({anchor: "left", label: "Play Time/d (hr)"}),
             Plot.axisY({anchor: "right", label: "Play Time/d (hr)"}),
