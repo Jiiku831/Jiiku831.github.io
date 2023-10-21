@@ -178,6 +178,163 @@ function Table(out, a, b, c, d, e, z, cs, cl) {
 
 const bf = [1, 5, 10, 15, 19, 23, 26, 29, 31, 33, 35];
 
+function CT(i, j, v, av, ac, et, tt, rt) {
+    let af = j > 0 ? bf[j] : 0;
+    let ae = av * af * ac;
+    let ps = Math.max(0, et - ae) / (bf[i] * v);
+    let b = ps * i + ac * j;
+    let pt = ps * tt / rt;
+    return [b, pt, i, j];
+}
+
+function Median(arr) {
+    const sorted = Array.from(arr).sort((a, b) => a - b);
+    const middle = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[middle - 1] + sorted[middle]) / 2;
+    }
+
+    return sorted[middle];
+}
+
+function PlotT(out, v, av, t) {
+    let ac = Get("ac");
+    let mt = Get("mt");
+    let rt = Get("rt");
+    let tt = t + mt;
+
+    let data = [{
+        et: 0,
+        mb: 0,
+        mp: 0,
+    }]
+    for (let t = 0; t <= 10000; ++t) {
+        let et = t * 100000;
+        let mb = Infinity;
+        let mp = Infinity;
+        let xb = -Infinity;
+        let xp = -Infinity;
+        let bs = []
+        let ps = []
+        for (let i = 0; i <= 10; ++i) {
+            for (let j = 0; j <= 10; ++j) {
+                let res = CT(i, j, v, av, ac, et, tt, rt);
+                if (res[1] > 3600 * 24 - (182.4 + 30) * (j > 0 ? ac : 0) / rt) {
+                    continue;
+                }
+                bs.push(res[0]);
+                ps.push(res[1]);
+                mb = Math.min(mb, res[0]);
+                mp = Math.min(mp, res[1]);
+                xb = Math.max(xb, res[0]);
+                xp = Math.max(xp, res[1]);
+            }
+        }
+        if (mb == Infinity) {
+            break;
+        }
+        data.push({
+            et: et,
+            mb: mb / rt,
+            mp: mp / 3600,
+            eb: Median(bs) / rt,
+            ep: Median(ps) / 3600,
+            xb: xb / rt,
+            xp: xp / 3600,
+        });
+    }
+    let et = Get("et") * 1000000;
+    let p = Plot.plot({
+        style: "overflow: visible; margin: auto;",
+        color: {legend: true},
+        x: {grid: true},
+        y: {grid: true},
+        width: 1200,
+        marks: [
+            Plot.axisX({
+                anchor: "bottom",
+                label: "EP Target",
+            }),
+            Plot.axisY({anchor: "left", label: "Boost Cost/d"}),
+            Plot.axisY({anchor: "right", label: "Boost Cost/d"}),
+            Plot.ruleX(
+                [et],
+                {
+                    stroke: "red",
+                    strokeWidth: 1,
+                }),
+            Plot.line(
+                data, {
+                    x: "et",
+                    y: "mb",
+                    stroke: e => "min",
+                }),
+            Plot.line(
+                data, {
+                    x: "et",
+                    y: "eb",
+                    stroke: e => "median",
+                }),
+            Plot.line(
+                data, {
+                    x: "et",
+                    y: "xb",
+                    stroke: e => "max",
+                }),
+            Plot.crosshairX(data, {x: "et", y: "mb"}),
+            Plot.crosshairX(data, {x: "et", y: "eb"}),
+            Plot.crosshairX(data, {x: "et", y: "xb"}),
+        ]
+    });
+    let p2 = Plot.plot({
+        style: "overflow: visible; margin: auto;",
+        color: {legend: true},
+        x: {grid: true},
+        y: {grid: true},
+        width: 1200,
+        marks: [
+            Plot.axisX({
+                anchor: "bottom",
+                label: "EP Target",
+            }),
+            Plot.axisY({anchor: "left", label: "Play Time/d (hr)"}),
+            Plot.axisY({anchor: "right", label: "Play Time/d (hr)"}),
+            Plot.ruleX(
+                [et],
+                {
+                    stroke: "red",
+                    strokeWidth: 1,
+                }),
+            Plot.line(
+                data, {
+                    x: "et",
+                    y: "mp",
+                    stroke: e => "min",
+                }),
+            Plot.line(
+                data, {
+                    x: "et",
+                    y: "ep",
+                    stroke: e => "median",
+                }),
+            Plot.line(
+                data, {
+                    x: "et",
+                    y: "xp",
+                    stroke: e => "max",
+                }),
+            Plot.crosshairX(data, {x: "et", y: "mp"}),
+            Plot.crosshairX(data, {x: "et", y: "ep"}),
+            Plot.crosshairX(data, {x: "et", y: "xp"}),
+        ]
+    });
+    let cc = document.getElementById(out);
+    Clear(cc);
+    cc.append(p);
+    cc.append(p2);
+}
+
 function TTable(out, v, av, t) {
     let et = Get("et") * 1000000;
     let ac = Get("ac");
@@ -198,12 +355,7 @@ function TTable(out, v, av, t) {
     let pl = [];
     for (let i = 0; i <= 10; ++i) {
         for (let j = 0; j <= 10; ++j) {
-            let af = j > 0 ? bf[j] : 0;
-            let ae = av * af * ac;
-            let ps = Math.max(0, et - ae) / (bf[i] * v);
-            let b = ps * i + ac * j;
-            let pt = ps * tt / rt;
-            pl.push([b, pt, i, j]);
+            pl.push(CT(i, j, v, av, ac, et, tt, rt));
         }
     }
     pl.sort(function(a, b) {
@@ -424,4 +576,5 @@ function Run() {
         " Team Power", "% Event Bonus");
     Table("sumt", a, b, c, d, e, z, ct / 5, cl);
     TTable("tt", v, av, t);
+    PlotT("tp", v, av, t);
 }
