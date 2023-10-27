@@ -514,7 +514,11 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
     let pl = [];
     for (let i = 0; i <= 10; ++i) {
         for (let j = 0; j <= 10; ++j) {
-            pl.push(CT(i, j, v, av, ac, et, tt, rt));
+            res = CT(i, j, v, av, ac, et, tt, rt);
+            if (res[1] > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
+                continue;
+            }
+            pl.push(res);
         }
     }
     pl.sort(function(a, b) {
@@ -587,9 +591,9 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
             } else {
                 cls.push("tryhard");
             }
-            if (kek) {
+            if (kek || no) {
                 cls[cls.length - 1] += " bad";
-            } else if (!no) {
+            } else {
                 f.push({
                     b: Math.round(b / rt * 100) / 100,
                     t: Math.round(pt / 3600 * 100) / 100,
