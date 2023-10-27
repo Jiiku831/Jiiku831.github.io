@@ -252,6 +252,8 @@ function PlotT(out, v, av, t) {
         y: {grid: true},
         width: 1200,
         marks: [
+            Plot.ruleX([0]),
+            Plot.ruleY([0]),
             Plot.axisX({
                 anchor: "bottom",
                 label: "EP Target (mil)",
@@ -294,6 +296,8 @@ function PlotT(out, v, av, t) {
         y: {grid: true},
         width: 1200,
         marks: [
+            Plot.ruleX([0]),
+            Plot.ruleY([0]),
             Plot.axisX({
                 anchor: "bottom",
                 label: "EP Target (mil)",
@@ -335,6 +339,49 @@ function PlotT(out, v, av, t) {
     cc.append(p2);
 }
 
+function PlotTF(out, f) {
+    let p = Plot.plot({
+        style: "overflow: visible; margin: auto;",
+        color: {legend: true},
+        x: {grid: true},
+        y: {grid: true},
+        width: 600,
+        height: 600,
+        marks: [
+            Plot.ruleX(f, Plot.selectLast({
+                x: "t",
+            })),
+            Plot.ruleY(f, Plot.selectFirst({
+                y: "b",
+            })),
+            Plot.axisX({
+                anchor: "bottom",
+                label: "Play time/d (hr)",
+            }),
+            Plot.axisY({anchor: "left", label: "Boost Cost/d"}),
+            Plot.line(f, {
+                x: "t",
+                y: "b",
+                stroke: (e) => "pareto front",
+                strokeDasharray: "3 2",
+                sort: {channel: "x"},
+            }),
+            Plot.crosshairX(f, {x: "t", y: "b"}),
+            Plot.crosshairY(f, {x: "t", y: "b"}),
+            Plot.dot(f, {
+                x: "t",
+                y: "b",
+                symbol: "circle",
+                fill: (e) => "pareto front",
+                strokeWidth: 0,
+            }),
+        ]
+    });
+    let cc = document.getElementById(out);
+    Clear(cc);
+    cc.append(p);
+}
+
 function TTable(out, v, av, t) {
     let et = Get("et") * 1000000;
     let ac = Get("ac");
@@ -364,6 +411,7 @@ function TTable(out, v, av, t) {
         }
         return a[0] - b[0];
     });
+    f = [];
 
     for (let i = 0; i <= 10; ++i) {
         let pr = [`${i}x`, "Plays/d"];
@@ -408,8 +456,10 @@ function TTable(out, v, av, t) {
                 pr.push("--");
                 tr.push("--");
             }
+            let no = false;
             if (pt > 3600 * 24 - (182.4 + 30) * (j > 0 ? ac : 0) / rt) {
                 cls.push("infeasible");
+                no = true;
             } else if (b <= 48 * rt) {
                 cls.push("free");
             } else if (ps == 0) {
@@ -427,6 +477,11 @@ function TTable(out, v, av, t) {
             }
             if (kek) {
                 cls[cls.length - 1] += " bad";
+            } else if (!no) {
+                f.push({
+                    b: Math.round(b / rt * 100) / 100,
+                    t: Math.round(pt / 3600 * 100) / 100,
+                });
             }
         }
         let rs = 4;
@@ -436,6 +491,7 @@ function TTable(out, v, av, t) {
         Tr(table.insertRow(), gr, "td", undefined, cls);
     }
     cc.append(table);
+    PlotTF(out + "f", f);
 }
 
 const params = [
