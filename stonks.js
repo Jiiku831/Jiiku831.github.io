@@ -220,7 +220,7 @@ function PlotT(out, v, av, t) {
         for (let i = 0; i <= 10; ++i) {
             for (let j = 0; j <= 10; ++j) {
                 let res = CT(i, j, v, av, ac, et, tt, rt);
-                if (res[1] > 3600 * 24 - (182.4 + 30) * (j > 0 ? ac : 0) / rt) {
+                if (res[1] > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
                     continue;
                 }
                 bs.push(res[0]);
@@ -339,42 +339,152 @@ function PlotT(out, v, av, t) {
     cc.append(p2);
 }
 
-function PlotTF(out, f) {
+function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
+    let et = Get("et") * 1000000;
+    let ac = Get("ac");
+    let mt = Get("mt");
+    let rt = Get("rt");
+
+    let pl = []
+    let es = m == 1 ? 2 : params[m].length;
+    for (let ss = 0; ss < es; ++ss) {
+        let f = params[m][ss][1];
+        let g = params[m][ss][2];
+        let h = params[m][ss][3];
+        let w = params[m][ss][4];
+        let t = params[m][ss][5];
+        let tt = t + mt;
+        let v = Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100);
+        for (let i = 0; i <= 10; ++i) {
+            for (let j = 0; j <= 10; ++j) {
+                res = CT(i, j, v, av, ac, et, tt, rt);
+                if (res[1] > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
+                    continue;
+                }
+                res.push(ss);
+                pl.push(res);
+            }
+        }
+    }
+    pl.sort(function(a, b) {
+        if (a[0] == b[0]) {
+            return a[1] - b[1];
+        }
+        return a[0] - b[0];
+    });
+    let af = [];
+    let my = Infinity;
+    let mmy = Infinity;
+    let mmx = Infinity;
+    for (let i = 0; i < pl.length; ++i) {
+        let ft = false;
+        mmy = Math.min(mmy, pl[i][0]);
+        mmx = Math.min(mmx, pl[i][1]);
+        if (pl[i][1] < my) {
+            ft = true;
+            my = pl[i][1];
+        }
+        af.push({
+          b: Math.round(pl[i][0] / rt * 100) / 100,
+          t: Math.round(pl[i][1] / 3600 * 100) / 100,
+          f: ft,
+          i: pl[i][2],
+          j: pl[i][3],
+          s: pl[i][4],
+        });
+    }
+    console.log(af);
+
     let p = Plot.plot({
         style: "overflow: visible; margin: auto;",
         color: {legend: true},
         x: {grid: true},
         y: {grid: true},
-        width: 600,
-        height: 600,
+        width: 1000,
+        height: 1000,
         marks: [
-            Plot.ruleX(f, Plot.selectLast({
-                x: "t",
-            })),
-            Plot.ruleY(f, Plot.selectFirst({
-                y: "b",
-            })),
+            Plot.ruleX([mmx / 3600]),
+            Plot.ruleY([mmy / rt]),
             Plot.axisX({
                 anchor: "bottom",
                 label: "Play time/d (hr)",
             }),
             Plot.axisY({anchor: "left", label: "Boost Cost/d"}),
-            Plot.line(f, {
-                x: "t",
-                y: "b",
-                stroke: (e) => "pareto front",
-                strokeDasharray: "3 2",
-                sort: {channel: "x"},
-            }),
-            Plot.crosshairX(f, {x: "t", y: "b"}),
-            Plot.crosshairY(f, {x: "t", y: "b"}),
-            Plot.dot(f, {
+            Plot.crosshair(af, {x: "t", y: "b", maxRadius: 5}),
+            Plot.dot(af, {
+                filter: e => e.s != s && !e.f,
                 x: "t",
                 y: "b",
                 symbol: "circle",
-                fill: (e) => "pareto front",
+                fill: (e) => params[0][e.s][0],
+                opacity: 0.5,
                 strokeWidth: 0,
+                r: 2,
             }),
+            Plot.line(af, {
+                filter: e => e.f,
+                x: "t",
+                y: "b",
+                stroke: "steelblue",
+                strokeDasharray: "3 2",
+            }),
+            Plot.dot(af, {
+                filter: e => e.s != s && e.f,
+                x: "t",
+                y: "b",
+                symbol: "circle",
+                fill: (e) => params[0][e.s][0],
+                strokeWidth: 0,
+                r: 4,
+            }),
+            Plot.line(f, {
+                x: "t",
+                y: "b",
+                stroke: "crimson",
+                strokeDasharray: "3 2",
+                sort: {channel: "x"},
+            }),
+            Plot.dot(af, {
+                filter: e => e.s == s,
+                x: "t",
+                y: "b",
+                symbol: "times",
+                stroke: "crimson",
+                strokeWidth: 1.5,
+                r: 3,
+            }),
+            Plot.dot(f, {
+                x: "t",
+                y: "b",
+                symbol: "times",
+                stroke: "crimson",
+                strokeWidth: 2,
+                r: 4,
+            }),
+            Plot.tip(
+                af,
+                Plot.pointer({
+                    x: "t",
+                    y: "b",
+                    channels: {
+                        strategy: e => params[0][e.s][0],
+                        play_boost: e => e.i.toString(),
+                        auto_boost: e => e.j.toString(),
+                        play_time: e => e.t,
+                        boost_cost: e => e.b,
+                    },
+                    anchor: "top-right",
+                    format: {
+                        strategy: true,
+                        play_boost: true,
+                        auto_boost: true,
+                        play_time: true,
+                        boost_cost: true,
+                        x: false,
+                        y: false,
+                    },
+                    maxRadius: 10,
+                })),
         ]
     });
     let cc = document.getElementById(out);
@@ -382,7 +492,9 @@ function PlotTF(out, f) {
     cc.append(p);
 }
 
-function TTable(out, v, av, t) {
+const hcmt = 212.4;
+
+function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
     let et = Get("et") * 1000000;
     let ac = Get("ac");
     let mt = Get("mt");
@@ -457,7 +569,7 @@ function TTable(out, v, av, t) {
                 tr.push("--");
             }
             let no = false;
-            if (pt > 3600 * 24 - (182.4 + 30) * (j > 0 ? ac : 0) / rt) {
+            if (pt > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
                 cls.push("infeasible");
                 no = true;
             } else if (b <= 48 * rt) {
@@ -491,7 +603,7 @@ function TTable(out, v, av, t) {
         Tr(table.insertRow(), gr, "td", undefined, cls);
     }
     cc.append(table);
-    PlotTF(out + "f", f);
+    PlotTF(out + "f", f, a, b, c, d, e, z, m, s, av);
 }
 
 const params = [
@@ -613,8 +725,8 @@ function Run() {
     let ah = params[3][ai][3];
     let aw = params[3][ai][4];
 
-    let v = Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100)
-    let av = Math.round(Val(a, b, c, d, e, af, ag, ah, aw, z) / 100)
+    let v = Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100);
+    let av = Math.round(Val(a, b, c, d, e, af, ag, ah, aw, z) / 100);
     document.getElementById("v").innerText = v.toLocaleString();
 
     let fn1 = (x, y) => Val(x, y, c, d, e, f, g, h, w, z);
@@ -631,6 +743,6 @@ function Run() {
     Sum("suma", a, b, c, d, e, f, g, h, w, z, BA, 10000, 10,
         " Team Power", "% Event Bonus");
     Table("sumt", a, b, c, d, e, z, ct / 5, cl);
-    TTable("tt", v, av, t);
+    TTable("tt", a, b, c, d, e, z, m, s, v, av, t);
     PlotT("tp", v, av, t);
 }
