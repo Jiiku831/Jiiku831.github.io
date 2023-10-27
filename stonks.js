@@ -378,12 +378,14 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
     let mmx = Infinity;
     for (let i = 0; i < pl.length; ++i) {
         let ft = false;
-        mmy = Math.min(mmy, pl[i][0]);
-        mmx = Math.min(mmx, pl[i][1]);
         if (pl[i][1] < my) {
             ft = true;
             my = pl[i][1];
         }
+        if (pl[i][1] == 0 && !ft) continue;
+        if (pl[i][0] == 0) continue;
+        mmy = Math.min(mmy, pl[i][0]);
+        mmx = Math.min(mmx, pl[i][1]);
         af.push({
           b: Math.round(pl[i][0] / rt * 100) / 100,
           t: Math.round(pl[i][1] / 3600 * 100) / 100,
@@ -593,7 +595,7 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
             }
             if (kek || no) {
                 cls[cls.length - 1] += " bad";
-            } else {
+            } else if (b > 0) {
                 f.push({
                     b: Math.round(b / rt * 100) / 100,
                     t: Math.round(pt / 3600 * 100) / 100,
