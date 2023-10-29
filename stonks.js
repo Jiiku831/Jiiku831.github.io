@@ -126,7 +126,7 @@ function Tr(row, data, tag, span, cls, rowspan) {
         if (cls != undefined && cls[i] != "") {
             let clss = cls[i].split(/(\s+)/);
             for (let j = 0; j < clss.length; ++j) {
-                if (clss[j] == " ") continue;
+                if (clss[j] == " " || clss[j] == "") continue;
                 row.lastChild.classList.add(clss[j]);
             }
         }
@@ -178,12 +178,12 @@ function Table(out, a, b, c, d, e, z, cs, cl) {
 
 const bf = [1, 5, 10, 15, 19, 23, 26, 29, 31, 33, 35];
 
-function CT(i, j, v, av, ac, et, tt, rt) {
+function CT(i, j, v, av, ac, et, tt) {
     let af = j > 0 ? bf[j] : 0;
     let ae = av * af * ac;
     let ps = Math.max(0, et - ae) / (bf[i] * v);
     let b = ps * i + ac * j;
-    let pt = ps * tt / rt;
+    let pt = ps * tt;
     return [b, pt, i, j];
 }
 
@@ -219,8 +219,8 @@ function PlotT(out, v, av, t) {
         let ps = []
         for (let i = 0; i <= 10; ++i) {
             for (let j = 0; j <= 10; ++j) {
-                let res = CT(i, j, v, av, ac, et, tt, rt);
-                if (res[1] > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
+                let res = CT(i, j, v, av, ac, et, tt);
+                if (res[1] > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
                     continue;
                 }
                 bs.push(res[0]);
@@ -236,11 +236,11 @@ function PlotT(out, v, av, t) {
         }
         data.push({
             et: et / 1000000,
-            mb: mb / rt,
+            mb: mb,
             mp: mp / 3600,
-            eb: Median(bs) / rt,
+            eb: Median(bs),
             ep: Median(ps) / 3600,
-            xb: xb / rt,
+            xb: xb,
             xp: xp / 3600,
         });
     }
@@ -258,8 +258,8 @@ function PlotT(out, v, av, t) {
                 anchor: "bottom",
                 label: "EP Target (mil)",
             }),
-            Plot.axisY({anchor: "left", label: "Boost Cost/d"}),
-            Plot.axisY({anchor: "right", label: "Boost Cost/d"}),
+            Plot.axisY({anchor: "left", label: "Boost Cost"}),
+            Plot.axisY({anchor: "right", label: "Boost Cost"}),
             Plot.ruleX(
                 [et],
                 {
@@ -302,8 +302,8 @@ function PlotT(out, v, av, t) {
                 anchor: "bottom",
                 label: "EP Target (mil)",
             }),
-            Plot.axisY({anchor: "left", label: "Play Time/d (hr)"}),
-            Plot.axisY({anchor: "right", label: "Play Time/d (hr)"}),
+            Plot.axisY({anchor: "left", label: "Play Time (hr)"}),
+            Plot.axisY({anchor: "right", label: "Play Time (hr)"}),
             Plot.ruleX(
                 [et],
                 {
@@ -357,8 +357,8 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
         let v = Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100);
         for (let i = 0; i <= 10; ++i) {
             for (let j = 0; j <= 10; ++j) {
-                res = CT(i, j, v, av, ac, et, tt, rt);
-                if (res[1] > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
+                res = CT(i, j, v, av, ac, et, tt);
+                if (res[1] > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
                     continue;
                 }
                 res.push(ss);
@@ -387,7 +387,7 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
         mmy = Math.min(mmy, pl[i][0]);
         mmx = Math.min(mmx, pl[i][1]);
         af.push({
-          b: Math.round(pl[i][0] / rt * 100) / 100,
+          b: Math.round(pl[i][0] * 100) / 100,
           t: Math.round(pl[i][1] / 3600 * 100) / 100,
           f: ft,
           i: pl[i][2],
@@ -395,7 +395,6 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
           s: pl[i][4],
         });
     }
-    console.log(af);
 
     let p = Plot.plot({
         style: "overflow: visible; margin: auto;",
@@ -406,12 +405,12 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
         height: 1000,
         marks: [
             Plot.ruleX([mmx / 3600]),
-            Plot.ruleY([mmy / rt]),
+            Plot.ruleY([mmy]),
             Plot.axisX({
                 anchor: "bottom",
-                label: "Play time/d (hr)",
+                label: "Play time (hr)",
             }),
-            Plot.axisY({anchor: "left", label: "Boost Cost/d"}),
+            Plot.axisY({anchor: "left", label: "Boost Cost"}),
             Plot.crosshair(af, {x: "t", y: "b", maxRadius: 5}),
             Plot.dot(af, {
                 filter: e => e.s != s && !e.f,
@@ -509,15 +508,19 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
     table.classList.add("tt");
     Tr(table.insertRow(),
         ["", "Auto Boost", "0x", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x",
-            "9x", "10x"], "th");
+            "9x", "10x"], "th",
+        [1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]);
     Tr(table.insertRow(),
-        ["Play Boost", "", "", "", "", "", "", "", "", "", "", "", ""], "th");
+        ["Play Boost", "", "Total", "Per day", "Total", "Per day", "Total",
+            "Per day", "Total", "Per day", "Total", "Per day", "Total",
+            "Per day", "Total", "Per day", "Total", "Per day", "Total",
+            "Per day", "Total", "Per day", "Total", "Per day"], "th");
 
     let pl = [];
     for (let i = 0; i <= 10; ++i) {
         for (let j = 0; j <= 10; ++j) {
-            res = CT(i, j, v, av, ac, et, tt, rt);
-            if (res[1] > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
+            res = CT(i, j, v, av, ac, et, tt);
+            if (res[1] > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
                 continue;
             }
             pl.push(res);
@@ -532,18 +535,18 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
     f = [];
 
     for (let i = 0; i <= 10; ++i) {
-        let pr = [`${i}x`, "Plays/d"];
-        let tr = ["Play time/d"];
-        let br = ["Boosts/d"];
-        let gr = ["Gs/d"];
-        let cls = [""];
+        let pr = [`${i}x`, "Plays"];
+        let tr = ["Play time"];
+        let br = ["Boosts"];
+        let gr = ["Gs"];
+        let cls = [];
 
         for (let j = 0; j <= 10; ++j) {
             let af = j > 0 ? bf[j] : 0;
             let ae = av * af * ac;
             let ps = Math.max(0, et - ae) / (bf[i] * v);
             let b = ps * i + ac * j;
-            let pt = ps * tt / rt;
+            let pt = ps * tt;
             let kek = false;
             for (let k = 0; k < pl.length; ++k) {
                 if (pl[k][2] == i && pl[k][3] == j) {
@@ -557,56 +560,82 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
             let hrs = Math.floor(pt / 3600).toString().padStart(2, '0');
             let mins = Math.floor((pt - hrs * 3600) / 60).toString().padStart(
                 2, '0');
+            let rd = Math.max(1, rt);
             if (b > 48 * rt) {
-                gr.push(Math.round(Math.max(0, b - rt * 48) / 10.5 / rt) / 100);
+                gr.push(Math.round(Math.max(0, b - rt * 48) / 10.5) / 100);
+                gr.push(Math.round(Math.max(0, b - rt * 48) / rd / 10.5) / 100);
             } else {
+                gr.push("--");
                 gr.push("--");
             }
             if (b > 0) {
-                br.push(Math.round(b / rt * 10) / 10);
+                br.push(Math.round(b * 10) / 10);
+                br.push(Math.round(b / rd * 10) / 10);
             } else {
+                br.push("--");
                 br.push("--");
             }
             if (ps > 0) {
                 tr.push(`${hrs}:${mins}`);
-                pr.push(Math.round(ps / rt * 10) / 10);
+                hrs = Math.floor(
+                    pt / rd / 3600).toString().padStart(2, '0');
+                mins = Math.floor((pt / rd - hrs * 3600) / 60).toString(
+                    ).padStart(2, '0');
+                tr.push(`${hrs}:${mins}`);
+                pr.push(Math.round(ps * 10) / 10);
+                pr.push(Math.round(ps / rd * 10) / 10);
             } else {
                 pr.push("--");
+                pr.push("--");
+                tr.push("--");
                 tr.push("--");
             }
             let no = false;
-            if (pt > 3600 * 24 - hcmt * (j > 0 ? ac : 0) / rt) {
+            if (pt > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
+                cls.push("infeasible");
                 cls.push("infeasible");
                 no = true;
             } else if (b <= 48 * rt) {
                 cls.push("free");
+                cls.push("free");
             } else if (ps == 0) {
                 cls.push("fullauto");
-            } else if (pt > 3600 * 12) {
+                cls.push("fullauto");
+            } else if (pt / rd > 3600 * 12) {
                 cls.push("nosleep");
-            } else if (pt < 3600 * 2) {
+                cls.push("nosleep");
+            } else if (pt / rd < 3600 * 2) {
                 cls.push("walkinthepark");
-            } else if (pt < 3600 * 4) {
+                cls.push("walkinthepark");
+            } else if (pt / rd < 3600 * 4) {
                 cls.push("trivial");
-            } else if (pt < 3600 * 8) {
+                cls.push("trivial");
+            } else if (pt / rd < 3600 * 8) {
+                cls.push("normal");
                 cls.push("normal");
             } else {
                 cls.push("tryhard");
+                cls.push("tryhard");
             }
+            cls[cls.length - 2] += " f";
+            cls[cls.length - 1] += " s";
             if (kek || no) {
+                cls[cls.length - 2] += " bad";
                 cls[cls.length - 1] += " bad";
             } else if (b > 0) {
                 f.push({
-                    b: Math.round(b / rt * 100) / 100,
+                    b: Math.round(b * 100) / 100,
                     t: Math.round(pt / 3600 * 100) / 100,
                 });
             }
         }
         let rs = 4;
-        Tr(table.insertRow(), pr, "td", undefined, [""].concat(cls), [rs]);
-        Tr(table.insertRow(), tr, "td", undefined, cls);
-        Tr(table.insertRow(), br, "td", undefined, cls);
-        Tr(table.insertRow(), gr, "td", undefined, cls);
+        Tr(table.insertRow(), pr, "td", undefined, ["", ""].concat(
+            cls.map(e => e + " fr")), [rs]);
+        Tr(table.insertRow(), tr, "td", undefined, [""].concat(cls));
+        Tr(table.insertRow(), br, "td", undefined, [""].concat(cls));
+        Tr(table.insertRow(), gr, "td", undefined, [""].concat(
+            cls.map(e => e + " lr")));
     }
     cc.append(table);
     PlotTF(out + "f", f, a, b, c, d, e, z, m, s, av);
@@ -723,7 +752,7 @@ function Run() {
     let h = params[m][s][3];
     let w = params[m][s][4];
     let t = params[m][s][5];
-    let z = Get("z") / 100;
+    let z = m == 3 ? 1 : Get("z") / 100;
 
     let ai = HCMI();
     let af = params[3][ai][1];
@@ -732,7 +761,7 @@ function Run() {
     let aw = params[3][ai][4];
 
     let v = Math.round(Val(a, b, c, d, e, f, g, h, w, z) / 100);
-    let av = Math.round(Val(a, b, c, d, e, af, ag, ah, aw, z) / 100);
+    let av = Math.round(Val(a, b, c, d, e, af, ag, ah, aw, 1) / 100);
     document.getElementById("v").innerText = v.toLocaleString();
 
     let fn1 = (x, y) => Val(x, y, c, d, e, f, g, h, w, z);

@@ -42,6 +42,27 @@
                 vertical-align: middle;
             }
 
+            td.f {
+                border-left: 2px black solid;
+                border-right: thin #999 solid;
+            }
+
+            td.s {
+                border-right: 2px black solid;
+            }
+
+            td.f:not(.lr), td.s:not(.lr) {
+                border-bottom: thin #999 solid;
+            }
+
+            td.fr {
+                border-top: 2px black solid;
+            }
+
+            td.lr {
+                border-bottom: 2px black solid;
+            }
+
             .st tr:nth-child(2n+3) {
                 background: #eee;
             }
