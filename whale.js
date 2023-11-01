@@ -76,6 +76,7 @@ class State {
     }
 
     get puw() {
+        if (this.params.puPool == 0) return 0;
         return this.pu / this.params.puPool;
     }
 
@@ -84,6 +85,7 @@ class State {
     }
 
     get rpuw() {
+        if (this.params.puPool == 0) return 0;
         return this.rpu / this.params.puPool;
     }
 
@@ -112,6 +114,7 @@ class State {
                 if (this.params.pool > 250) return this.rpu * 0.004;
                 return this.rpu / this.params.pool;
             case RollType.PityPu:
+                if (this.params.puPool == 0) return 0;
                 return this.rpu / this.params.puPool;
             case RollType.Multi10:
                 return this.params.puRate10 * this.rpuw;
@@ -404,6 +407,7 @@ function MakeSummary(rollCount, cs, prefix) {
 }
 
 function PlotC(rollCount, cs, prefix) {
+    if (cs.length == 0) return;
     MakeSummary(rollCount, cs, prefix);
     let cc = document.getElementById(prefix + "-cd");
     Clear(cc);
