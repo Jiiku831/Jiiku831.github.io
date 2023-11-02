@@ -87,7 +87,7 @@ function P(e, b) {
                         symbol: "circle",
                         strokeWidth: 0,
                         fillOpacity: 1,
-                        r: 3,
+                        r: 2,
                     }),
                 Plot.line(
                     filteredData, {
@@ -278,7 +278,7 @@ function C(e, b) {
                         symbol: "circle",
                         strokeWidth: 0,
                         fillOpacity: 1,
-                        r: 3,
+                        r: 2,
                     }),
                 Plot.line(
                     filteredData, {
