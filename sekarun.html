@@ -13,8 +13,8 @@
         <meta charset="UTF-8">
         <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
         <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
-        <script src="data/sekarun.js?v=334" type="text/javascript"></script>
-        <script src="sekarun.js?v=334" type="text/javascript"></script>
+        <script src="data/sekarun.js?v=347" type="text/javascript"></script>
+        <script src="sekarun.js?v=347" type="text/javascript"></script>
         <style>
             h1 {
                 padding-top: 6ex;
@@ -95,6 +95,12 @@
             C("cur2", [20, 30, 40, 50, 100, 200]);
             C("cur3", [200, 300, 400, 500, 1000, 1500]);
             C("cur4", [2000, 2500, 3000, 4000, 5000, 10000]);
+            if (currentChapter != "") {
+                Ch("cur1", [1, 2, 3, 10]);
+                Ch("cur2", [20, 30, 40, 50, 100, 200]);
+                Ch("cur3", [200, 300, 400, 500, 1000, 1500]);
+                Ch("cur4", [2000, 2500, 3000, 4000, 5000, 10000]);
+            }
             P("t1", 1);
             P("t2", 2);
             P("t3", 3);
