@@ -112,6 +112,16 @@ function MP(e, b, filteredData, ev, color) {
                 x: "tfe",
                 y: "ep",
             }),
+        Plot.text(filteredData,
+            Plot.selectFirst({
+                filter: e => e.t == "h" && e.eid == ev,
+                x: "tfe",
+                y: "ep",
+                z: "eid",
+                text: e => "Historical preds",
+                textAnchor: "end",
+                dx: -5,
+            })),
     ];
 }
 
@@ -247,16 +257,6 @@ function P(e, b) {
                 text: e => events[e.eid].nick,
                 textAnchor: "start",
                 dx: 5,
-            })),
-        Plot.text(filteredData,
-            Plot.selectFirst({
-                filter: e => e.t == "h" && e.eid == currentEvent,
-                x: "tfe",
-                y: "ep",
-                z: "eid",
-                text: e => "Historical preds",
-                textAnchor: "end",
-                dx: -5,
             })),
         Plot.text(
             [[timeToCurrentEventEnd, 0]],
