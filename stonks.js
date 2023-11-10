@@ -766,14 +766,14 @@ function Run() {
 
     let fn1 = (x, y) => Val(x, y, c, d, e, f, g, h, w, z);
 
-    PlotFn("plota", fn1, 800, 800,
+    PlotFn("plota", fn1, 815, 815,
         a, b,
         Math.max(0, a - 50000), a + 50000,
-        Math.max(100, b - 50), Math.min(b + 50, 800),
+        Math.max(100, b - 50), Math.min(b + 50, 815),
         a, b, c, d, e, f, g, h, w, z, BA, "Team Power", "Event Bonus");
-    PlotFn("plota-over", fn1, 800, 800,
+    PlotFn("plota-over", fn1, 815, 815,
         a, b,
-        0, 400000, 100, 800,
+        0, 400000, 100, 815,
         a, b, c, d, e, f, g, h, w, z, BA, "Team Power", "Event Bonus");
     Sum("suma", a, b, c, d, e, f, g, h, w, z, BA, 10000, 10,
         " Team Power", "% Event Bonus");
