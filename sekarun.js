@@ -339,7 +339,10 @@ function P(e, b) {
                 y: {grid: true},
                 marks: M(e, b, true),
             }));
-        document.getElementById(e).innerHTML += "<h2>Chapter Ranking</h2>";
+        let newNode = document.createElement("h2");
+        newNode.appendChild(
+            document.createTextNode("Chapter Ranking"));
+        document.getElementById(e).appendChild(newNode);
     }
     document.getElementById(e).appendChild(
         Plot.plot({
