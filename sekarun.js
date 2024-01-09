@@ -12,10 +12,10 @@ data = data.map(x => ({
     n: x[10],
 }));
 
-minx = -288;
 now = new Date();
 currentEventEnd = new Date(events[currentEvent].end * 1000);
 timeToCurrentEventEnd = Math.min(0, (now - currentEventEnd) / 36e5);
+minx = -288;
 if (currentChapter != "") {
     currentChapterEnd = new Date(events[currentChapter].end * 1000);
     timeToCurrentChapterEnd = Math.min(0, (now - currentChapterEnd) / 36e5);
@@ -125,8 +125,13 @@ function MP(e, b, filteredData, ev, color) {
     ];
 }
 
-function P(e, b) {
-    let filteredData = data.filter(x => x.b == b);
+function M(e, b, t) {
+    let filteredData = [];
+    if (t) {
+        filteredData = data.filter(x => x.b == b && events[x.eid].event_type == "world_bloom");
+    } else {
+        filteredData = data.filter(x => x.b == b && events[x.eid].event_type != "world_bloom");
+    }
     if (data.length == 0) return;
     marks = [
             Plot.axisX({
@@ -145,8 +150,15 @@ function P(e, b) {
             }),
             Plot.ruleX([18], {strokeOpacity: 0}),
     ];
-    if (timeToCurrentChapterEnd != null &&
-        timeToCurrentChapterEnd.toFixed(1) != timeToCurrentEventEnd.toFixed(1)) {
+    if (t || timeToCurrentChapterEnd == null) {
+        marks.push(
+            Plot.ruleX(
+                [timeToCurrentEventEnd],
+                {
+                    stroke: "red",
+                    strokeWidth: 1,
+                }));
+    } else {
         marks.push(
             Plot.ruleX(
                 [timeToCurrentChapterEnd],
@@ -158,12 +170,6 @@ function P(e, b) {
         );
     }
     marks.push(
-        Plot.ruleX(
-            [timeToCurrentEventEnd],
-            {
-                stroke: "red",
-                strokeWidth: 1,
-            }),
         Plot.line(
             filteredData, {
                 filter: e => e.t == "r" && !e.eid.startsWith(currentEvent),
@@ -227,8 +233,9 @@ function P(e, b) {
                 r: 2,
             }),
     );
-    marks = marks.concat(MP(e, b, filteredData, currentEvent, "red"));
-    if (currentChapter != "") {
+    if (t || timeToCurrentChapterEnd == null) {
+        marks = marks.concat(MP(e, b, filteredData, currentEvent, "red"));
+    } else {
         marks = marks.concat(MP(e, b, filteredData, currentChapter, "blue"));
     }
     marks.push(
@@ -258,17 +265,17 @@ function P(e, b) {
                 textAnchor: "start",
                 dx: 5,
             })),
-        Plot.text(
+    );
+    if (t || timeToCurrentChapterEnd == null) {
+        marks.push(Plot.text(
             [[timeToCurrentEventEnd, 0]],
             {
                 text: ["Now: " + timeToCurrentEventEnd.toFixed(1)],
                 textAnchor: "start",
                 dy: -6,
                 dx: 3
-            }),
-    );
-    if (timeToCurrentChapterEnd != null &&
-        timeToCurrentChapterEnd.toFixed(1) != timeToCurrentEventEnd.toFixed(1)) {
+            }));
+    } else {
         marks.push(
                 Plot.text(
                 [[timeToCurrentChapterEnd, 0]],
@@ -306,7 +313,9 @@ function P(e, b) {
                 strokeWidth: 0,
                 stroke: e => events[e.eid].orderedNick,
             }),
-        Plot.line(
+    );
+    if (t || timeToCurrentChapterEnd == null) {
+        marks.push(Plot.line(
             Object.keys(events).map(x => ({eid: x})),
             {
                 x: e => minx,
@@ -314,8 +323,24 @@ function P(e, b) {
                 z: null,
                 strokeWidth: 0,
                 stroke: e => events[e.eid].orderedNick,
-            }),
-    );
+            }));
+    }
+    return marks;
+}
+
+function P(e, b) {
+    if (timeToCurrentChapterEnd != null) {
+        document.getElementById(e).appendChild(
+            Plot.plot({
+                height: 800,
+                width: 1400,
+                style: "overflow: visible;",
+                color: {legend: true},
+                y: {grid: true},
+                marks: M(e, b, true),
+            }));
+        document.getElementById(e).innerHTML += "<h2>Chapter Ranking</h2>";
+    }
     document.getElementById(e).appendChild(
         Plot.plot({
             height: 800,
@@ -323,7 +348,7 @@ function P(e, b) {
             style: "overflow: visible;",
             color: {legend: true},
             y: {grid: true},
-            marks: marks,
+            marks: M(e, b, false),
         }));
 }
 

@@ -13,8 +13,8 @@
         <meta charset="UTF-8">
         <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
         <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
-        <script src="data/sekarun.js?v=556" type="text/javascript"></script>
-        <script src="sekarun.js?v=556" type="text/javascript"></script>
+        <script src="data/sekarun.js?v=561" type="text/javascript"></script>
+        <script src="sekarun.js?v=561" type="text/javascript"></script>
         <style>
             h1 {
                 padding-top: 6ex;
@@ -29,47 +29,53 @@
         <div style="position: fixed; right: 1ex; top: 1ex; padding: 1em;
                     font-size: large; background-color: white;
                     border: solid black thin; font-size: 11pt;">
-            Info: all data updated manually from Twitter or other sources.
-            <br>
-            How to contribute: post exact borders to <a target="_blank" href="https://twitter.com/hashtag/%E3%83%97%E3%83%AD%E3%82%BB%E3%82%AB%E3%83%9C%E3%83%BC%E3%83%80%E3%83%BC?f=live">
-                #プロセカボーダー
-            </a>
-            <hr>
-            Jump to current event borders:<br>
-            <a href="#cur1">T1-T20 borders</a>
-            <a href="#cur2">T20-T200 borders</a>
-            <a href="#cur3">T200-T2k borders</a>
-            <a href="#cur4">T2k-T10k borders</a>
-            <hr>
-            Jump to historical event borders:
-            <a href="#t1">T1 border</a>
-            <a href="#t2">T2 border</a>
-            <a href="#t3">T3 border</a><br>
-            <a href="#t10">T10 border</a>
-            <a href="#t20">T20 border</a>
-            <a href="#t30">T30 border</a>
-            <a href="#t40">T40 border</a>
-            <a href="#t50">T50 border</a><br>
-            <a href="#t100">T100 border</a>
-            <a href="#t200">T200 border</a>
-            <a href="#t300">T300 border</a>
-            <a href="#t400">T400 border</a>
-            <a href="#t500">T500 border</a>
-            <a href="#t1k">T1k border</a>
-            <a href="#t1k5">T1.5k border</a><br>
-            <a href="#t2k">T2k border</a>
-            <a href="#t2k5">T2.5k border</a>
-            <a href="#t3k">T3k border</a>
-            <a href="#t4k">T4k border</a>
-            <a href="#t5k">T5k border</a>
-            <a href="#t7k">T7k border</a>
-            <a href="#t10k">T10k border</a>
+            <details open>
+                <summary>
+                    Info &amp; Quick Navigation (click here to open/close)
+                </summary>
+                <span style="color: #d33">
+                    Use these predictions at your own risk!!<br>
+                    Non-WL borders are temporarily hidden for clarity.
+                </span>
+                <hr>
+                Info: all data updated manually from Twitter or other sources.
+                <br>
+                How to contribute: post exact borders to <a target="_blank" href="https://twitter.com/hashtag/%E3%83%97%E3%83%AD%E3%82%BB%E3%82%AB%E3%83%9C%E3%83%BC%E3%83%80%E3%83%BC?f=live">
+                    #プロセカボーダー
+                </a>
+                <hr>
+                Jump to current event borders:
+                <a href="#cur1">1-20</a>
+                <a href="#cur2">20-200</a>
+                <a href="#cur3">200-2k</a>
+                <a href="#cur4">2k-10k</a>
+                <hr>
+                Jump to historical event borders:
+                <a href="#t1">T1</a>
+                <a href="#t2">T2</a>
+                <a href="#t3">T3</a>
+                <a href="#t10">10</a>
+                <a href="#t20">20</a>
+                <a href="#t30">30</a>
+                <a href="#t40">40</a>
+                <a href="#t50">50</a><br>
+                <a href="#t100">100</a>
+                <a href="#t200">200</a>
+                <a href="#t300">300</a>
+                <a href="#t400">400</a>
+                <a href="#t500">500</a>
+                <a href="#t1k">1k</a>
+                <a href="#t1k5">1.5k</a>
+                <a href="#t2k">2k</a>
+                <a href="#t2k5">2.5k</a>
+                <a href="#t3k">3k</a>
+                <a href="#t4k">4k</a>
+                <a href="#t5k">5k</a>
+                <a href="#t7k">7k</a>
+                <a href="#t10k">10k</a>
+            </details>
         </div>
         <div style="margin-top: 4em;"></div>
-        <div style="font-size: 24pt; font-weight: bold; color: #c33;">
-            World Link border predictions are uncalibrated. Use at your own
-            risk!
-        </div>
         <div id="cur1"><h1>Current Event (T1-T20)</h1></div>
         <div id="cc1"></div>
         <div id="cur2"><h1>Current Event (T20-T200)</h1></div>
