@@ -389,6 +389,32 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Auto Strategy</td>
+                    <td colspan="2">
+                        <input type="radio" id="as8" name="as" value="8">
+                        <label for="as8">Ebi Mas</label>
+                        <input type="radio" id="as13" name="as" value="13">
+                        <label for="as13">HCM Ex</label>
+                        <input type="radio" id="as14" name="as" value="14" checked>
+                        <label for="as14">HCM Mas</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mt">Auto Menu Time per game (s)</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="amts" type="range" min="0" max="120"
+                               value="40" oninput="Sync(this)">
+                        <input id="amt" type="number" value="40"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        The average time it takes from the end of one auto to
+                        the start of the other.
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <label for="mt">Menu Time per game (s)</label>
                     </td>

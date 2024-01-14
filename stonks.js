@@ -198,11 +198,13 @@ function Median(arr) {
     return sorted[middle];
 }
 
-function PlotT(out, v, av, t) {
+function PlotT(out, v, av, ai, t) {
     let ac = Get("ac");
     let mt = Get("mt");
     let rt = Get("rt");
     let tt = t + mt;
+    let at = Get("amt");
+    let att = params[3][ai][5] + at;
 
     let data = [{
         et: 0,
@@ -220,7 +222,7 @@ function PlotT(out, v, av, t) {
         for (let i = 0; i <= 10; ++i) {
             for (let j = 0; j <= 10; ++j) {
                 let res = CT(i, j, v, av, ac, et, tt);
-                if (res[1] > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
+                if (res[1] > 3600 * 24 * rt - att * (j > 0 ? ac : 0)) {
                     continue;
                 }
                 bs.push(res[0]);
@@ -339,11 +341,13 @@ function PlotT(out, v, av, t) {
     cc.append(p2);
 }
 
-function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
+function PlotTF(out, f, a, b, c, d, e, z, m, s, av, ai) {
     let et = Get("et") * 1000000;
     let ac = Get("ac");
     let mt = Get("mt");
     let rt = Get("rt");
+    let at = Get("amt");
+    let att = params[3][ai][5] + at;
 
     let pl = []
     let es = m == 1 ? 2 : params[m].length;
@@ -358,7 +362,7 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
         for (let i = 0; i <= 10; ++i) {
             for (let j = 0; j <= 10; ++j) {
                 res = CT(i, j, v, av, ac, et, tt);
-                if (res[1] > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
+                if (res[1] > 3600 * 24 * rt - att * (j > 0 ? ac : 0)) {
                     continue;
                 }
                 res.push(ss);
@@ -493,14 +497,14 @@ function PlotTF(out, f, a, b, c, d, e, z, m, s, av) {
     cc.append(p);
 }
 
-const hcmt = 212.4;
-
-function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
+function TTable(out, a, b, c, d, e, z, m, s, v, av, ai, t) {
     let et = Get("et") * 1000000;
     let ac = Get("ac");
     let mt = Get("mt");
     let rt = Get("rt");
     let tt = t + mt;
+    let at = Get("amt");
+    let att = params[3][ai][5] + at;
 
     let cc = document.getElementById(out);
     Clear(cc);
@@ -520,7 +524,7 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
     for (let i = 0; i <= 10; ++i) {
         for (let j = 0; j <= 10; ++j) {
             res = CT(i, j, v, av, ac, et, tt);
-            if (res[1] > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
+            if (res[1] > 3600 * 24 * rt - att * (j > 0 ? ac : 0)) {
                 continue;
             }
             pl.push(res);
@@ -591,7 +595,7 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
                 tr.push("--");
             }
             let no = false;
-            if (pt > 3600 * 24 * rt - hcmt * (j > 0 ? ac : 0)) {
+            if (pt > 3600 * 24 * rt - att * (j > 0 ? ac : 0)) {
                 cls.push("infeasible");
                 cls.push("infeasible");
                 no = true;
@@ -638,7 +642,7 @@ function TTable(out, a, b, c, d, e, z, m, s, v, av, t) {
             cls.map(e => e + " lr")));
     }
     cc.append(table);
-    PlotTF(out + "f", f, a, b, c, d, e, z, m, s, av);
+    PlotTF(out + "f", f, a, b, c, d, e, z, m, s, av, ai);
 }
 
 const params = [
@@ -754,7 +758,7 @@ function Run() {
     let t = params[m][s][5];
     let z = m == 3 ? 1 : Get("z") / 100;
 
-    let ai = HCMI();
+    let ai = parseInt(document.querySelector("input[name=\"as\"]:checked").value);
     let af = params[3][ai][1];
     let ag = params[3][ai][2];
     let ah = params[3][ai][3];
@@ -778,6 +782,6 @@ function Run() {
     Sum("suma", a, b, c, d, e, f, g, h, w, z, BA, 10000, 10,
         " Team Power", "% Event Bonus");
     Table("sumt", a, b, c, d, e, z, ct / 5, cl);
-    TTable("tt", a, b, c, d, e, z, m, s, v, av, t);
-    PlotT("tp", v, av, t);
+    TTable("tt", a, b, c, d, e, z, m, s, v, av, ai, t);
+    PlotT("tp", v, av, ai, t);
 }
