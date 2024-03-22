@@ -15,7 +15,7 @@ data = data.map(x => ({
 now = new Date();
 currentEventEnd = new Date(events[currentEvent].end * 1000);
 timeToCurrentEventEnd = Math.min(0, (now - currentEventEnd) / 36e5);
-minx = -288;
+minx = -222;
 if (currentChapter != "") {
     currentChapterEnd = new Date(events[currentChapter].end * 1000);
     timeToCurrentChapterEnd = Math.min(0, (now - currentChapterEnd) / 36e5);
