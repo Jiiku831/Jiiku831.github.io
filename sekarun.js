@@ -328,8 +328,9 @@ function M(e, b, t) {
     return marks;
 }
 
-function P(e, b) {
+function P(e, b, m = 0) {
     if (timeToCurrentChapterEnd != null) {
+      if (m != 2) {
         document.getElementById(e).appendChild(
             Plot.plot({
                 height: 800,
@@ -339,20 +340,25 @@ function P(e, b) {
                 y: {grid: true},
                 marks: M(e, b, true),
             }));
+      }
+      if (m != 1) {
         let newNode = document.createElement("h2");
         newNode.appendChild(
             document.createTextNode("Chapter Ranking"));
         document.getElementById(e).appendChild(newNode);
+      }
     }
-    document.getElementById(e).appendChild(
-        Plot.plot({
-            height: 800,
-            width: 1400,
-            style: "overflow: visible;",
-            color: {legend: true},
-            y: {grid: true},
-            marks: M(e, b, false),
-        }));
+    if (m != 1) {
+      document.getElementById(e).appendChild(
+          Plot.plot({
+              height: 800,
+              width: 1400,
+              style: "overflow: visible;",
+              color: {legend: true},
+              y: {grid: true},
+              marks: M(e, b, false),
+          }));
+    }
 }
 
 function C(e, b) {
