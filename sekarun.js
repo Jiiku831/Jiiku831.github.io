@@ -148,10 +148,10 @@ function M(e, b, t) {
                 strokeOpacity: 0.5,
                 strokeDasharray: "3 2",
             }),
-            Plot.ruleX([18], {strokeOpacity: 0}),
     ];
     if (t || timeToCurrentChapterEnd == null) {
         marks.push(
+            Plot.ruleX([18], {strokeOpacity: 0}),
             Plot.ruleX(
                 [timeToCurrentEventEnd],
                 {
@@ -160,6 +160,7 @@ function M(e, b, t) {
                 }));
     } else {
         marks.push(
+            Plot.ruleX([3], {strokeOpacity: 0}),
             Plot.ruleX(
                 [timeToCurrentChapterEnd],
                 {
