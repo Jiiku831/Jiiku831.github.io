@@ -466,8 +466,8 @@ events = {
         "event_type": "marathon",
         "name": "Parallel Harmonies",
         "orderedName": "128 Parallel Harmonies",
-        "nick": "TBA",
-        "orderedNick": "128 TBA",
+        "nick": "harmonies",
+        "orderedNick": "128 harmonies",
         "start": 1713592800.0,
         "end": 1714305600.0,
         "len": 198
