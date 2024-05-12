@@ -160,7 +160,7 @@ function M(e, b, t) {
                 }));
     } else {
         marks.push(
-            Plot.ruleX([3], {strokeOpacity: 0}),
+            Plot.ruleX([6], {strokeOpacity: 0}),
             Plot.ruleX(
                 [timeToCurrentChapterEnd],
                 {
