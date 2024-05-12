@@ -29,17 +29,17 @@ function CurrentEventNotCurrentChapter(eid) {
 
 function MP(e, b, filteredData, ev, color) {
     return [
-        // Plot.dot(
-        //     filteredData, {
-        //         filter: e => e.t == "r" && e.eid == ev,
-        //         x: "tfe",
-        //         y: "ep",
-        //         fill: color,
-        //         symbol: "circle",
-        //         strokeWidth: 0,
-        //         fillOpacity: 1,
-        //         r: 2,
-        //     }),
+        Plot.dot(
+            filteredData, Plot.selectLast({
+                filter: e => e.t == "r" && e.eid == ev,
+                x: "tfe",
+                y: "ep",
+                fill: color,
+                symbol: "circle",
+                strokeWidth: 0,
+                fillOpacity: 1,
+                r: 2,
+            })),
         Plot.line(
             filteredData, {
                 filter: e => e.t == "r" && e.eid == ev,
@@ -191,17 +191,17 @@ function M(e, b, t) {
                 strokeDasharray: "3 2",
                 strokeOpacity: 0.5,
             }),
-        // Plot.dot(
-        //     filteredData, {
-        //         filter: e => e.t == "r" && !e.eid.startsWith(currentEvent),
-        //         x: "tfe",
-        //         y: "ep",
-        //         fill: e => events[e.eid].orderedNick,
-        //         symbol: "circle",
-        //         strokeWidth: 0,
-        //         fillOpacity: 0.5,
-        //         r: 1.5,
-        //     }),
+        Plot.dot(
+            filteredData, Plot.selectLast({
+                filter: e => e.t == "r" && !e.eid.startsWith(currentEvent),
+                x: "tfe",
+                y: "ep",
+                fill: e => events[e.eid].orderedNick,
+                symbol: "circle",
+                strokeWidth: 0,
+                fillOpacity: 0.5,
+                r: 1.5,
+            })),
         Plot.line(
             filteredData, {
                 filter: e => e.t == "r" && CurrentEventNotCurrentChapter(e.eid),
@@ -222,17 +222,17 @@ function M(e, b, t) {
                 strokeDasharray: "3 2",
                 strokeOpacity: 0.5,
             }),
-        // Plot.dot(
-        //     filteredData, {
-        //         filter: e => e.t == "r" && CurrentEventNotCurrentChapter(e.eid),
-        //         x: "tfe",
-        //         y: "ep",
-        //         fill: e => events[e.eid].orderedNick,
-        //         symbol: "circle",
-        //         strokeWidth: 0,
-        //         fillOpacity: 0.5,
-        //         r: 2,
-        //     }),
+        Plot.dot(
+            filteredData, Plot.selectLast({
+                filter: e => e.t == "r" && CurrentEventNotCurrentChapter(e.eid),
+                x: "tfe",
+                y: "ep",
+                fill: e => events[e.eid].orderedNick,
+                symbol: "circle",
+                strokeWidth: 0,
+                fillOpacity: 0.5,
+                r: 2,
+            })),
     );
     if (t || timeToCurrentChapterEnd == null) {
         marks = marks.concat(MP(e, b, filteredData, currentEvent, "red"));
@@ -395,17 +395,17 @@ function C(e, b) {
                         stroke: "red",
                         strokeWidth: 1,
                     }),
-                // Plot.dot(
-                //     filteredData, {
-                //         filter: e => e.t == "r",
-                //         x: "tfe",
-                //         y: "ep",
-                //         fill: "b",
-                //         symbol: "circle",
-                //         strokeWidth: 0,
-                //         fillOpacity: 1,
-                //         r: 2,
-                //     }),
+                Plot.dot(
+                    filteredData, Plot.selectLast({
+                        filter: e => e.t == "r",
+                        x: "tfe",
+                        y: "ep",
+                        fill: "b",
+                        symbol: "circle",
+                        strokeWidth: 0,
+                        fillOpacity: 1,
+                        r: 2,
+                    })),
                 Plot.line(
                     filteredData, {
                         filter: e => e.t == "r",
@@ -572,17 +572,17 @@ function Ch(e, b) {
                         stroke: "blue",
                         strokeWidth: 1,
                     }),
-                // Plot.dot(
-                //     filteredData, {
-                //         filter: e => e.t == "r",
-                //         x: "tfe",
-                //         y: "ep",
-                //         fill: "b",
-                //         symbol: "circle",
-                //         strokeWidth: 0,
-                //         fillOpacity: 1,
-                //         r: 2,
-                //     }),
+                Plot.dot(
+                    filteredData, Plot.selectLast({
+                        filter: e => e.t == "r",
+                        x: "tfe",
+                        y: "ep",
+                        fill: "b",
+                        symbol: "circle",
+                        strokeWidth: 0,
+                        fillOpacity: 1,
+                        r: 2,
+                    })),
                 Plot.line(
                     filteredData, {
                         filter: e => e.t == "r",
