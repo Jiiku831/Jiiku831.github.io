@@ -59,6 +59,12 @@
             color: gray;
           }
 
+          .important::before {
+            font-weight: bold;
+            content: "Important: ";
+            color: red;
+          }
+
           table, tr, td, th {
             border-collapse: collapse;
             border: thin solid black;
@@ -374,7 +380,7 @@
           <td class="yes"><div class="updated">2024-09</div></td>
         </tr>
         <tr>
-          <th>Pia <div class="note">Outgoing call verification required to sign-up and for security challenge. Use VPN when accessing this service outside of Japan.</div></th>
+          <th>Pia <div class="note">Outgoing call verification required to sign-up and for security challenge. <span class="important">Use VPN when accessing this service outside of Japan to avoid security challenge.</span></div></th>
           <td class="yes"><div class="updated">2024-02</div></td>
           <td class="yes"><div class="updated">not tested</div></td>
           <td class="no"><div class="updated">2024-09</div></td>
