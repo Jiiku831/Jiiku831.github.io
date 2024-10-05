@@ -176,7 +176,7 @@ function Table(out, a, b, c, d, e, z, cs, cl) {
     cc.append(table);
 }
 
-const bf = [1, 5, 10, 15, 20, 25, 27, 29, 31, 33, 35];
+const bf = [1, 5, 10, 15, 19, 23, 26, 29, 31, 33, 35];
 
 function CT(i, j, v, av, ac, et, tt) {
     let af = j > 0 ? bf[j] : 0;
