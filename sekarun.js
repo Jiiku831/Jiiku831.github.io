@@ -88,6 +88,17 @@ function MP(e, b, filteredData, ev, color) {
             }),
         Plot.line(
             filteredData, {
+                filter: e => e.t == "s" && e.eid == ev,
+                x: "tfe",
+                y: "ep",
+                z: e => "z" + e.eid + e.t + e.b,
+                stroke: color,
+                strokeWidth: 1,
+                strokeDasharray: "1 3",
+                strokeOpacity: 0.5,
+            }),
+        Plot.line(
+            filteredData, {
                 filter: e => e.t == "h" && e.eid == ev,
                 x: "tfe",
                 y: "ep",
@@ -99,7 +110,7 @@ function MP(e, b, filteredData, ev, color) {
             }),
         Plot.crosshair(
             filteredData.filter(
-                e => e.eid != ev && e.t == "i" || e.t == "h"),
+                e => e.eid != ev && e.t == "i" || e.t == "h" || e.t == "s"),
             {
                 x: "tfe",
                 y: "ep",
@@ -119,6 +130,16 @@ function MP(e, b, filteredData, ev, color) {
                 y: "ep",
                 z: "eid",
                 text: e => "Historical preds",
+                textAnchor: "end",
+                dx: -5,
+            })),
+        Plot.text(filteredData,
+            Plot.selectFirst({
+                filter: e => e.t == "s" && e.eid == ev,
+                x: "tfe",
+                y: "ep",
+                z: "eid",
+                text: e => "SBP preds",
                 textAnchor: "end",
                 dx: -5,
             })),
