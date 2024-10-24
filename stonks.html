@@ -1,0 +1,580 @@
+<html>
+    <head>
+        <title>:IchikaStonks:</title>
+        <script async
+                src="https://www.googletagmanager.com/gtag/js?id=G-5ZKGR285DS">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5ZKGR285DS');
+        </script>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+        <script src="stonks.js?v=6" type="text/javascript"></script>
+        <style>
+            input[type="range"] {
+                width: 20em;
+            }
+
+            input[type="number"] {
+                width: 6em;
+            }
+
+            td, th {
+                padding-left: 1ex;
+                padding-right: 1ex;
+                vertical-align: top;
+                white-space: nowrap;
+            }
+
+            .st, .st > * > tr, .st > * > * > td, .st > * > * > th {
+                border-collapse: collapse;
+                border: thin black solid;
+                vertical-align: middle;
+            }
+
+            .tt, .tt > * > tr, .tt > * > * > td, .tt > * > * > th {
+                border-collapse: collapse;
+                border: thin black solid;
+                vertical-align: middle;
+            }
+
+            td.f {
+                border-left: 2px black solid;
+                border-right: thin #999 solid;
+            }
+
+            td.s {
+                border-right: 2px black solid;
+            }
+
+            td.f:not(.lr), td.s:not(.lr) {
+                border-bottom: thin #999 solid;
+            }
+
+            td.fr {
+                border-top: 2px black solid;
+            }
+
+            td.lr {
+                border-bottom: 2px black solid;
+            }
+
+            .st tr:nth-child(2n+3) {
+                background: #eee;
+            }
+
+            .tt tr:nth-child(8n+3), .tt tr:nth-child(8n+4),
+            .tt tr:nth-child(8n+5), .tt tr:nth-child(8n+6) {
+                background: #eee;
+            }
+
+            .tt tr:nth-child(8n+3) .infeasible,
+            .tt tr:nth-child(8n+4) .infeasible,
+            .tt tr:nth-child(8n+5) .infeasible,
+            .tt tr:nth-child(8n+6) .infeasible {
+                background: hsl(0deg 0% 70%);
+            }
+
+            .tt .infeasible, .tl .infeasible {
+                background: hsl(0deg 0% 75%);
+            }
+
+            .tt tr:nth-child(8n+3) .nosleep,
+            .tt tr:nth-child(8n+4) .nosleep,
+            .tt tr:nth-child(8n+5) .nosleep,
+            .tt tr:nth-child(8n+6) .nosleep {
+                background: hsl(0deg 100% 85%);
+            }
+
+            .tt .nosleep, .tl .nosleep {
+                background: hsl(0deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .tryhard,
+            .tt tr:nth-child(8n+4) .tryhard,
+            .tt tr:nth-child(8n+5) .tryhard,
+            .tt tr:nth-child(8n+6) .tryhard {
+                background: hsl(60deg 100% 85%);
+            }
+
+            .tt .tryhard, .tl .tryhard {
+                background: hsl(60deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .normal,
+            .tt tr:nth-child(8n+4) .normal,
+            .tt tr:nth-child(8n+5) .normal,
+            .tt tr:nth-child(8n+6) .normal {
+                background: hsl(120deg 100% 85%);
+            }
+
+            .tt .normal, .tl .normal {
+                background: hsl(120deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .trivial,
+            .tt tr:nth-child(8n+4) .trivial,
+            .tt tr:nth-child(8n+5) .trivial,
+            .tt tr:nth-child(8n+6) .trivial {
+                background: hsl(180deg 100% 85%);
+            }
+
+            .tt .trivial, .tl .trivial {
+                background: hsl(180deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .walkinthepark,
+            .tt tr:nth-child(8n+4) .walkinthepark,
+            .tt tr:nth-child(8n+5) .walkinthepark,
+            .tt tr:nth-child(8n+6) .walkinthepark {
+                background: hsl(240deg 100% 85%);
+            }
+
+            .tt .walkinthepark, .tl .walkinthepark {
+                background: hsl(240deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .fullauto,
+            .tt tr:nth-child(8n+4) .fullauto,
+            .tt tr:nth-child(8n+5) .fullauto,
+            .tt tr:nth-child(8n+6) .fullauto {
+                background: hsl(300deg 100% 85%);
+            }
+
+            .tt .fullauto, .tl .fullauto {
+                background: hsl(300deg 100% 90%);
+            }
+
+            .tt tr:nth-child(8n+3) .free,
+            .tt tr:nth-child(8n+4) .free,
+            .tt tr:nth-child(8n+5) .free,
+            .tt tr:nth-child(8n+6) .free {
+                background: hsl(330deg 100% 85%);
+            }
+
+            .tt .free, .tl .free {
+                background: hsl(330deg 100% 90%);
+            }
+
+            .tt .bad, .tl .bad {
+                color: #0008;
+                font-weight: normal;
+            }
+
+            .tt {
+                font-weight: bold;
+            }
+
+            .st, .tt, .tl {
+                margin-top: 1ex;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .st table td {
+                padding-left: 0.25ex;
+                padding-right: 0.25ex;
+            }
+
+            td.na {
+                background: #ccc;
+            }
+
+            #tp {
+                width: 1200px;
+                margin: auto;
+            }
+
+            #ttf {
+                width: 1000px;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="border: solid black thin; background-color: #cff; width: 40em;
+                    text-align: center; padding: 1em;">
+          <b>Ad!</b> Try out our new team recommender at <a href="https://jiiku.pages.dev/sajii">
+            https://jiiku.pages.dev/sajii</a> (desktop only).
+        </div>
+        <div style="border: solid black thin; background-color: #cfc; width: 40em;
+                    text-align: center; padding: 1em; margin-top: 1ex;">
+          <b>This is for calculations using post-4th anni boost efficiency.</b>
+          Go <a href="stonks_en.html">here</a> for the old version.
+        </div>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <label for="a">Team Power</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="as" type="range" min="0" max="400000"
+                               value="275000" oninput="Sync(this)">
+                        <input id="a" type="number" value="275000"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="b">Event Bonus</label>
+                    </td>
+                    <td>
+                        <input id="bs" type="range" min="100" max="815"
+                               value="400" oninput="Sync(this)">
+                        <input id="b" type="number" value="400"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                        Minimum 100%. <b>Add 100% to the value shown in the team
+                        builder.</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cl">Lead Skill Value</label>
+                    </td>
+                    <td>
+                        <input id="cls" type="range" min="0" max="300"
+                               value="130" oninput="Sync(this)">
+                        <input id="cl" type="number" value="130"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ct">Total Skill Value</label>
+                    </td>
+                    <td>
+                        <input id="cts" type="range" min="0" max="815"
+                               value="380" oninput="Sync(this)">
+                        <input id="ct" type="number" value="380"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="d">Average 3rd Party Skill Value</label>
+                    </td>
+                    <td>
+                        <input id="ds" type="range" min="0" max="300"
+                               value="180" oninput="Sync(this)">
+                        <input id="d" type="number" value="180"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                        The average skill value of the other members in the
+                        room.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="e">Encore Skill Value</label>
+                    </td>
+                    <td>
+                        <input id="es" type="range" min="0" max="300"
+                               value="180" oninput="Sync(this)">
+                        <input id="e" type="number" value="180"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                        If you are playing pubs, set this to be the average
+                        Skill Value of all the players. Roughly, (Your SV +
+                        4&times;Other SV) / 5.
+                        <input type="button" value="Calculate Automatically"
+                               onclick="ESV()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="acc">Accuracy</label>
+                    </td>
+                    <td>
+                        <input id="zs" type="range" min="0" max="100"
+                               value="100" oninput="Sync(this)">
+                        <input id="z" type="number" value="100"
+                               onchange="Sync(this)"> %
+                    </td>
+                    <td>
+                        Multiplier applied to the scores to account for skill
+                        issue.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Play Strategy</td>
+                    <td colspan="2">
+                        <input type="radio" id="s0" name="s" value="0" checked>
+                        <label for="s0">Random Ex</label>
+                        <input type="radio" id="s1" name="s" value="1">
+                        <label for="s1">Random Mas</label>
+                        <input type="radio" id="s2" name="s" value="2">
+                        <label for="s2">2:00+ Ex</label>
+                        <input type="radio" id="s3" name="s" value="3">
+                        <label for="s3">2:00+ Mas</label>
+                        <input type="radio" id="s4" name="s" value="4">
+                        <label for="s4">2:20+ Ex</label>
+                        <input type="radio" id="s5" name="s" value="5">
+                        <label for="s5">2:20+ Mas</label>
+                        <input type="radio" id="s6" name="s" value="6">
+                        <label for="s6">Ebi Hard</label>
+                        <input type="radio" id="s7" name="s" value="7">
+                        <label for="s7">Ebi Ex</label>
+                        <input type="radio" id="s8" name="s" value="8">
+                        <label for="s8">Ebi Mas</label>
+                        <input type="radio" id="s9" name="s" value="9">
+                        <label for="s9">L&amp;F Hard</label>
+                        <input type="radio" id="s10" name="s" value="10">
+                        <label for="s10">L&amp;F Ex</label>
+                        <input type="radio" id="s11" name="s" value="11">
+                        <label for="s11">L&amp;F Mas</label>
+                        <input type="radio" id="s12" name="s" value="12">
+                        <label for="s12">HCM Hard</label>
+                        <input type="radio" id="s13" name="s" value="13">
+                        <label for="s13">HCM Ex</label>
+                        <input type="radio" id="s14" name="s" value="14">
+                        <label for="s14">HCM Mas</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="radio" id="m0" name="m" value="0" checked>
+                        <label for="m0">Multi</label>
+                        <input type="radio" id="m1" name="m" value="1">
+                        <label for="m1">Multi (CC)</label>
+                        <input type="radio" id="m2" name="m" value="2">
+                        <label for="m2">
+                            Solo<small><sup>&dagger;</sup></small>
+                        </label>
+                        <input type="radio" id="m3" name="m" value="3">
+                        <label for="m3">
+                            Auto<small><sup>&dagger;</sup></small>
+                        </label>
+                    </td>
+                    <td>
+                        Assuming you always receive the maximum multi score and
+                        life bonus when applicable.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="et">EP Target (mil)</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="ets" type="range" min="1" max="500"
+                               step="0.1" value="50" oninput="Sync(this)">
+                        <input id="et" type="number" value="50"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        In units of millions of EP. For example, if your target
+                        is 50,000,000, enter 50 here.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ac">Auto Count</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="acs" type="range" min="0" max="1200"
+                               value="990" oninput="Sync(this)">
+                        <input id="ac" type="number" value="990"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        Set this to the total number of autos you can possibly
+                        spend during the remainder of event. Generally,
+                        99&times;days remaining (if you have deluxe/precious
+                        pass) or 10&times;days remaining.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Auto Strategy</td>
+                    <td colspan="2">
+                        <input type="radio" id="as8" name="as" value="8">
+                        <label for="as8">Ebi Mas</label>
+                        <input type="radio" id="as13" name="as" value="13">
+                        <label for="as13">HCM Ex</label>
+                        <input type="radio" id="as14" name="as" value="14" checked>
+                        <label for="as14">HCM Mas</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mt">Auto Menu Time per game (s)</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="amts" type="range" min="0" max="120"
+                               value="40" oninput="Sync(this)">
+                        <input id="amt" type="number" value="40"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        The average time it takes from the end of one auto to
+                        the start of the other.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="mt">Menu Time per game (s)</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="mts" type="range" min="0" max="120"
+                               value="50" oninput="Sync(this)">
+                        <input id="mt" type="number" value="50"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        The average time it takes from the end of one game to
+                        the start of the other.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="rt">Days Remaining</label>
+                    </td>
+                    <td style="width: 23em;">
+                        <input id="rts" type="range" min="0.1" max="12"
+                               step="0.1" value="10" oninput="Sync(this)">
+                        <input id="rt" type="number" value="10" step="0.1"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <p>
+                            <sup>&dagger;</sup> Estimate only.
+                        </p>
+                        <p>
+                            <sup>&ddagger;</sup> The predicted EP will be
+                            slightly above actual EP due to rounding loss.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" value="Update" onclick="Run()">
+        </form>
+        <hr>
+        <table>
+            <tr>
+                <th colspan="3">
+                    Predicted average EP<small><sup>&ddagger;</sup></small>:
+                    <span id="v"></span>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3" id="sumt">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <hr>
+                    BP &harr; EB Trade-off Assuming All Else Being Equal
+                </th>
+            </tr>
+            <tr>
+                <td id="plota-over"></td>
+                <td id="plota"></td>
+                <td>
+                    <h3>Linear approximation of trade-off:</h3>
+                    <div id="suma">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <hr>
+                    Tiering Planner
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <i style="display: block; text-align: center;">
+                        Note: Assuming auto HCM Mas with 30s auto menu time.
+                    </i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table class="tl">
+                        <tr>
+                            <th>Legend</th>
+                            <th class="free">No Refills Needed</th>
+                            <th class="fullauto">No Plays Needed</th>
+                            <th class="walkinthepark">&lt;2 hrs/day</th>
+                            <th class="trivial">2~4 hrs/day</th>
+                            <th class="normal">4~8 hrs/day</th>
+                            <th class="tryhard">8~12 hrs/day</th>
+                            <th class="nosleep">12~24 hrs/day</th>
+                            <th class="infeasible">Infeasible</th>
+                            <th class="bad">Suboptimal</th>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <i style="display: block; text-align: center;">
+                        Suboptimal means that there is a different play
+                        strategy that will save you both time and boosts.
+                        Avoid strategies that are marked suboptimal.
+                    </i>
+                </td>
+            </tr>
+            <tr>
+                <td id="tt" colspan="3">
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <br>Strategy Comparison
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <i style="display: block; text-align: center;">
+                        Red: Selected strategy
+                    </i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="ttf">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <br>Target EP Comparison
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <i style="display: block; text-align: center;">
+                        Using the selected play strategy. If current strategy is
+                        infeasible, use the chart above to find one that is.
+                    </i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="tp">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script>Run();</script>
+    </body>
+</html>
