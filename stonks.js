@@ -794,3 +794,41 @@ function Run() {
     TTable("tt", a, b, c, d, e, z, m, s, v, av, ai, t);
     PlotT("tp", v, av, ai, t);
 }
+
+/* Autosave */
+
+const setOptions = (elementId, elementValue) => {
+    let optionList = JSON.parse(localStorage.getItem("optionList"));
+    if(!optionList) optionList = {};
+    optionList[elementId] = elementValue;
+    localStorage.setItem("optionList", JSON.stringify(optionList));
+}
+
+const getOptionsAll = () => {
+    return JSON.parse(localStorage.getItem("optionList"));
+}
+
+const targetSelectors = ["input[type=range]", "input[type=radio]"];
+for(let targetSelector of targetSelectors){
+    document.querySelectorAll(targetSelector).forEach((element) => {
+        element.addEventListener("change", (event) => {
+            setOptions(event.target.id, event.target.value);
+        });
+    });
+}
+
+const options = getOptionsAll();
+if(options){
+    for(let optionKey of Object.keys(options)){
+        optionElement = document.querySelector("input#" + optionKey);
+        switch(optionElement.type){
+            case "range":
+                optionElement.value = options[optionKey];
+                Sync(optionElement);
+                break;
+            case "radio":
+                optionElement.checked = "checked";
+                break;
+        }
+    }
+}
