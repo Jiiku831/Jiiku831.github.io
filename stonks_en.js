@@ -735,6 +735,7 @@ function ESV() {
     let e = (c + 4 * d) / 5;
     document.getElementById("es").value = e;
     document.getElementById("e").value = e.toFixed(2);
+    setOptions("es", e.toFixed(2));
 }
 
 function Run() {
@@ -788,22 +789,29 @@ function Run() {
 
 /* Autosave */
 
-const setOptions = (elementId, elementValue) => {
-    let optionList = JSON.parse(localStorage.getItem("optionList_en"));
-    if(!optionList) optionList = {};
-    optionList[elementId] = elementValue;
-    localStorage.setItem("optionList_en", JSON.stringify(optionList));
-}
+const targetSelectors = [
+    "input[type=range]",
+    "input[type=radio]",
+    "input[type=number]"
+];
 
-const getOptionsAll = () => {
-    return JSON.parse(localStorage.getItem("optionList_en"));
-}
-
-const targetSelectors = ["input[type=range]", "input[type=radio]"];
 for(let targetSelector of targetSelectors){
     document.querySelectorAll(targetSelector).forEach((element) => {
         element.addEventListener("change", (event) => {
-            setOptions(event.target.id, event.target.value);
+            const skipElementList = ["ebi"];
+
+            // never set options for skipped ones
+            if (skipElementList.includes(event.target.id)){
+                return;
+            }
+            // for selectors and radios
+            if (event.target.id.endsWith("s") || event.target.type == "radio"){
+                setOptions(event.target.id, event.target.value);
+                return;
+            }
+
+            // for numbers
+            setOptions(event.target.id + "s", event.target.value);
         });
     });
 }
