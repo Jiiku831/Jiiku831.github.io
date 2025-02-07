@@ -59,6 +59,14 @@
           .unofficial::before {
             content: "[Fan Event] "
           }
+
+          .other-event::before {
+            content: "[Other Event] "
+          }
+
+          .unofficial-other-event::before {
+            content: "[Other Fan Event] "
+          }
         </style>
     </head>
     <body>
@@ -366,6 +374,30 @@
                 data-subevent-ended="2025-06-15T21:00+09:00"></li>
           </ul>
         </li>
+        <li data-event-name="Love Live Sunshine Aqours Finale"
+            data-event-loc="Saitama"
+            data-event-link="#aquors-finale"
+            data-event-start="2025-06-21T17:00+09:00"
+            data-event-ended="2025-06-22T20:30+09:00"
+            class="other-event">
+          <ul>
+            <li data-subevent-name="Day 1"
+                data-subevent-doors="2025-06-21T15:00+09:00"
+                data-subevent-start="2025-06-21T17:00+09:00"
+                data-subevent-ended="2025-06-21T20:30+09:00"></li>
+            <li data-subevent-name="Day 2"
+                data-subevent-doors="2025-06-22T15:00+09:00"
+                data-subevent-start="2025-06-22T17:00+09:00"
+                data-subevent-ended="2025-06-22T20:30+09:00"></li>
+          </ul>
+        </li>
+        <li data-event-name="Love Live Sunshine Aquors Finale After Party (Name TBA)"
+            data-event-loc="Akihabara MOGRA"
+            data-event-start="2025-06-23T12:00+09:00"
+            data-event-ended="2025-06-23T18:00+09:00"
+            data-event-notes="exact time TBA"
+            class="unofficial-other-event">
+        </li>
         <li data-event-name="Miku Symphony 2025"
             data-event-loc="Tokyo"
             data-event-link="#miku-sym-2025"
@@ -540,6 +572,22 @@
                 data-lotto-start="2025-01-31T12:00+09:00"
                 data-lotto-ended="2025-02-10T00:00+09:00"
                 data-lotto-resul="2025-02-13T18:00+09:00"></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 id="aquors-finale" class="other-event">Love Live Sunshine Aquors Finale</h3>
+
+      <ul>
+        <li><a href="https://www.lovelive-anime.jp/uranohoshi/live/live_detail.php?p=Aqours_Finale" target="_blank">Website</a></li>
+        <li><a href="https://x.com/LoveLive_staff" target="_blank">Twitter</a></li>
+        <li>
+          <b>Lotteries (e+)</b>
+          <ul>
+            <li data-lotto-name="CD Round"
+                data-lotto-start="2024-12-28T12:00+09:00"
+                data-lotto-ended="2025-02-03T00:00+09:00"
+                data-lotto-resul="2025-02-08T13:00+09:00"></li>
           </ul>
         </li>
       </ul>
