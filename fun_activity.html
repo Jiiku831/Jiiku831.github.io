@@ -45,37 +45,198 @@
           }
 
           .official-sekai::before {
-            content: "[Official Sekai] "
+            content: "Official Sekai";
+            background: #fc9cbf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
           }
 
           .official-miku::before {
-            content: "[Official Miku] "
+            content: "Official Miku";
+            background: #70dbcf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
           }
 
           .related::before {
-            content: "[Related] "
+            content: "Related Event";
+            background: #facd6b;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .unofficial-sekai::before {
+            content: "Sekai Fan Event";
+            background: #fed7e5;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            position: relative;
+            top: -2px;
+          }
+
+          .unofficial-miku::before {
+            content: "Miku Fan Event";
+            background: #c2f0ea;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            position: relative;
+            top: -2px;
           }
 
           .unofficial::before {
-            content: "[Fan Event] "
+            content: "Fan Event";
+            background: #b4e5fd;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            position: relative;
+            top: -2px;
+          }
+
+          .unofficial-other::before {
+            content: "Other Fan Event";
+            background: #ddd;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            position: relative;
+            top: -2px;
           }
 
           .other-event::before {
-            content: "[Other Event] "
+            content: "Other Event";
+            background: #bbb;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 1ex;
+            display: inline-block;
+            width: 7em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
           }
 
-          .unofficial-other-event::before {
-            content: "[Other Fan Event] "
+          h3.official-sekai::before,
+          h3.official-miku::before,
+          h3.related::before,
+          h3.unofficial-sekai::before,
+          h3.unofficial-miku::before,
+          h3.unofficial-other::before,
+          h3.unofficial::before,
+          h3.other-event::before {
+            font-size: 1em;
           }
         </style>
+        <script>
+          function UpdateFilter(e) {
+            cls = e.dataset.cls;
+            document.querySelectorAll(`:not(.no-filter).${cls}`).forEach((elem) => {
+              elem.style.display = e.checked ? null : "none";
+            });
+          }
+        </script>
     </head>
     <body>
       <h1>FUN!! Activities</h1>
 
       All times in Japan time unless otherwise specified. End times are usually
-      estimates. This list only includes events I'm interested in, though you are
-      welcome to add more yourself by sending in a pull request. (Requires
-      JavaScript to view or else nothing will show up)
+      estimates. This list generally includes sekai/vocaloid events and other
+      events I'm interested in, though you are welcome to add more yourself by
+      sending in a pull request. (Requires JavaScript to view or else nothing
+      will show up)
+
+      <details style="margin-top: 1ex">
+        <summary><b>Filter Events</b></summary>
+
+        <ul>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-official-sekai" data-cls="official-sekai" checked>
+            <label for="filter-official-sekai" class="no-filter official-sekai">Project Sekai events organized by Colorful Palette</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-official-miku" data-cls="official-miku" checked>
+            <label for="filter-official-miku" class="no-filter official-miku">Miku/Vocaloid events organized by CFM</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-related" data-cls="related" checked>
+            <label for="filter-related" class="no-filter related">Other major events that have Project Sekai or Miku/Vocaloid content</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-other-event" data-cls="other-event" checked>
+            <label for="filter-other-event" class="no-filter other-event">Other official events</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial-sekai" data-cls="unofficial-sekai" checked>
+            <label for="filter-unofficial-sekai" class="no-filter unofficial-sekai">Fan organized events with a Project Sekai focus</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial-miku" data-cls="unofficial-miku" checked>
+            <label for="filter-unofficial-miku" class="no-filter unofficial-miku">Fan organized events with a Miku/Vocaloid focus</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial" data-cls="unofficial" checked>
+            <label for="filter-unofficial" class="no-filter unofficial">Fan organized events with a mix of Project Sekai and Miku/Vocaloid</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial-other" data-cls="unofficial-other" checked>
+            <label for="filter-unofficial-other" class="no-filter unofficial-other">Other fan organized events</label>
+          </li>
+        </ul>
+      </details>
+
+      <h2>2025</h2>
 
       <ul>
         <li data-event-name="Sekai Live 4rd Unison"
@@ -123,13 +284,13 @@
             data-event-link="https://twipla.jp/events/654735"
             data-event-start="2025-01-31T19:00+09:00"
             data-event-ended="2025-01-31T23:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="CLUB of SEKAI vol. 7"
             data-event-loc="Tokyo Ueno"
             data-event-link="https://twipla.jp/events/646875"
             data-event-start="2025-02-01T14:00+09:00"
             data-event-ended="2025-02-01T20:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="Snow Miku 2025"
             data-event-loc="Sapporo/Otaru"
             data-event-link="https://snowmiku.com/2025/index.html"
@@ -154,7 +315,7 @@
             data-event-link="https://twipla.jp/events/647780"
             data-event-start="2025-02-09T12:00+09:00"
             data-event-ended="2025-02-09T18:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="Miku Symphony 2025"
             data-event-loc="Sapporo"
             data-event-link="#miku-sym-2025"
@@ -195,13 +356,13 @@
             data-event-link="https://twipla.jp/events/654863"
             data-event-start="2025-02-22T14:00+09:00"
             data-event-ended="2025-02-22T18:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="Project Vivid Journey"
             data-event-loc="Osaka Namba"
             data-event-link="https://twipla.jp/events/647733"
             data-event-start="2025-03-02T14:00+09:00"
             data-event-ended="2025-03-02T18:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="ボカチベDJ"
             data-event-loc="Kofu"
             data-event-link="https://twipla.jp/events/662388"
@@ -242,7 +403,7 @@
             data-event-link="https://twipla.jp/events/664118"
             data-event-start="2025-03-23T11:00+09:00"
             data-event-ended="2025-03-23T16:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="ボカタイ vol.9"
             data-event-loc="Osaka"
             data-event-link="https://twipla.jp/events/663193"
@@ -376,7 +537,7 @@
             data-event-link="https://twipla.jp/events/657004"
             data-event-start="2025-05-04T14:00+09:00"
             data-event-ended="2025-05-04T20:00+09:00"
-            class="unofficial"></li>
+            class="unofficial-miku"></li>
         <li data-event-name="Miku Japan Tour 2025 Blooming"
             data-event-link="#blooming-2025"
             data-event-loc="Takamatsu"
@@ -427,7 +588,7 @@
         <li data-event-name="CLUB of SEKAI vol. 8"
             data-event-loc="Location TBA"
             data-event-tba="Date TBA (likely day before symphony)"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="Sekai Symphony 2025"
             data-event-loc="Yokohama"
             data-event-link="#seka-sym-2025"
@@ -467,7 +628,7 @@
             data-event-start="2025-06-23T12:00+09:00"
             data-event-ended="2025-06-23T18:00+09:00"
             data-event-notes="exact time TBA"
-            class="unofficial-other-event">
+            class="unofficial-other">
         </li>
         <li data-event-name="Miku Symphony 2025"
             data-event-loc="Tokyo"
@@ -485,7 +646,7 @@
             data-event-start="2025-09-07T12:00+09:00"
             data-event-ended="2025-09-07T18:00+09:00"
             data-event-notes="exact time TBA"
-            class="unofficial"></li>
+            class="unofficial-sekai"></li>
         <li data-event-name="5th Anniversary Kanshasai"
             data-event-loc="Location TBA"
             data-event-tba="Dates TBA (Late Sep.)"
