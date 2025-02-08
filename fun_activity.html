@@ -33,6 +33,7 @@
           .month-change:not(:first-child) {
             border-top: thin solid #ccc;
             padding-top: 2px;
+            margin-top: 2px;
           }
 
           .month-change-label {
@@ -399,7 +400,7 @@
           .lotto-closed,
           .lotto-payment,
           .lotto-ended {
-            cursor: help;
+            cursor: pointer;
           }
 
           .past-event-dates:hover,
@@ -414,6 +415,20 @@
           .lotto-payment:hover,
           .lotto-ended:hover {
             outline: thin solid #064571;
+          }
+
+          :checked ~ .past-event-dates,
+          :checked ~ .ongoing-event-dates,
+          :checked ~ .event-dates,
+          :checked ~ .past-subevent-dates,
+          :checked ~ .ongoing-subevent-dates,
+          :checked ~ .subevent-dates,
+          :checked ~ .lotto-upcoming,
+          :checked ~ .lotto-open,
+          :checked ~ .lotto-closed,
+          :checked ~ .lotto-payment,
+          :checked ~ .lotto-ended {
+            outline: thin solid #f9397f;
           }
 
           h4 {
@@ -454,6 +469,12 @@
             display: none;
           }
 
+          .hover-container {
+            position: relative;
+            display: inline-block;
+          }
+
+          input.hover-checkbox:checked ~ .hover,
           .hover-container:hover > .hover {
             display: block;
             position: absolute;
@@ -494,7 +515,6 @@
           }
 
           .time-table {
-            top: 1.5em;
             background: #cdeefe;
             border-radius: 5px;
             border: thin solid #064571;
@@ -1225,6 +1245,12 @@
     </body>
 
     <script>
+      var __idCounter = 0;
+
+      function NewId() {
+        return `__id${__idCounter++}`;
+      }
+
       function NewLink(title, target, cls) {
         const node = document.createElement("a");
         node.href = target;
@@ -1244,13 +1270,24 @@
       }
 
       function NewSpanWithHover(content, hover, cls) {
-        const node = document.createElement("span");
+        const node = document.createElement("label");
+        const checkboxId = NewId();
+        node.htmlFor = checkboxId;
         node.innerText = content;
         node.classList.add(cls);
-        node.classList.add("hover-container");
-        node.appendChild(hover);
+
+        const span = document.createElement("span");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.style.display = "none";
+        checkbox.id = checkboxId;
+        checkbox.classList.add("hover-checkbox");
+        span.appendChild(checkbox);
+        span.appendChild(node);
+        span.appendChild(hover);
+        span.classList.add("hover-container");
         hover.classList.add("hover");
-        return node;
+        return span;
       }
 
       function FormatShortDate(d) {
