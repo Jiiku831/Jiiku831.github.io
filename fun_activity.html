@@ -44,13 +44,101 @@
             text-decoration: line-through;
           }
 
+          .event-dates {
+            background: #6cf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            position: relative;
+            font-weight: bold;
+            top: -2px;
+          }
+
+          .ongoing-event-dates {
+            background: #fc9cbf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .past-event-dates {
+            background: #bbb;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            position: relative;
+            top: -2px;
+          }
+
+          .subevent-dates {
+            background: #b4e5fd;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            position: relative;
+            font-weight: bold;
+            top: -2px;
+          }
+
+          .ongoing-subevent-dates {
+            background: #fed7e5;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .past-subevent-dates {
+            background: #ddd;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            position: relative;
+            top: -2px;
+          }
+
           .official-sekai::before {
             content: "Official Sekai";
             background: #fc9cbf;
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -66,7 +154,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -82,7 +170,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -98,7 +186,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -113,7 +201,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -128,7 +216,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -143,7 +231,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -158,7 +246,7 @@
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
-            margin-right: 1ex;
+            margin-right: 0.25em;
             display: inline-block;
             width: 7em;
             text-align: center;
@@ -177,6 +265,192 @@
           h3.unofficial::before,
           h3.other-event::before {
             font-size: 1em;
+          }
+
+          ul {
+            list-style-type: none;
+          }
+
+          :not(li) > ul {
+            padding-left: 0;
+          }
+
+          ul ul:not(.ticket-info) {
+            padding-left: 6.5em;
+          }
+
+          .ticket-info {
+            padding-left: 0;
+          }
+
+          .lotto-payment {
+            background: #fc9cbf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .lotto-upcoming {
+            background: #6cf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .lotto-ended {
+            background: #ccc;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .lotto-open {
+            background: #facd6b;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .lotto-closed {
+            background: #70dbcf;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+          }
+
+          .past-event-dates,
+          .ongoing-event-dates,
+          .event-dates,
+          .past-subevent-dates,
+          .ongoing-subevent-dates,
+          .subevent-dates,
+          .lotto-upcoming,
+          .lotto-open,
+          .lotto-closed,
+          .lotto-payment,
+          .lotto-ended {
+            cursor: help;
+          }
+
+          .past-event-dates:hover,
+          .ongoing-event-dates:hover,
+          .event-dates:hover,
+          .past-subevent-dates:hover,
+          .ongoing-subevent-dates:hover,
+          .subevent-dates:hover,
+          .lotto-upcoming:hover,
+          .lotto-open:hover,
+          .lotto-closed:hover,
+          .lotto-payment:hover,
+          .lotto-ended:hover {
+            outline: thin solid #064571;
+          }
+
+          h4 {
+            margin: 1ex 0;
+          }
+
+          h2 + h3 {
+            margin-top: 0;
+          }
+
+          h3 {
+            margin-top: 2em;
+            margin-bottom: 1ex;
+          }
+
+          h3 + ul {
+            margin-top: 1ex;
+          }
+
+          .hover {
+            display: none;
+          }
+
+          .hover-container:hover > .hover {
+            display: block;
+            position: absolute;
+            z-index: 999999;
+          }
+
+          .time-table th,
+          .time-table td {
+            border: thin solid #064571;
+            white-space: nowrap;
+            padding: 0.5ex;
+            font-size: small;
+          }
+
+          .time-table th {
+            background: #6cf;
+          }
+
+          .time-table table tr:first-child th,
+          .time-table table tr:first-child td {
+            border-top: 0;
+          }
+          .time-table table tr:last-child th,
+          .time-table table tr:last-child td {
+            border-bottom: 0;
+          }
+          .time-table table tr td:first-child,
+          .time-table table tr th:first-child {
+            border-left: 0;
+          }
+          .time-table table tr td:last-child,
+          .time-table table tr th:last-child {
+            border-right: 0;
+          }
+
+          .time-table table {
+            border-collapse: collapse;
+          }
+
+          .time-table {
+            top: 1.5em;
+            background: #cdeefe;
+            border-radius: 5px;
+            border: thin solid #064571;
           }
         </style>
         <script>
@@ -477,7 +751,7 @@
             data-event-loc="Makuhari Messe Halls 1-8"
             data-event-link="#chokaigi-2025"
             data-event-start="2025-04-26T10:00+09:00"
-            data-event-ended="2025-04-27T27:00+09:00"
+            data-event-ended="2025-04-27T17:00+09:00"
             class="related">
           <ul>
             <li data-subevent-name="Day 1"
@@ -692,7 +966,25 @@
         </li>
       </ul>
 
-      <h2>Official Event Info</h2>
+      <h2>2026</h2>
+
+      <ul>
+        <li data-event-name="76th Sapporo Snow Festival"
+            data-event-loc="Sapporo"
+            data-event-start="2026-02-04T00:00+09:00"
+            data-event-ended="2026-02-12T00:00+09:00"
+            class="related">
+        </li>
+        <li data-event-name="Snow Miku 2026"
+            data-event-loc="Sapporo/Otaru"
+            data-event-start="2026-02-07T10:00+09:00"
+            data-event-ended="2026-02-08T17:00+09:00"
+            data-event-notes="details TBA likely on this weekend"
+            class="official-miku">
+        </li>
+      </ul>
+
+      <h2>Event Info</h2>
 
       <h3 id="miku-sym-2025" class="official-miku">Miku Symphony 2025</h3>
 
@@ -700,8 +992,8 @@
         <li><a href="https://sp.wmg.jp/mikusymphony/" target="_blank">Website</a></li>
         <li><a href="https://x.com/mikusymphony" target="_blank">Twitter</a></li>
         <li>
-          <b>Lotteries (Pia)</b>
-          <ul>
+          <h4>Lotteries (Pia)</h4>
+          <ul class="ticket-info">
             <li data-lotto-name="Sapporo General Sales"
                 data-lotto-link="https://sp.wmg.jp/mikusymphony/"
                 data-lotto-start="2024-12-29T20:00+09:00"
@@ -719,8 +1011,8 @@
       <ul>
         <li><a href="https://blog.piapro.net/2024/12/e2412131.html" target="_blank">Website</a></li>
         <li>
-          <b>Lotteries (e+)</b>
-          <ul>
+          <h4>Lotteries (e+)</h4>
+          <ul class="ticket-info">
             <li data-lotto-name="Advance Round 1"
                 data-lotto-link="https://eplus.jp/luka16th/"
                 data-lotto-start="2024-12-27T18:00+09:00"
@@ -730,7 +1022,8 @@
                 data-lotto-link="https://eplus.jp/luka16th/"
                 data-lotto-start="2025-01-17T18:00+09:00"
                 data-lotto-ended="2025-02-03T00:00+09:00"
-                data-lotto-resul="2025-02-14T13:00+09:00"></li>
+                data-lotto-resul="2025-02-07T13:00+09:00"
+                data-lotto-money="2025-02-10T18:00+09:00"></li>
             <li data-lotto-name="General Sales"
                 data-lotto-link="https://eplus.jp/luka16th/"
                 data-lotto-start="2025-02-14T12:00+09:00"
@@ -746,13 +1039,14 @@
         <li><a href="https://piapro.net/japantour2025/index_en.html" target="_blank">Website (EN)</a></li>
         <li><a href="https://x.com/cfm_miku" target="_blank">Twitter</a></li>
         <li>
-          <b>Lotteries (Lawson Ticket)</b>
-          <ul>
+          <h4>Lotteries (Lawson Ticket)</h4>
+          <ul class="ticket-info">
             <li data-lotto-name="Official Advance Round (Domestic)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket.html"
                 data-lotto-start="2024-11-29T12:00+09:00"
                 data-lotto-ended="2024-12-17T00:00+09:00"
-                data-lotto-resul="2024-12-21T15:00+09:00"></li>
+                data-lotto-resul="2024-12-21T15:00+09:00"
+                data-lotto-money="2024-12-25T23:00+09:00"></li>
             <li data-lotto-name="Official Advance Round (Foreign)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
                 data-lotto-start="2024-11-29T12:00+09:00"
@@ -762,7 +1056,8 @@
                 data-lotto-link="https://piapro.net/japantour2025/ticket.html"
                 data-lotto-start="2024-12-27T12:00+09:00"
                 data-lotto-ended="2025-01-21T00:00+09:00"
-                data-lotto-resul="2025-01-25T15:00+09:00"></li>
+                data-lotto-resul="2025-01-25T15:00+09:00"
+                data-lotto-money="2025-01-28T23:00+09:00"></li>
             <li data-lotto-name="Pre-request Advance Round (Foreign)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
                 data-lotto-start="2024-12-27T12:00+09:00"
@@ -777,7 +1072,8 @@
                 data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
                 data-lotto-start="2025-01-31T12:00+09:00"
                 data-lotto-ended="2025-02-18T00:00+09:00"
-                data-lotto-resul="2025-02-22T15:00+09:00"></li>
+                data-lotto-resul="2025-02-22T15:00+09:00"
+                data-lotto-money="2025-02-26T23:00+09:00"></li>
             <li data-lotto-name="General Sales (Domestic)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket.html"
                 data-lotto-start="2025-03-22T10:00+09:00"
@@ -796,8 +1092,8 @@
         <li><a href="https://chokaigi.jp/2025/about/" target="_blank">Website</a></li>
         <li><a href="https://x.com/chokaigi_PR" target="_blank">Twitter</a></li>
         <li>
-          <b>Tickets</b>
-          <ul>
+          <h4>Tickets</h4>
+          <ul class="ticket-info">
             <li data-lotto-name="Advance Sales (e+)"
                 data-lotto-link="https://chokaigi.jp/2025/ticket/"
                 data-lotto-start="2025-02-06T19:00+09:00"
@@ -828,8 +1124,8 @@
         <li><a href="https://pjsekai.sega.jp/sekaisymphony/index.html" target="_blank">Website</a></li>
         <li><a href="https://x.com/sekaisymphony" target="_blank">Twitter</a></li>
         <li>
-          <b>Lotteries (Pia)</b>
-          <ul>
+          <h4>Lotteries (Pia)</h4>
+          <ul class="ticket-info">
             <li data-lotto-name="Pass Round"
                 data-lotto-start="2025-01-21T21:00+09:00"
                 data-lotto-ended="2025-01-28T00:00+09:00"
@@ -849,12 +1145,13 @@
         <li><a href="https://www.lovelive-anime.jp/uranohoshi/live/live_detail.php?p=Aqours_Finale" target="_blank">Website</a></li>
         <li><a href="https://x.com/LoveLive_staff" target="_blank">Twitter</a></li>
         <li>
-          <b>Lotteries (e+)</b>
-          <ul>
+          <h4>Lotteries (e+)</h4>
+          <ul class="ticket-info">
             <li data-lotto-name="CD Round"
                 data-lotto-start="2024-12-28T12:00+09:00"
                 data-lotto-ended="2025-02-03T00:00+09:00"
-                data-lotto-resul="2025-02-08T13:00+09:00"></li>
+                data-lotto-resul="2025-02-08T13:00+09:00"
+                data-lotto-money="2025-02-11T21:00+09:00"></li>
           </ul>
         </li>
       </ul>
@@ -880,6 +1177,109 @@
         return node;
       }
 
+      function NewSpanWithHover(content, hover, cls) {
+        const node = document.createElement("span");
+        node.innerText = content;
+        node.classList.add(cls);
+        node.classList.add("hover-container");
+        node.appendChild(hover);
+        hover.classList.add("hover");
+        return node;
+      }
+
+      function FormatShortDate(d) {
+        return d.toLocaleDateString([], {
+            timeZone: "Asia/Tokyo",
+            hour12: false,
+            month: "numeric",
+            day: "numeric",
+        });
+      }
+
+      function FormatShortDateDuration(s, e) {
+        let start = FormatShortDate(s);
+        let end = FormatShortDate(e);
+        if (start == end) {
+          return start;
+        }
+        return `${start}~${end}`;
+      }
+
+      function FormatTime(label, d, cur) {
+        const local = d.toLocaleString([], {
+            timeZone: "Asia/Tokyo",
+            hour12: false,
+            hour: "2-digit",
+            minute:"2-digit"
+        });
+        return NewSpan(`${label} ${local}`, cur > d ? "ts-over" : "ts");
+      }
+
+      function FormatLongTime(d) {
+        return d.toLocaleString([], {
+          timeZone: "Asia/Tokyo",
+          timeZoneName: "long",
+          hour12: false,
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+          hour: "2-digit",
+          minute:"2-digit"
+        });
+      }
+
+      function FormatLongLocalTime(d) {
+        return d.toLocaleString([], {
+          timeZoneName: "long",
+          hour12: false,
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+          hour: "2-digit",
+          minute:"2-digit"
+        });
+      }
+
+      function MakeHeaderCell(content) {
+        const cell = document.createElement("th");
+        cell.appendChild(document.createTextNode(content));
+        return cell;
+      }
+
+      function MakeCell(content) {
+        const cell = document.createElement("td");
+        cell.appendChild(document.createTextNode(content));
+        return cell;
+      }
+
+      function MakeTimeTable(times) {
+        let node = document.createElement("div");
+        node.classList.add("time-table");
+        let table = document.createElement("table");
+        node.appendChild(table);
+        let added = false;
+        let header = document.createElement("tr");
+        table.appendChild(header);
+        header.appendChild(MakeHeaderCell(""));
+        header.appendChild(MakeHeaderCell("Event Time"));
+        header.appendChild(MakeHeaderCell("Local Time"));
+        Array.from(times).forEach((t) => {
+          if (t[1]) {
+            added = true;
+            const d = new Date(t[1]);
+            let row = document.createElement("tr");
+            table.appendChild(row);
+            row.appendChild(MakeHeaderCell(t[0]));
+            row.appendChild(MakeCell(FormatLongTime(d)));
+            row.appendChild(MakeCell(FormatLongLocalTime(d)));
+          }
+        });
+        if (!added) {
+          node.style.visibility = "hidden";
+        }
+        return node;
+      }
+
       function UpdateEventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-event-name]").forEach((e) => {
@@ -888,6 +1288,8 @@
           }
 
           let over = true;
+          let ongoing = false;
+          let eventDates = "TBA";
           if (e.dataset.eventTba) {
             over = false;
             e.insertBefore(NewSpan(e.dataset.eventTba, "event-timer"), e.firstChild);
@@ -904,10 +1306,11 @@
               text = "ends at"
               d = end;
               over = false;
+              ongoing = true;
             }
             const jst = d.toLocaleString([], {
               timeZone: "Asia/Tokyo",
-              timeZoneName: "long",
+              // timeZoneName: "long",
               hour12: false,
               year: "numeric",
               month: "numeric",
@@ -916,6 +1319,7 @@
               minute:"2-digit"
             });
             e.insertBefore(NewSpan(`${text} ${jst}`, "event-timer"), e.firstChild);
+            eventDates = FormatShortDateDuration(start, end);
           }
 
           if (e.dataset.eventLoc) {
@@ -927,40 +1331,45 @@
               ? NewLink(e.dataset.eventName, e.dataset.eventLink, "event-name")
               : NewSpan(e.dataset.eventName, "event-name"),
             e.firstChild);
+          e.insertBefore(
+              NewSpanWithHover(
+                eventDates,
+                MakeTimeTable([
+                  ["Start", e.dataset.eventStart],
+                  ["End", e.dataset.eventEnded],
+                ]),
+                ongoing ? "ongoing-event-dates" : (over ? "past-event-dates" : "event-dates")),
+            e.firstChild);
           if (over) {
             e.classList.add("event-over");
           }
         });
       }
 
-      function FormatTime(label, d, cur) {
-        const local = d.toLocaleString([], {
-            timeZone: "Asia/Tokyo",
-            hour12: false,
-            hour: "2-digit",
-            minute:"2-digit"
-        });
-        return NewSpan(`${label} ${local}`, cur > d ? "ts-over" : "ts");
-      }
-
       function UpdateSubeventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-subevent-name]").forEach((e) => {
           let over = true;
+          let ongoing = false;
 
           const start = new Date(e.dataset.subeventStart);
           if (start > cur) {
             over = false;
           }
           let nodes = [FormatTime("Start", start, cur)];
+          let eventDates = FormatShortDate(start);
 
           if (e.dataset.subeventClose) {
             const close = new Date(e.dataset.subeventClose);
             if (close > cur) {
               over = false;
+              if (start <= cur) {
+                ongoing = true;
+              }
             }
             nodes.push(document.createTextNode("/"));
             nodes.push(FormatTime("Last Entry", close, cur));
+            eventDates = FormatShortDateDuration(start, close);
           }
 
           if (e.dataset.subeventEnded) {
@@ -970,6 +1379,7 @@
             }
             nodes.push(document.createTextNode("/"));
             nodes.push(FormatTime("End", end, cur));
+            eventDates = FormatShortDateDuration(start, end);
           }
 
           if (e.dataset.subeventDoors) {
@@ -981,6 +1391,15 @@
             nodes.unshift(FormatTime("Doors", doors, cur));
           }
 
+          e.appendChild(
+              NewSpanWithHover(eventDates,
+                MakeTimeTable([
+                  ["Doors", e.dataset.subeventDoors],
+                  ["Start", e.dataset.subeventStart],
+                  ["Last Entry", e.dataset.subeventClose],
+                  ["End", e.dataset.subeventEnded],
+                ]),
+                ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates")));
           e.appendChild(NewSpan(e.dataset.subeventName, "subevent-name"));
           if (e.dataset.subeventLoc) {
             e.appendChild(NewSpan(e.dataset.subeventLoc, "subevent-loc"));
@@ -997,15 +1416,21 @@
         document.querySelectorAll("[data-lotto-name]").forEach((e) => {
           const start = new Date(e.dataset.lottoStart);
           const end = new Date(e.dataset.lottoEnded);
+          let state = "lotto-ended";
+          let stateText = "Ended";
           let d = end;
           let text = "ended at";
           let over = true;
           if (start > cur) {
             text = "starts at"
+            state = "lotto-upcoming";
+            stateText = "Upcoming";
             d = start;
             over = false;
           } else if (end > cur) {
             text = "ends at"
+            state = "lotto-open";
+            stateText = "Open";
             d = end;
             over = false;
           }
@@ -1014,38 +1439,47 @@
             const res = new Date(e.dataset.lottoResul);
             if (res > cur && cur > end) {
               text = "results at"
+              state = "lotto-closed";
+              stateText = "Closed";
               d = res;
               over = false;
             } else if (res <= cur) {
               text = "results were at";
+              state = "lotto-ended";
+              stateText = "Ended";
               d = res;
               over = true;
             }
           }
-          const jst = d.toLocaleString([], {
-            timeZone: "Asia/Tokyo",
-            timeZoneName: "long",
-            hour12: false,
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-            hour: "2-digit",
-            minute:"2-digit"
-          });
-          const local = d.toLocaleString([], {
-            timeZoneName: "long",
-            hour12: false,
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-            hour: "2-digit",
-            minute:"2-digit"
-          });
+
+          if (e.dataset.lottoMoney) {
+            const pay = new Date(e.dataset.lottoMoney);
+            const res = e.dataset.lottoResul ? new Date(e.dataset.lottoResul) : end;
+            if (pay > cur && cur >= res) {
+              text = "payment deadline at"
+              state = "lotto-payment";
+              stateText = "Payment";
+              d = pay;
+              over = false;
+            }
+          }
+
+          const jst = FormatLongTime(d);
+          const local = FormatLongLocalTime(d);
+          e.appendChild(
+            NewSpanWithHover(
+                stateText,
+                MakeTimeTable([
+                  ["Start", e.dataset.lottoStart],
+                  ["Close", e.dataset.lottoEnded],
+                  ["Results", e.dataset.lottoResul],
+                  ["Payment", e.dataset.lottoMoney],
+                ]), state));
           e.appendChild(
             !over && e.dataset.lottoLink
               ? NewLink(e.dataset.lottoName, e.dataset.lottoLink, "lotto-name")
               : NewSpan(e.dataset.lottoName, "lotto-name"));
-          e.appendChild(NewSpan(`${text} ${jst} (Local time: ${local})`, "lotto-timer"));
+          e.appendChild(NewSpan(`${text} ${jst} (${local})`, "lotto-timer"));
           if (over) {
             e.classList.add("lotto-over");
           }
@@ -1055,4 +1489,6 @@
       UpdateSubeventTimers();
       UpdateLottoTimers();
     </script>
+
+    <div style="margin-bottom: 10em;"></div>
 </html>
