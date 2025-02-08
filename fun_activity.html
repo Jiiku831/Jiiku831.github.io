@@ -475,7 +475,7 @@
           }
 
           input.hover-checkbox:checked ~ .hover,
-          .hover-container:hover > .hover {
+          .hover-trigger:hover ~ .hover {
             display: block;
             position: absolute;
             z-index: 999999;
@@ -1275,6 +1275,8 @@
         node.htmlFor = checkboxId;
         node.innerText = content;
         node.classList.add(cls);
+        node.classList.add("hover-trigger");
+        node.title = "Click to pin/unpin details";
 
         const span = document.createElement("span");
         const checkbox = document.createElement("input");
