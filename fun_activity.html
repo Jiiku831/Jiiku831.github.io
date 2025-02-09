@@ -1397,7 +1397,7 @@
           return `${norm(days)} days${suffix}`;
         }
         let weeks = days / 7;
-        if (weeks <= 4) {
+        if (weeks <= 5) {
           return `${norm(weeks)} weeks${suffix}`;
         }
         let months = days / 30;
@@ -1512,6 +1512,9 @@
       function UpdateEventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-event-name]").forEach((e) => {
+          e.querySelectorAll(":scope .event-node").forEach((child) => {
+            e.removeChild(child);
+          });
           const eventNode = NewSpan("", "event-node");
           e.insertBefore(eventNode, e.firstChild);
           eventNode.appendChild(
@@ -1568,6 +1571,9 @@
       function UpdateSubeventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-subevent-name]").forEach((e) => {
+          while (e.firstChild) {
+            e.removeChild(e.firstChild);
+          }
           let over = true;
           let ongoing = false;
           let subeventTimes = [];
@@ -1620,7 +1626,7 @@
           e.appendChild(
             FormatEventTitle(e.dataset.subeventName, null, e.dataset.subeventLoc));
           for (let i = 0; i < subeventTimes.length; ++i) {
-            const includeDur = subeventTimes[i].ts > cur && (i == 0 || subeventTimes[i-1] <= cur);
+            const includeDur = subeventTimes[i].ts > cur && (i == 0 || subeventTimes[i-1].ts <= cur);
             let options = {
                 includeLocal: false,
                 hideDuration: !includeDur,
@@ -1648,6 +1654,9 @@
       function UpdateLottoTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-lotto-name]").forEach((e) => {
+          while (e.firstChild) {
+            e.removeChild(e.firstChild);
+          }
           const start = new Date(e.dataset.lottoStart);
           const end = new Date(e.dataset.lottoEnded);
           let state = "lotto-ended";
@@ -1719,9 +1728,15 @@
           }
         });
       }
-      UpdateEventTimers();
-      UpdateSubeventTimers();
-      UpdateLottoTimers();
+
+      function RefreshTimers () {
+        UpdateEventTimers();
+        UpdateSubeventTimers();
+        UpdateLottoTimers();
+      }
+
+      RefreshTimers();
+      setInterval(RefreshTimers, 10 * 1000);
 
       function GetStartMonth(e) {
         if (e.dataset.eventTbaEst) {
