@@ -1343,6 +1343,8 @@
     </body>
 
     <script>
+      var __idCounter = 0;
+
       function NewId() {
         return `__id${__idCounter++}`;
       }
@@ -1369,7 +1371,7 @@
         e.target.previousElementSibling.checked = !e.target.previousElementSibling.checked;
       }
 
-      function NewSpanWithHover(content, hover, cls) {
+      function NewSpanWithHover(content, hover, cls, checked = false) {
         const node = document.createElement("label");
         node.setAttribute("onclick", "ToggleHover(event)");
         node.innerText = content;
@@ -1380,8 +1382,9 @@
         const span = document.createElement("span");
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.style.display = "none";
+        // checkbox.style.display = "none";
         checkbox.classList.add("hover-checkbox");
+        checkbox.checked = checked;
         span.appendChild(checkbox);
         span.appendChild(node);
         span.appendChild(hover);
@@ -1579,6 +1582,7 @@
       function UpdateEventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-event-name]").forEach((e) => {
+          let checked = e.querySelectorAll(":scope .event-node :checked").length > 0;
           e.querySelectorAll(":scope .event-node").forEach((child) => {
             e.removeChild(child);
           });
@@ -1627,7 +1631,8 @@
                   ["Start", e.dataset.eventStart],
                   ["End", e.dataset.eventEnded],
                 ]),
-                ongoing ? "ongoing-event-dates" : (over ? "past-event-dates" : "event-dates")),
+                ongoing ? "ongoing-event-dates" : (over ? "past-event-dates" : "event-dates"),
+                checked),
             eventNode.firstChild);
           if (over) {
             e.classList.add("event-over");
@@ -1638,6 +1643,7 @@
       function UpdateSubeventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-subevent-name]").forEach((e) => {
+          let checked = e.querySelectorAll(":scope :checked").length > 0;
           while (e.firstChild) {
             e.removeChild(e.firstChild);
           }
@@ -1689,7 +1695,8 @@
                   ["Last Entry", e.dataset.subeventClose],
                   ["End", e.dataset.subeventEnded],
                 ]),
-                ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates")));
+                ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates"),
+                checked));
           e.appendChild(
             FormatEventTitle(e.dataset.subeventName, null, e.dataset.subeventLoc));
           for (let i = 0; i < subeventTimes.length; ++i) {
@@ -1722,9 +1729,16 @@
         });
       }
 
+      function GenUniqueIds() {
+        document.querySelectorAll("li").forEach((e) => {
+          e.id = NewId();
+        });
+      }
+
       function UpdateLottoTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-lotto-name]").forEach((e) => {
+          let checked = e.querySelectorAll(":scope :checked").length > 0;
           while (e.firstChild) {
             e.removeChild(e.firstChild);
           }
@@ -1786,7 +1800,7 @@
                   ["Close", e.dataset.lottoEnded],
                   ["Results", e.dataset.lottoResul],
                   ["Payment", e.dataset.lottoMoney],
-                ]), state));
+                ]), state, checked));
           e.appendChild(
             !over && e.dataset.lottoLink
               ? NewLink(e.dataset.lottoName, e.dataset.lottoLink, "lotto-name")
@@ -1802,7 +1816,12 @@
 
       function UpdateOngoingLottos() {
         const ongoing = document.getElementById("ongoing-tickets");
+        const toggled = [];
         while (ongoing.firstChild) {
+          if (ongoing.firstChild.querySelectorAll &&
+            ongoing.firstChild.querySelectorAll(":scope :checked").length > 0) {
+            toggled.push(ongoing.firstChild.id);
+          }
           ongoing.removeChild(ongoing.firstChild);
         }
         document.querySelectorAll("#ticket-info-container h2").forEach((event) => {
@@ -1820,12 +1839,19 @@
           }
           lottoNodes.forEach((lotto) => {
             const newNode = lotto.cloneNode(true);
+            newNode.id = `${lotto.id}-copy`;
             newNode.classList.add("ongoing-lotto-chip");
+            newNode.querySelectorAll("input[type='checkbox']").forEach((e) => {
+              e.checked = toggled.includes(newNode.id);
+            });
             ongoing.appendChild(newNode);
           });
           goodsNodes.forEach((goods) => {
             const newNode = goods.cloneNode(true);
+            newNode.id = `${goods.id}-copy`;
             newNode.classList.add("ongoing-goods-chip");
+            newNode.querySelectorAll("input[type='checkbox']").checked =
+              toggled.includes(newNode.id);
             ongoing.appendChild(newNode);
           });
         });
@@ -1838,8 +1864,9 @@
         UpdateOngoingLottos();
       }
 
+      GenUniqueIds();
       RefreshTimers();
-      setInterval(RefreshTimers, 15 * 1000);
+      setInterval(RefreshTimers, 5 * 1000);
 
       function GetStartMonth(e) {
         if (e.dataset.eventTbaEst) {
