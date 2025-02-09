@@ -520,10 +520,24 @@
             border: thin solid #064571;
           }
 
-          .duration-crit, .duration-close {
+          .duration-crit,
+          .duration-close {
             border-radius: 5px;
             font-weight: bold;
             padding: 0 5px;
+            position: relative;
+          }
+
+          .duration-crit,
+          .duration-close,
+          .event-title + .subevent-timer .lotto-timer-duration {
+            left: -5px;
+            margin-right: -5px;
+          }
+
+          .subevent-timer .lotto-timer-duration {
+            left: 0;
+            margin-right: 0;
           }
 
           .duration-crit {
@@ -1714,16 +1728,16 @@
           let state = "lotto-ended";
           let stateText = "Ended";
           let d = end;
-          let text = "ended";
+          let text = "Ended";
           let over = true;
           if (start > cur) {
-            text = "starts in"
+            text = "Starts in"
             state = "lotto-upcoming";
             stateText = "Upcoming";
             d = start;
             over = false;
           } else if (end > cur) {
-            text = "ends in"
+            text = "Ends in"
             state = "lotto-open";
             stateText = "Open";
             d = end;
@@ -1733,13 +1747,13 @@
           if (e.dataset.lottoResul) {
             const res = new Date(e.dataset.lottoResul);
             if (res > cur && cur > end) {
-              text = "results in"
+              text = "Results in"
               state = "lotto-closed";
               stateText = "Closed";
               d = res;
               over = false;
             } else if (res <= cur) {
-              text = "results announced";
+              text = "Results";
               state = "lotto-ended";
               stateText = "Ended";
               d = res;
@@ -1751,7 +1765,7 @@
             const pay = new Date(e.dataset.lottoMoney);
             const res = e.dataset.lottoResul ? new Date(e.dataset.lottoResul) : end;
             if (pay > cur && cur >= res) {
-              text = "payment deadline in"
+              text = "Payment deadline in"
               state = "lotto-payment";
               stateText = "Payment";
               d = pay;
@@ -1820,7 +1834,7 @@
       }
 
       RefreshTimers();
-      setInterval(RefreshTimers, 10 * 1000);
+      setInterval(RefreshTimers, 15 * 1000);
 
       function GetStartMonth(e) {
         if (e.dataset.eventTbaEst) {
