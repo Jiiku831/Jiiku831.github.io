@@ -1701,13 +1701,17 @@
             let fmtOptions = {
               hideDate: true,
             };
-            e.appendChild(FormatTimer(
+            let timer = FormatTimer(
                 includeDur ? subeventTimes[i].durLabel : subeventTimes[i].label,
                 subeventTimes[i].ts,
                 cur,
                 options,
                 "subevent-timer",
-                fmtOptions));
+                fmtOptions)
+            if (subeventTimes[i].ts < cur) {
+              timer.classList.add("subevent-over");
+            }
+            e.appendChild(timer);
             if (i < subeventTimes.length - 1) {
               e.appendChild(document.createTextNode("/"));
             }
