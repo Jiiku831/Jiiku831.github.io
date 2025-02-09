@@ -131,7 +131,6 @@
             text-align: center;
             color: black;
             position: relative;
-            font-weight: bold;
             top: -2px;
           }
 
@@ -307,11 +306,11 @@
             padding-left: 0;
           }
 
-          ul ul:not(.ticket-info) {
+          ul ul:not(.ticket-info):not(.goods-info) {
             padding-left: 6.5em;
           }
 
-          .ticket-info {
+          .ticket-info, .goods-info {
             padding-left: 0;
           }
 
@@ -542,13 +541,48 @@
           }
 
           .event-list > ul > li:nth-child(even),
-          .ticket-info li:nth-child(even) {
+          .ticket-info li:nth-child(even),
+          .goods-info li:nth-child(even) {
             background: #f4f4f4;
           }
 
           .lotto-name {
             display: inline-block;
             min-width: 20em;
+          }
+
+          .ongoing-lotto-chip::before {
+            content: "Tickets";
+            background: #fed7e5;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+            margin-left: 2em;
+          }
+
+          .ongoing-goods-chip::before {
+            content: "Goods";
+            background: #fce6b5;
+            border-radius: 5px;
+            font-size: small;
+            padding: 0 5px;
+            margin-right: 0.25em;
+            display: inline-block;
+            width: 5em;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            top: -2px;
+            margin-left: 2em;
           }
         </style>
         <script>
@@ -573,6 +607,13 @@
         <br><br>
         (Requires JavaScript to view or else nothing will show up)
       </div>
+
+      <h2>Active Lottery/Sales</h2>
+
+      <ul class="ongoing-tickets" id="ongoing-tickets">
+      </ul>
+
+      <h1>Event List</h1>
 
       <details style="margin-top: 1ex">
         <summary><b>Filter Events</b></summary>
@@ -1094,190 +1135,189 @@
 
       <h1 id="ticket-info">Ticket/Lottery Info</h1>
 
-      <h2 id="miku-sym-2025" class="official-miku">Miku Symphony 2025</h2>
+      <div id="ticket-info-container">
+        <h2 id="miku-sym-2025" class="official-miku">Miku Symphony 2025</h2>
 
-      <ul>
-        <li><a href="https://sp.wmg.jp/mikusymphony/" target="_blank">Website</a></li>
-        <li><a href="https://x.com/mikusymphony" target="_blank">Twitter</a></li>
-        <li>
-          <h4>Tickets (Pia)</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="Sapporo General Sales"
-                data-lotto-link="https://sp.wmg.jp/mikusymphony/"
-                data-lotto-start="2024-12-29T20:00+09:00"
-                data-lotto-ended="2025-02-11T00:00+09:00"></li>
-            <li data-lotto-name="Osaka Tokyo Adv. Lottery"
-                data-lotto-start="2024-12-29T20:00+09:00"
-                data-lotto-ended="2025-01-08T00:00+09:00"
-                data-lotto-resul="2025-01-11T18:00+09:00"></li>
-          </ul>
-        </li>
-      </ul>
+        <ul>
+          <li><a href="https://sp.wmg.jp/mikusymphony/" target="_blank">Website</a></li>
+          <li><a href="https://x.com/mikusymphony" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Pia)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Sapporo General Sales"
+                  data-lotto-link="https://sp.wmg.jp/mikusymphony/"
+                  data-lotto-start="2024-12-29T20:00+09:00"
+                  data-lotto-ended="2025-02-11T00:00+09:00"></li>
+              <li data-lotto-name="Osaka Tokyo Adv. Lottery"
+                  data-lotto-start="2024-12-29T20:00+09:00"
+                  data-lotto-ended="2025-01-08T00:00+09:00"
+                  data-lotto-resul="2025-01-11T18:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
 
-      <h2 id="luka-16th" class="official-miku">Luka 16th Anniversary ~Rondo Roseo~</h2>
+        <h2 id="luka-16th" class="official-miku">Luka 16th Anniversary ~Rondo Roseo~</h2>
 
-      <ul>
-        <li><a href="https://blog.piapro.net/2024/12/e2412131.html" target="_blank">Website</a></li>
-        <li>
-          <h4>Tickets (e+)</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="Adv. Round 1 Lottery"
-                data-lotto-link="https://eplus.jp/luka16th/"
-                data-lotto-start="2024-12-27T18:00+09:00"
-                data-lotto-ended="2025-01-13T00:00+09:00"
-                data-lotto-resul="2025-01-17T13:00+09:00"></li>
-            <li data-lotto-name="Adv. Round 2 Lottery"
-                data-lotto-link="https://eplus.jp/luka16th/"
-                data-lotto-start="2025-01-17T18:00+09:00"
-                data-lotto-ended="2025-02-03T00:00+09:00"
-                data-lotto-resul="2025-02-07T13:00+09:00"
-                data-lotto-money="2025-02-10T18:00+09:00"></li>
-            <li data-lotto-name="General Sales"
-                data-lotto-link="https://eplus.jp/luka16th/"
-                data-lotto-start="2025-02-14T12:00+09:00"
-                data-lotto-ended="2025-03-15T00:00+09:00"></li>
-          </ul>
-        </li>
-      </ul>
+        <ul>
+          <li><a href="https://blog.piapro.net/2024/12/e2412131.html" target="_blank">Website</a></li>
+          <li>
+            <h4>Tickets (e+)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Adv. Round 1 Lottery"
+                  data-lotto-link="https://eplus.jp/luka16th/"
+                  data-lotto-start="2024-12-27T18:00+09:00"
+                  data-lotto-ended="2025-01-13T00:00+09:00"
+                  data-lotto-resul="2025-01-17T13:00+09:00"></li>
+              <li data-lotto-name="Adv. Round 2 Lottery"
+                  data-lotto-link="https://eplus.jp/luka16th/"
+                  data-lotto-start="2025-01-17T18:00+09:00"
+                  data-lotto-ended="2025-02-03T00:00+09:00"
+                  data-lotto-resul="2025-02-07T13:00+09:00"
+                  data-lotto-money="2025-02-10T18:00+09:00"></li>
+              <li data-lotto-name="General Sales"
+                  data-lotto-link="https://eplus.jp/luka16th/"
+                  data-lotto-start="2025-02-14T12:00+09:00"
+                  data-lotto-ended="2025-03-15T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
 
-      <h2 id="blooming-2025" class="official-miku">Miku Japan Tour 2025 Blooming</h2>
+        <h2 id="blooming-2025" class="official-miku">Miku Japan Tour 2025 Blooming</h2>
 
-      <ul>
-        <li><a href="https://piapro.net/japantour2025/index.html" target="_blank">Website (JP)</a></li>
-        <li><a href="https://piapro.net/japantour2025/index_en.html" target="_blank">Website (EN)</a></li>
-        <li><a href="https://x.com/cfm_miku" target="_blank">Twitter</a></li>
-        <li>
-          <h4>Tickets (Lawson Ticket)</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="Official Adv. Lottery (Domestic)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket.html"
-                data-lotto-start="2024-11-29T12:00+09:00"
-                data-lotto-ended="2024-12-17T00:00+09:00"
-                data-lotto-resul="2024-12-21T15:00+09:00"
-                data-lotto-money="2024-12-25T23:00+09:00"></li>
-            <li data-lotto-name="Official Adv. Lottery (Foreign)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
-                data-lotto-start="2024-11-29T12:00+09:00"
-                data-lotto-ended="2024-12-17T00:00+09:00"
-                data-lotto-resul="2024-12-21T15:00+09:00"></li>
-            <li data-lotto-name="Pre-request Adv. Lottery (Domestic)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket.html"
-                data-lotto-start="2024-12-27T12:00+09:00"
-                data-lotto-ended="2025-01-21T00:00+09:00"
-                data-lotto-resul="2025-01-25T15:00+09:00"
-                data-lotto-money="2025-01-28T23:00+09:00"></li>
-            <li data-lotto-name="Pre-request Adv. Lottery (Foreign)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
-                data-lotto-start="2024-12-27T12:00+09:00"
-                data-lotto-ended="2025-01-21T00:00+09:00"
-                data-lotto-resul="2025-01-25T15:00+09:00"></li>
-            <li data-lotto-name="Pre-request Adv. 2nd Lottery (Domestic)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket.html"
-                data-lotto-start="2025-01-31T12:00+09:00"
-                data-lotto-ended="2025-02-18T00:00+09:00"
-                data-lotto-resul="2025-02-22T15:00+09:00"></li>
-            <li data-lotto-name="Pre-request Adv. 2nd Lottery (Foreign)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
-                data-lotto-start="2025-01-31T12:00+09:00"
-                data-lotto-ended="2025-02-18T00:00+09:00"
-                data-lotto-resul="2025-02-22T15:00+09:00"
-                data-lotto-money="2025-02-26T23:00+09:00"></li>
-            <li data-lotto-name="General Sales (Domestic)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket.html"
-                data-lotto-start="2025-03-22T10:00+09:00"
-                data-lotto-ended="2025-05-31T00:00+09:00"></li>
-            <li data-lotto-name="General Sales (Foreign)"
-                data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
-                data-lotto-start="2025-03-22T10:00+09:00"
-                data-lotto-ended="2025-05-31T00:00+09:00"></li>
-          </ul>
-        </li>
-        <li>
-          <h4>Goods</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="Goods Pre-order (Domestic)"
-                data-lotto-link="https://piapro.net/japantour2025/goods.html"
-                data-lotto-start="2025-02-03T18:00+09:00"
-                data-lotto-ended="2025-02-15T00:00+09:00"></li>
-          </ul>
-        </li>
-      </ul>
+        <ul>
+          <li><a href="https://piapro.net/japantour2025/index.html" target="_blank">Website (JP)</a></li>
+          <li><a href="https://piapro.net/japantour2025/index_en.html" target="_blank">Website (EN)</a></li>
+          <li><a href="https://x.com/cfm_miku" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Lawson Ticket)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Official Adv. Lottery (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2024-11-29T12:00+09:00"
+                  data-lotto-ended="2024-12-17T00:00+09:00"
+                  data-lotto-resul="2024-12-21T15:00+09:00"
+                  data-lotto-money="2024-12-25T23:00+09:00"></li>
+              <li data-lotto-name="Official Adv. Lottery (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2024-11-29T12:00+09:00"
+                  data-lotto-ended="2024-12-17T00:00+09:00"
+                  data-lotto-resul="2024-12-21T15:00+09:00"></li>
+              <li data-lotto-name="Pre-request Adv. Lottery (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2024-12-27T12:00+09:00"
+                  data-lotto-ended="2025-01-21T00:00+09:00"
+                  data-lotto-resul="2025-01-25T15:00+09:00"
+                  data-lotto-money="2025-01-28T23:00+09:00"></li>
+              <li data-lotto-name="Pre-request Adv. Lottery (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2024-12-27T12:00+09:00"
+                  data-lotto-ended="2025-01-21T00:00+09:00"
+                  data-lotto-resul="2025-01-25T15:00+09:00"></li>
+              <li data-lotto-name="Pre-request Adv. 2nd Lottery (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2025-01-31T12:00+09:00"
+                  data-lotto-ended="2025-02-18T00:00+09:00"
+                  data-lotto-resul="2025-02-22T15:00+09:00"></li>
+              <li data-lotto-name="Pre-request Adv. 2nd Lottery (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2025-01-31T12:00+09:00"
+                  data-lotto-ended="2025-02-18T00:00+09:00"
+                  data-lotto-resul="2025-02-22T15:00+09:00"
+                  data-lotto-money="2025-02-26T23:00+09:00"></li>
+              <li data-lotto-name="General Sales (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2025-03-22T10:00+09:00"
+                  data-lotto-ended="2025-05-31T00:00+09:00"></li>
+              <li data-lotto-name="General Sales (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2025-03-22T10:00+09:00"
+                  data-lotto-ended="2025-05-31T00:00+09:00"></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Goods</h4>
+            <ul class="goods-info">
+              <li data-lotto-name="Pre-order (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/goods.html"
+                  data-lotto-start="2025-02-03T18:00+09:00"
+                  data-lotto-ended="2025-02-15T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
 
-      <h2 id="chokaigi-2025" class="related">Niconico Chokaigi 2025</h2>
+        <h2 id="chokaigi-2025" class="related">Niconico Chokaigi 2025</h2>
 
-      <ul>
-        <li><a href="https://chokaigi.jp/2025/about/" target="_blank">Website</a></li>
-        <li><a href="https://x.com/chokaigi_PR" target="_blank">Twitter</a></li>
-        <li>
-          <h4>Tickets</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="Advance Sales (e+)"
-                data-lotto-link="https://chokaigi.jp/2025/ticket/"
-                data-lotto-start="2025-02-06T19:00+09:00"
-                data-lotto-ended="2025-03-06T19:00+09:00"></li>
-            <li data-lotto-name="VIP Accommodation Plans"
-                data-lotto-link="https://chokaigi.jp/2025/ticket/"
-                data-lotto-start="2025-02-06T07:00+09:00"
-                data-lotto-ended="2025-04-11T07:00+09:00"></li>
-            <li data-lotto-name="Accommodation Plans"
-                data-lotto-link="https://chokaigi.jp/2025/ticket/"
-                data-lotto-start="2025-02-06T07:00+09:00"
-                data-lotto-ended="2025-04-12T07:00+09:00"></li>
-            <li data-lotto-name="Overnight Bus Plans"
-                data-lotto-link="https://chokaigi.jp/2025/ticket/"
-                data-lotto-start="2025-02-06T07:00+09:00"
-                data-lotto-ended="2025-04-21T00:00+09:00"></li>
-            <li data-lotto-name="Cosplay Ticket"
-                data-lotto-link="https://chokaigi.jp/2025/ticket/"
-                data-lotto-start="2025-02-06T19:00+09:00"
-                data-lotto-ended="2025-03-06T19:00+09:00"></li>
-          </ul>
-        </li>
-      </ul>
+        <ul>
+          <li><a href="https://chokaigi.jp/2025/about/" target="_blank">Website</a></li>
+          <li><a href="https://x.com/chokaigi_PR" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Advance Sales (e+)"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T19:00+09:00"
+                  data-lotto-ended="2025-03-06T19:00+09:00"></li>
+              <li data-lotto-name="VIP Accommodation Plans"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T07:00+09:00"
+                  data-lotto-ended="2025-04-11T07:00+09:00"></li>
+              <li data-lotto-name="Accommodation Plans"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T07:00+09:00"
+                  data-lotto-ended="2025-04-12T07:00+09:00"></li>
+              <li data-lotto-name="Overnight Bus Plans"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T07:00+09:00"
+                  data-lotto-ended="2025-04-21T00:00+09:00"></li>
+              <li data-lotto-name="Cosplay Ticket"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T19:00+09:00"
+                  data-lotto-ended="2025-03-06T19:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
 
-      <h2 id="seka-sym-2025" class="official-sekai">Sekai Symphony 2025</h2>
+        <h2 id="seka-sym-2025" class="official-sekai">Sekai Symphony 2025</h2>
 
-      <ul>
-        <li><a href="https://pjsekai.sega.jp/sekaisymphony/index.html" target="_blank">Website</a></li>
-        <li><a href="https://x.com/sekaisymphony" target="_blank">Twitter</a></li>
-        <li>
-          <h4>Tickets (Pia)</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="Pass Lottery"
-                data-lotto-start="2025-01-21T21:00+09:00"
-                data-lotto-ended="2025-01-28T00:00+09:00"
-                data-lotto-resul="2025-01-31T18:00+09:00"></li>
-            <li data-lotto-name="Advance Lottery"
-                data-lotto-link="https://w.pia.jp/t/sekaisymphony2025/"
-                data-lotto-start="2025-01-31T12:00+09:00"
-                data-lotto-ended="2025-02-10T00:00+09:00"
-                data-lotto-resul="2025-02-13T18:00+09:00"></li>
-          </ul>
-        </li>
-      </ul>
+        <ul>
+          <li><a href="https://pjsekai.sega.jp/sekaisymphony/index.html" target="_blank">Website</a></li>
+          <li><a href="https://x.com/sekaisymphony" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Pia)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Pass Lottery"
+                  data-lotto-start="2025-01-21T21:00+09:00"
+                  data-lotto-ended="2025-01-28T00:00+09:00"
+                  data-lotto-resul="2025-01-31T18:00+09:00"></li>
+              <li data-lotto-name="Advance Lottery"
+                  data-lotto-link="https://w.pia.jp/t/sekaisymphony2025/"
+                  data-lotto-start="2025-01-31T12:00+09:00"
+                  data-lotto-ended="2025-02-10T00:00+09:00"
+                  data-lotto-resul="2025-02-13T18:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
 
-      <h2 id="aquors-finale" class="other-event">Love Live Sunshine Aquors Finale</h2>
+        <h2 id="aquors-finale" class="other-event">Love Live Sunshine Aquors Finale</h2>
 
-      <ul>
-        <li><a href="https://www.lovelive-anime.jp/uranohoshi/live/live_detail.php?p=Aqours_Finale" target="_blank">Website</a></li>
-        <li><a href="https://x.com/LoveLive_staff" target="_blank">Twitter</a></li>
-        <li>
-          <h4>Tickets (e+)</h4>
-          <ul class="ticket-info">
-            <li data-lotto-name="CD Lottery"
-                data-lotto-start="2024-12-28T12:00+09:00"
-                data-lotto-ended="2025-02-03T00:00+09:00"
-                data-lotto-resul="2025-02-08T13:00+09:00"
-                data-lotto-money="2025-02-11T21:00+09:00"></li>
-          </ul>
-        </li>
-      </ul>
-
+        <ul>
+          <li><a href="https://www.lovelive-anime.jp/uranohoshi/live/live_detail.php?p=Aqours_Finale" target="_blank">Website</a></li>
+          <li><a href="https://x.com/LoveLive_staff" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (e+)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="CD Lottery"
+                  data-lotto-start="2024-12-28T12:00+09:00"
+                  data-lotto-ended="2025-02-03T00:00+09:00"
+                  data-lotto-resul="2025-02-08T13:00+09:00"
+                  data-lotto-money="2025-02-11T21:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </body>
 
     <script>
-      var __idCounter = 0;
-
       function NewId() {
         return `__id${__idCounter++}`;
       }
@@ -1300,10 +1340,13 @@
         return node;
       }
 
+      function ToggleHover(e) {
+        e.target.previousElementSibling.checked = !e.target.previousElementSibling.checked;
+      }
+
       function NewSpanWithHover(content, hover, cls) {
         const node = document.createElement("label");
-        const checkboxId = NewId();
-        node.htmlFor = checkboxId;
+        node.setAttribute("onclick", "ToggleHover(event)");
         node.innerText = content;
         node.classList.add(cls);
         node.classList.add("hover-trigger");
@@ -1313,7 +1356,6 @@
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.style.display = "none";
-        checkbox.id = checkboxId;
         checkbox.classList.add("hover-checkbox");
         span.appendChild(checkbox);
         span.appendChild(node);
@@ -1729,10 +1771,42 @@
         });
       }
 
+      function UpdateOngoingLottos() {
+        const ongoing = document.getElementById("ongoing-tickets");
+        while (ongoing.firstChild) {
+          ongoing.removeChild(ongoing.firstChild);
+        }
+        document.querySelectorAll("#ticket-info-container h2").forEach((event) => {
+          const eventName = event.innerText;
+          const eventCls = event.classList;
+          const eventTitle = document.createElement("li");
+          eventTitle.classList.add(...eventCls);
+          eventTitle.appendChild(NewLink(eventName, `#${event.id}`, "event-name"));
+          lottoNodes =
+            event.nextElementSibling.querySelectorAll(":scope .ticket-info li:not(.lotto-over)");
+          goodsNodes =
+            event.nextElementSibling.querySelectorAll(":scope .goods-info li:not(.lotto-over)");
+          if (lottoNodes.length + goodsNodes.length > 0) {
+            ongoing.appendChild(eventTitle);
+          }
+          lottoNodes.forEach((lotto) => {
+            const newNode = lotto.cloneNode(true);
+            newNode.classList.add("ongoing-lotto-chip");
+            ongoing.appendChild(newNode);
+          });
+          goodsNodes.forEach((goods) => {
+            const newNode = goods.cloneNode(true);
+            newNode.classList.add("ongoing-goods-chip");
+            ongoing.appendChild(newNode);
+          });
+        });
+      }
+
       function RefreshTimers () {
         UpdateEventTimers();
         UpdateSubeventTimers();
         UpdateLottoTimers();
+        UpdateOngoingLottos();
       }
 
       RefreshTimers();
