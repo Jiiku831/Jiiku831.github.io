@@ -19,7 +19,10 @@
           li,
           .lotto-timer {
             white-space: nowrap;
-            padding-right: 2em;
+          }
+
+          .event-list > ul > li > .event-details {
+            margin-right: 2em;
           }
 
           .event-list {
@@ -28,6 +31,10 @@
 
           .event-list > ul {
             width: 100%;
+          }
+
+          .event-details {
+            margin-right: 2em;
           }
 
           .month-change:not(:first-child) {
@@ -39,8 +46,6 @@
           .month-change-label {
             float: right;
             color: #aaa;
-            position: relative;
-            left: 2em;
           }
 
           .lotto-name,
@@ -61,15 +66,11 @@
             content: ") ";
           }
 
-          .lotto-name + *::before,
-          .event-name + *::before,
-          .subevent-name + *::before {
-            content: " ";
-          }
-
           .lotto-over,
           .event-over,
+          .event-over span:not(.month-change-label),
           .subevent-over,
+          .subevent-over span,
           .ts-over {
             color: #555;
             text-decoration: line-through;
@@ -150,7 +151,7 @@
           }
 
           .past-subevent-dates {
-            background: #ddd;
+            background: #d5d5d5;
             border-radius: 5px;
             font-size: small;
             padding: 0 5px;
@@ -295,7 +296,7 @@
           h2.unofficial-other::before,
           h2.unofficial::before,
           h2.other-event::before {
-            font-size: 1em;
+            font-size: 0.8em;
           }
 
           ul {
@@ -519,6 +520,36 @@
             border-radius: 5px;
             border: thin solid #064571;
           }
+
+          .duration-crit, .duration-close {
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 0 5px;
+          }
+
+          .duration-crit {
+            background-color: #fed7e5;
+          }
+
+          .duration-close {
+            background-color: #fce6b5;
+          }
+
+          .event-title {
+            display: inline-block;
+            padding-right: 1ex;
+            min-width: 25em;
+          }
+
+          .event-list > ul > li:nth-child(even),
+          .ticket-info li:nth-child(even) {
+            background: #f4f4f4;
+          }
+
+          .lotto-name {
+            display: inline-block;
+            min-width: 20em;
+          }
         </style>
         <script>
           function UpdateFilter(e) {
@@ -686,7 +717,7 @@
                   data-subevent-ended="2025-02-11T21:00+09:00"></li>
             </ul>
           </li>
-          <li data-event-name="Vocaloid High -Remote Edition-"
+          <li data-event-name="Vocaloid High -Remote-"
               data-event-loc="Tokyo Akihabara"
               data-event-link="https://twipla.jp/events/661068"
               data-event-start="2025-02-11T15:00+09:00"
@@ -728,7 +759,7 @@
               data-event-start="2025-03-08T13:00+09:00"
               data-event-ended="2025-03-08T19:00+09:00"
               class="unofficial"></li>
-          <li data-event-name="Luka 16th Anniversary ~Rondo Roseo~"
+          <li data-event-name="Luka 16th Anni. ~Rondo Roseo~"
               data-event-loc="Tokyo"
               data-event-link="#luka-16th"
               data-event-start="2025-03-15T13:00+09:00"
@@ -977,7 +1008,7 @@
                   data-subevent-ended="2025-06-22T20:30+09:00"></li>
             </ul>
           </li>
-          <li data-event-name="Love Live Sunshine Aquors Finale After Party (Name TBA)"
+          <li data-event-name="Aquors Finale After Party (TBA)"
               data-event-loc="Akihabara MOGRA"
               data-event-start="2025-06-23T12:00+09:00"
               data-event-ended="2025-06-23T18:00+09:00"
@@ -1075,7 +1106,7 @@
                 data-lotto-link="https://sp.wmg.jp/mikusymphony/"
                 data-lotto-start="2024-12-29T20:00+09:00"
                 data-lotto-ended="2025-02-11T00:00+09:00"></li>
-            <li data-lotto-name="Osaka Tokyo Advance Round Lottery"
+            <li data-lotto-name="Osaka Tokyo Adv. Lottery"
                 data-lotto-start="2024-12-29T20:00+09:00"
                 data-lotto-ended="2025-01-08T00:00+09:00"
                 data-lotto-resul="2025-01-11T18:00+09:00"></li>
@@ -1090,12 +1121,12 @@
         <li>
           <h4>Tickets (e+)</h4>
           <ul class="ticket-info">
-            <li data-lotto-name="Advance Round 1 Lottery"
+            <li data-lotto-name="Adv. Round 1 Lottery"
                 data-lotto-link="https://eplus.jp/luka16th/"
                 data-lotto-start="2024-12-27T18:00+09:00"
                 data-lotto-ended="2025-01-13T00:00+09:00"
                 data-lotto-resul="2025-01-17T13:00+09:00"></li>
-            <li data-lotto-name="Advance Round 2 Lottery"
+            <li data-lotto-name="Adv. Round 2 Lottery"
                 data-lotto-link="https://eplus.jp/luka16th/"
                 data-lotto-start="2025-01-17T18:00+09:00"
                 data-lotto-ended="2025-02-03T00:00+09:00"
@@ -1118,34 +1149,34 @@
         <li>
           <h4>Tickets (Lawson Ticket)</h4>
           <ul class="ticket-info">
-            <li data-lotto-name="Official Advance Round Lottery (Domestic)"
+            <li data-lotto-name="Official Adv. Lottery (Domestic)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket.html"
                 data-lotto-start="2024-11-29T12:00+09:00"
                 data-lotto-ended="2024-12-17T00:00+09:00"
                 data-lotto-resul="2024-12-21T15:00+09:00"
                 data-lotto-money="2024-12-25T23:00+09:00"></li>
-            <li data-lotto-name="Official Advance Round Lottery (Foreign)"
+            <li data-lotto-name="Official Adv. Lottery (Foreign)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
                 data-lotto-start="2024-11-29T12:00+09:00"
                 data-lotto-ended="2024-12-17T00:00+09:00"
                 data-lotto-resul="2024-12-21T15:00+09:00"></li>
-            <li data-lotto-name="Pre-request Advance Round Lottery (Domestic)"
+            <li data-lotto-name="Pre-request Adv. Lottery (Domestic)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket.html"
                 data-lotto-start="2024-12-27T12:00+09:00"
                 data-lotto-ended="2025-01-21T00:00+09:00"
                 data-lotto-resul="2025-01-25T15:00+09:00"
                 data-lotto-money="2025-01-28T23:00+09:00"></li>
-            <li data-lotto-name="Pre-request Advance Round Lottery (Foreign)"
+            <li data-lotto-name="Pre-request Adv. Lottery (Foreign)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
                 data-lotto-start="2024-12-27T12:00+09:00"
                 data-lotto-ended="2025-01-21T00:00+09:00"
                 data-lotto-resul="2025-01-25T15:00+09:00"></li>
-            <li data-lotto-name="Pre-request Advance 2nd Round Lottery (Domestic)"
+            <li data-lotto-name="Pre-request Adv. 2nd Lottery (Domestic)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket.html"
                 data-lotto-start="2025-01-31T12:00+09:00"
                 data-lotto-ended="2025-02-18T00:00+09:00"
                 data-lotto-resul="2025-02-22T15:00+09:00"></li>
-            <li data-lotto-name="Pre-request Advance 2nd Round Lottery (Foreign)"
+            <li data-lotto-name="Pre-request Adv. 2nd Lottery (Foreign)"
                 data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
                 data-lotto-start="2025-01-31T12:00+09:00"
                 data-lotto-ended="2025-02-18T00:00+09:00"
@@ -1212,11 +1243,11 @@
         <li>
           <h4>Tickets (Pia)</h4>
           <ul class="ticket-info">
-            <li data-lotto-name="Pass Round Lottery"
+            <li data-lotto-name="Pass Lottery"
                 data-lotto-start="2025-01-21T21:00+09:00"
                 data-lotto-ended="2025-01-28T00:00+09:00"
                 data-lotto-resul="2025-01-31T18:00+09:00"></li>
-            <li data-lotto-name="Advance Round Lottery"
+            <li data-lotto-name="Advance Lottery"
                 data-lotto-link="https://w.pia.jp/t/sekaisymphony2025/"
                 data-lotto-start="2025-01-31T12:00+09:00"
                 data-lotto-ended="2025-02-10T00:00+09:00"
@@ -1233,7 +1264,7 @@
         <li>
           <h4>Tickets (e+)</h4>
           <ul class="ticket-info">
-            <li data-lotto-name="CD Round Lottery"
+            <li data-lotto-name="CD Lottery"
                 data-lotto-start="2024-12-28T12:00+09:00"
                 data-lotto-ended="2025-02-03T00:00+09:00"
                 data-lotto-resul="2025-02-08T13:00+09:00"
@@ -1320,29 +1351,105 @@
         return NewSpan(`${label} ${local}`, cur > d ? "ts-over" : "ts");
       }
 
-      function FormatLongTime(d) {
-        return d.toLocaleString([], {
-          timeZone: "Asia/Tokyo",
-          timeZoneName: "long",
+      function FormatLongLocalTime(d, opts) {
+        options = {
           hour12: false,
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
           hour: "2-digit",
           minute:"2-digit"
-        });
+        };
+        if (opts.timeZone) {
+          options.timeZone = opts.timeZone;
+        }
+        if (opts.formatTz) {
+          options.timeZoneName = opts.formatTz;
+        }
+        if (!opts.hideDate) {
+          options.day = "numeric";
+          options.month = "numeric";
+          if (opts.includeYear) {
+            options.year = "numeric";
+          }
+        }
+        return d.toLocaleString([], options);
       }
 
-      function FormatLongLocalTime(d) {
-        return d.toLocaleString([], {
-          timeZoneName: "long",
-          hour12: false,
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-          hour: "2-digit",
-          minute:"2-digit"
+      function FormatLongTime(d, options) {
+        let newOpts = {
+          ...options,
+          timeZone: "Asia/Tokyo",
+        }
+        return FormatLongLocalTime(d, newOpts);
+      }
+
+      function FormatDuration(dur, neg) {
+        let suffix = neg ? " ago" : "";
+        let minutes = dur / 60000;
+        let norm = neg ? Math.floor : Math.ceil;
+        if (minutes <= 120) {
+          return `${norm(minutes)} mins${suffix}`;
+        }
+        let hours = minutes / 60;
+        if (hours <= 48) {
+          return `${norm(hours)} hours${suffix}`;
+        }
+        let days = hours / 24;
+        if (days <= 14) {
+          return `${norm(days)} days${suffix}`;
+        }
+        let weeks = days / 7;
+        if (weeks <= 4) {
+          return `${norm(weeks)} weeks${suffix}`;
+        }
+        let months = days / 30;
+        if (months <= 18) {
+          return `${norm(months)} months${suffix}`;
+        }
+        let years = days / 365;
+        return `${norm(years)} years${suffix}`;
+      }
+
+      function DurationCls(dur, neg) {
+        if (neg) return "";
+        let days = dur / 24 / 3600 / 1000;
+        if (days <= 1) {
+          return "duration-crit";
+        }
+        if (days <= 3) {
+          return "duration-close";
+        }
+        return "";
+      }
+
+      function FormatTimer(label, d, cur, opts, cls, formatOpts) {
+        const span = document.createElement("span");
+        span.classList.add(cls);
+        if (!opts.hideDuration) {
+          const neg = cur > d;
+          const dur = neg ? cur - d : d - cur;
+          const durationNode =
+            NewSpan(`${label} ${FormatDuration(dur, neg)}`, "lotto-timer-duration");
+          const durationCls = DurationCls(dur, neg);
+          if (durationCls) {
+            durationNode.classList.add(durationCls);
+          }
+          span.appendChild(durationNode);
+        }
+
+        const prefix = opts.hideDuration ? label : " at";
+        const jst = FormatLongTime(d, {
+          ...formatOpts,
+          formatTz: opts.includeLocal ? "short" : ""
         });
+        if (opts.includeLocal) {
+          const local = FormatLongLocalTime(d, {
+            ...formatOpts,
+            formatTz: opts.includeLocal ? "short" : ""
+          });
+          span.appendChild(document.createTextNode(`${prefix} ${jst} (${local})`));
+        } else {
+          span.appendChild(document.createTextNode(`${prefix} ${jst}`));
+        }
+        return span;
       }
 
       function MakeHeaderCell(content) {
@@ -1355,6 +1462,17 @@
         const cell = document.createElement("td");
         cell.appendChild(document.createTextNode(content));
         return cell;
+      }
+
+      function FormatEventTitle(name, link, loc) {
+        const node = document.createElement("span");
+        node.classList.add("event-title");
+        node.appendChild(
+          link ? NewLink(name, link, "event-name") : NewSpan(name, "event-name"));
+        if (loc) {
+          node.appendChild(NewSpan(loc, "event-loc"));
+        }
+        return node;
       }
 
       function MakeTimeTable(times) {
@@ -1375,8 +1493,14 @@
             let row = document.createElement("tr");
             table.appendChild(row);
             row.appendChild(MakeHeaderCell(t[0]));
-            row.appendChild(MakeCell(FormatLongTime(d)));
-            row.appendChild(MakeCell(FormatLongLocalTime(d)));
+            row.appendChild(MakeCell(FormatLongTime(d, {
+              formatTz: "long",
+              includeYear: true,
+            })));
+            row.appendChild(MakeCell(FormatLongLocalTime(d, {
+              formatTz: "long",
+              includeYear: true,
+            })));
           }
         });
         if (!added) {
@@ -1388,55 +1512,45 @@
       function UpdateEventTimers() {
         const cur = new Date();
         document.querySelectorAll("[data-event-name]").forEach((e) => {
-          if (e.dataset.eventNotes) {
-            e.insertBefore(NewSpan(e.dataset.eventNotes, "event-notes"), e.firstChild);
-          }
+          const eventNode = NewSpan("", "event-node");
+          e.insertBefore(eventNode, e.firstChild);
+          eventNode.appendChild(
+            FormatEventTitle(e.dataset.eventName, e.dataset.eventLink, e.dataset.eventLoc));
+          let eventDetails = NewSpan("", "event-details");
+          eventNode.appendChild(eventDetails);
 
           let over = true;
           let ongoing = false;
           let eventDates = "TBA";
           if (e.dataset.eventTba) {
             over = false;
-            e.insertBefore(NewSpan(e.dataset.eventTba, "event-timer"), e.firstChild);
+            eventDetails.appendChild(NewSpan(e.dataset.eventTba, "event-timer"));
           } else {
             const start = new Date(e.dataset.eventStart);
             const end = new Date(e.dataset.eventEnded);
             let d = end;
-            let text = "ended at";
+            let text = "Ended";
             if (start > cur) {
-              text = "starts at"
+              text = "Starts in";
               d = start;
               over = false;
             } else if (end > cur) {
-              text = "ends at"
+              text = "Ends in"
               d = end;
               over = false;
               ongoing = true;
             }
-            const jst = d.toLocaleString([], {
-              timeZone: "Asia/Tokyo",
-              // timeZoneName: "long",
-              hour12: false,
-              year: "numeric",
-              month: "numeric",
-              day: "numeric",
-              hour: "2-digit",
-              minute:"2-digit"
-            });
-            e.insertBefore(NewSpan(`${text} ${jst}`, "event-timer"), e.firstChild);
+            eventDetails.appendChild(FormatTimer(text, d, cur, {
+              includeLocal: false
+            }, "event-timer"));
             eventDates = FormatShortDateDuration(start, end);
           }
 
-          if (e.dataset.eventLoc) {
-            e.insertBefore(NewSpan(e.dataset.eventLoc, "event-loc"), e.firstChild);
+          if (e.dataset.eventNotes) {
+            eventDetails.appendChild(NewSpan(e.dataset.eventNotes, "event-notes"));
           }
 
-          e.insertBefore(
-            e.dataset.eventLink
-              ? NewLink(e.dataset.eventName, e.dataset.eventLink, "event-name")
-              : NewSpan(e.dataset.eventName, "event-name"),
-            e.firstChild);
-          e.insertBefore(
+          eventNode.insertBefore(
               NewSpanWithHover(
                 eventDates,
                 MakeTimeTable([
@@ -1444,7 +1558,7 @@
                   ["End", e.dataset.eventEnded],
                 ]),
                 ongoing ? "ongoing-event-dates" : (over ? "past-event-dates" : "event-dates")),
-            e.firstChild);
+            eventNode.firstChild);
           if (over) {
             e.classList.add("event-over");
           }
@@ -1456,12 +1570,21 @@
         document.querySelectorAll("[data-subevent-name]").forEach((e) => {
           let over = true;
           let ongoing = false;
+          let subeventTimes = [];
+
+          if (e.dataset.subeventDoors) {
+            const doors = new Date(e.dataset.subeventDoors);
+            if (doors > cur) {
+              over = false;
+            }
+            subeventTimes.push({label: "Doors", durLabel: "Doors in", ts: doors});
+          }
 
           const start = new Date(e.dataset.subeventStart);
           if (start > cur) {
             over = false;
           }
-          let nodes = [FormatTime("Start", start, cur)];
+          subeventTimes.push({label: "Start", durLabel: "Starts in", ts: start});
           let eventDates = FormatShortDate(start);
 
           if (e.dataset.subeventClose) {
@@ -1472,8 +1595,7 @@
                 ongoing = true;
               }
             }
-            nodes.push(document.createTextNode("/"));
-            nodes.push(FormatTime("Last Entry", close, cur));
+            subeventTimes.push({label: "Last Entry", durLabel: "Last Entry in", ts: close});
             eventDates = FormatShortDateDuration(start, close);
           }
 
@@ -1482,18 +1604,8 @@
             if (end > cur) {
               over = false;
             }
-            nodes.push(document.createTextNode("/"));
-            nodes.push(FormatTime("End", end, cur));
+            subeventTimes.push({label: "End", durLabel: "Ends in", ts: end});
             eventDates = FormatShortDateDuration(start, end);
-          }
-
-          if (e.dataset.subeventDoors) {
-            const doors = new Date(e.dataset.subeventDoors);
-            if (doors > cur) {
-              over = false;
-            }
-            nodes.unshift(document.createTextNode("/"));
-            nodes.unshift(FormatTime("Doors", doors, cur));
           }
 
           e.appendChild(
@@ -1505,11 +1617,28 @@
                   ["End", e.dataset.subeventEnded],
                 ]),
                 ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates")));
-          e.appendChild(NewSpan(e.dataset.subeventName, "subevent-name"));
-          if (e.dataset.subeventLoc) {
-            e.appendChild(NewSpan(e.dataset.subeventLoc, "subevent-loc"));
+          e.appendChild(
+            FormatEventTitle(e.dataset.subeventName, null, e.dataset.subeventLoc));
+          for (let i = 0; i < subeventTimes.length; ++i) {
+            const includeDur = subeventTimes[i].ts > cur && (i == 0 || subeventTimes[i-1] <= cur);
+            let options = {
+                includeLocal: false,
+                hideDuration: !includeDur,
+            };
+            let fmtOptions = {
+              hideDate: true,
+            };
+            e.appendChild(FormatTimer(
+                includeDur ? subeventTimes[i].durLabel : subeventTimes[i].label,
+                subeventTimes[i].ts,
+                cur,
+                options,
+                "subevent-timer",
+                fmtOptions));
+            if (i < subeventTimes.length - 1) {
+              e.appendChild(document.createTextNode("/"));
+            }
           }
-          Array.from(nodes).forEach((node) => e.appendChild(node));
           if (over) {
             e.classList.add("subevent-over");
           }
@@ -1524,16 +1653,16 @@
           let state = "lotto-ended";
           let stateText = "Ended";
           let d = end;
-          let text = "ended at";
+          let text = "ended";
           let over = true;
           if (start > cur) {
-            text = "starts at"
+            text = "starts in"
             state = "lotto-upcoming";
             stateText = "Upcoming";
             d = start;
             over = false;
           } else if (end > cur) {
-            text = "ends at"
+            text = "ends in"
             state = "lotto-open";
             stateText = "Open";
             d = end;
@@ -1543,13 +1672,13 @@
           if (e.dataset.lottoResul) {
             const res = new Date(e.dataset.lottoResul);
             if (res > cur && cur > end) {
-              text = "results at"
+              text = "results in"
               state = "lotto-closed";
               stateText = "Closed";
               d = res;
               over = false;
             } else if (res <= cur) {
-              text = "results were at";
+              text = "results announced";
               state = "lotto-ended";
               stateText = "Ended";
               d = res;
@@ -1561,7 +1690,7 @@
             const pay = new Date(e.dataset.lottoMoney);
             const res = e.dataset.lottoResul ? new Date(e.dataset.lottoResul) : end;
             if (pay > cur && cur >= res) {
-              text = "payment deadline at"
+              text = "payment deadline in"
               state = "lotto-payment";
               stateText = "Payment";
               d = pay;
@@ -1569,8 +1698,6 @@
             }
           }
 
-          const jst = FormatLongTime(d);
-          const local = FormatLongLocalTime(d);
           e.appendChild(
             NewSpanWithHover(
                 stateText,
@@ -1584,7 +1711,9 @@
             !over && e.dataset.lottoLink
               ? NewLink(e.dataset.lottoName, e.dataset.lottoLink, "lotto-name")
               : NewSpan(e.dataset.lottoName, "lotto-name"));
-          e.appendChild(NewSpan(`${text} ${jst} (${local})`, "lotto-timer"));
+          e.appendChild(FormatTimer(text, d, cur, {
+            includeLocal: true
+          }, "lotto-timer"));
           if (over) {
             e.classList.add("lotto-over");
           }
