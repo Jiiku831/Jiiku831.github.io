@@ -533,17 +533,19 @@ function GetStartMonth(e) {
   return new Date(e.dataset.eventStart);
 }
 
-document.querySelectorAll(".event-list").forEach((list) => {
-  const allEvents = list.querySelectorAll(":scope > ul > li");
-  for (let i = 0; i < allEvents.length; ++i) {
-    const prevMonth = i == 0 ? "" : GetStartMonth(allEvents[i-1]).toLocaleDateString(
-      [], { timeZone: "Asia/Tokyo", month: "short"});
-    const curMonth = GetStartMonth(allEvents[i]).toLocaleDateString(
-      [], { timeZone: "Asia/Tokyo", month: "short"});
-    if (prevMonth != curMonth) {
-      allEvents[i].classList.add("month-change");
-      allEvents[i].insertBefore(NewSpan(curMonth, "month-change-label"),
-          allEvents[i].firstChild);
+function AddMonthBorders() {
+  document.querySelectorAll(".event-list").forEach((list) => {
+    const allEvents = list.querySelectorAll(":scope > ul > li");
+    for (let i = 0; i < allEvents.length; ++i) {
+      const prevMonth = i == 0 ? "" : GetStartMonth(allEvents[i-1]).toLocaleDateString(
+        [], { timeZone: "Asia/Tokyo", month: "short"});
+      const curMonth = GetStartMonth(allEvents[i]).toLocaleDateString(
+        [], { timeZone: "Asia/Tokyo", month: "short"});
+      if (prevMonth != curMonth) {
+        allEvents[i].classList.add("month-change");
+        allEvents[i].insertBefore(NewSpan(curMonth, "month-change-label"),
+            allEvents[i].firstChild);
+      }
     }
-  }
-});
+  });
+}
