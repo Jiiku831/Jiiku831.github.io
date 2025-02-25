@@ -360,7 +360,7 @@ function UpdateSubeventTimers() {
           ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates"),
           checked));
     e.appendChild(
-      FormatEventTitle(e.dataset.subeventName, null, e.dataset.subeventLoc));
+      FormatEventTitle(e.dataset.subeventName, e.dataset.subeventLink, e.dataset.subeventLoc));
     for (let i = 0; i < subeventTimes.length; ++i) {
       const includeDur = subeventTimes[i].ts > cur && (i == 0 || subeventTimes[i-1].ts <= cur);
       let options = {
