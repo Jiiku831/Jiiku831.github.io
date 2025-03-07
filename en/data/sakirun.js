@@ -373,6 +373,72 @@ events = {
         "end": 1741323600.0,
         "len": 150
     },
+    "124": {
+        "event_id": "124",
+        "event_type": "world_bloom",
+        "name": "With Your Sights on Stardom, Set Sail!",
+        "orderedName": "124 With Your Sights on Stardom, Set Sail!",
+        "nick": "yosoro",
+        "orderedNick": "124 yosoro",
+        "start": 1741492800.0,
+        "end": 1742526000.0,
+        "len": 287
+    },
+    "124-1": {
+        "event_id": "124-1",
+        "event_type": "chapter",
+        "name": "With Your Sights on Stardom, Set Sail! (rui)",
+        "orderedName": "124-1 With Your Sights on Stardom, Set Sail! (rui)",
+        "nick": "yosoro (rui)",
+        "orderedNick": "124-1 yosoro (rui)",
+        "start": 1741492800.0,
+        "end": 1741748400.0,
+        "len": 71
+    },
+    "124-2": {
+        "event_id": "124-2",
+        "event_type": "chapter",
+        "name": "With Your Sights on Stardom, Set Sail! (nene)",
+        "orderedName": "124-2 With Your Sights on Stardom, Set Sail! (nene)",
+        "nick": "yosoro (nene)",
+        "orderedNick": "124-2 yosoro (nene)",
+        "start": 1741748400.0,
+        "end": 1742007600.0,
+        "len": 72
+    },
+    "124-3": {
+        "event_id": "124-3",
+        "event_type": "chapter",
+        "name": "With Your Sights on Stardom, Set Sail! (emu)",
+        "orderedName": "124-3 With Your Sights on Stardom, Set Sail! (emu)",
+        "nick": "yosoro (emu)",
+        "orderedNick": "124-3 yosoro (emu)",
+        "start": 1742007600.0,
+        "end": 1742266800.0,
+        "len": 72
+    },
+    "124-4": {
+        "event_id": "124-4",
+        "event_type": "chapter",
+        "name": "With Your Sights on Stardom, Set Sail! (tsukasa)",
+        "orderedName": "124-4 With Your Sights on Stardom, Set Sail! (tsukasa)",
+        "nick": "yosoro (tsukasa)",
+        "orderedNick": "124-4 yosoro (tsukasa)",
+        "start": 1742266800.0,
+        "end": 1742526000.0,
+        "len": 72
+    },
+    "125": {
+        "event_id": "125",
+        "event_type": "marathon",
+        "name": "The First Concerto",
+        "orderedName": "125 The First Concerto",
+        "nick": "concerto",
+        "orderedNick": "125 concerto",
+        "start": 1742680800.0,
+        "end": 1743220800.0,
+        "len": 150
+    },
     "147": {
         "event_id": "147",
         "event_type": "marathon",
