@@ -425,6 +425,12 @@ function UpdateLottoTimers() {
       over = false;
     }
 
+    if (e.dataset.lottoSold) {
+      state = "lotto-ended";
+      stateText = "Sold Out";
+      over = true;
+    }
+
     if (e.dataset.lottoResul) {
       const res = new Date(e.dataset.lottoResul);
       if (res > cur && cur > end) {
