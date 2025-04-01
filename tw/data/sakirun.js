@@ -537,16 +537,5 @@ events = {
         "start": 1747569600.0,
         "end": 1747828800.0,
         "len": 72
-    },
-    "147": {
-        "event_id": "147",
-        "event_type": "marathon",
-        "name": "happy saki",
-        "orderedName": "147 happy saki",
-        "nick": "happy saki",
-        "orderedNick": "147 happy saki",
-        "start": 1730354400.0,
-        "end": 1731067200.0,
-        "len": 198
     }
 };data = [];currentEvent = "124";currentChapter = "124-4";
