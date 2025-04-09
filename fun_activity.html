@@ -1,0 +1,1354 @@
+<html>
+    <head>
+        <title>:fun_activity:</title>
+        <script async
+                src="https://www.googletagmanager.com/gtag/js?id=G-5ZKGR285DS">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5ZKGR285DS');
+        </script>
+        <script src="fun_activity.js?v=1" type="text/javascript"></script>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="fun_activity.css">
+    </head>
+    <body>
+      <h1>FUN!! Activities</h1>
+
+      <div style="max-width: 40em">
+        All times in Japan time unless otherwise specified. End times are usually
+        estimates. Timers are based on your system time. The information is
+        provided for your reference, lottery/event times may change without
+        notice and may not be reflected on this page.
+        <br><br>
+        <a href="#ticket-info">Jump to Ticket/Lotto Info</a>
+        <br><br>
+        (Requires JavaScript to view or else nothing will show up)
+      </div>
+
+      <h2 id="active-lottos">Active Lottery/Sales</h2>
+
+      <ul class="ongoing-tickets" id="ongoing-tickets">
+      </ul>
+
+      <h1 id="event-list">Event List</h1>
+
+      <details style="margin-top: 1ex">
+        <summary><b>Filter Events</b></summary>
+
+        <ul>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-official-sekai" data-cls="official-sekai" checked>
+            <label for="filter-official-sekai" class="official-sekai">Project Sekai events organized by Colorful Palette</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-official-miku" data-cls="official-miku" checked>
+            <label for="filter-official-miku" class="official-miku">Miku/Vocaloid events organized by CFM</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-related" data-cls="related" checked>
+            <label for="filter-related" class="related">Other major events that have Project Sekai or Miku/Vocaloid content</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-other-event" data-cls="other-event" checked>
+            <label for="filter-other-event" class="other-event">Other official events</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial-sekai" data-cls="unofficial-sekai" checked>
+            <label for="filter-unofficial-sekai" class="unofficial-sekai">Fan organized events with a Project Sekai focus</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial-miku" data-cls="unofficial-miku" checked>
+            <label for="filter-unofficial-miku" class="unofficial-miku">Fan organized events with a Miku/Vocaloid focus</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial" data-cls="unofficial" checked>
+            <label for="filter-unofficial" class="unofficial">Fan organized events with a mix of Project Sekai and Miku/Vocaloid</label>
+          </li>
+          <li>
+            <input type="checkbox" onchange="UpdateFilter(this)" id="filter-unofficial-other" data-cls="unofficial-other" checked>
+            <label for="filter-unofficial-other" class="unofficial-other">Other fan organized events</label>
+          </li>
+        </ul>
+      </details>
+
+      <div class="event-list">
+        <h2>2025</h2>
+
+        <ul>
+          <li data-event-name="Sekai Live 4rd Unison"
+              data-event-loc="Makuhari Messe"
+              data-event-start="2025-01-24T18:30+09:00"
+              data-event-ended="2025-01-26T20:30+09:00"
+              class="official-sekai">
+            <ul>
+              <li data-subevent-name="Day 1 Exhibit"
+                  data-subevent-start="2025-01-24T10:00+09:00"
+                  data-subevent-close="2025-01-24T18:00+09:00"
+                  data-subevent-ended="2025-01-24T18:30+09:00"></li>
+              <li data-subevent-name="Day 1 Night Show"
+                  data-subevent-doors="2025-01-24T17:30+09:00"
+                  data-subevent-start="2025-01-24T18:30+09:00"
+                  data-subevent-ended="2025-01-24T21:00+09:00"></li>
+              <li data-subevent-name="Day 2 Exhibit"
+                  data-subevent-start="2025-01-25T09:00+09:00"
+                  data-subevent-close="2025-01-25T17:30+09:00"
+                  data-subevent-ended="2025-01-25T18:00+09:00"></li>
+              <li data-subevent-name="Day 2 Day Show"
+                  data-subevent-doors="2025-01-25T11:00+09:00"
+                  data-subevent-start="2025-01-25T12:00+09:00"
+                  data-subevent-ended="2025-01-25T14:30+09:00"></li>
+              <li data-subevent-name="Day 2 Night Show"
+                  data-subevent-doors="2025-01-25T17:00+09:00"
+                  data-subevent-start="2025-01-25T18:00+09:00"
+                  data-subevent-ended="2025-01-25T20:30+09:00"></li>
+              <li data-subevent-name="Day 3 Exhibit"
+                  data-subevent-start="2025-01-26T09:00+09:00"
+                  data-subevent-close="2025-01-26T17:30+09:00"
+                  data-subevent-ended="2025-01-26T18:00+09:00"></li>
+              <li data-subevent-name="Day 3 Day Show"
+                  data-subevent-doors="2025-01-26T11:00+09:00"
+                  data-subevent-start="2025-01-26T12:00+09:00"
+                  data-subevent-ended="2025-01-26T14:30+09:00"></li>
+              <li data-subevent-name="Day 3 Night Show"
+                  data-subevent-doors="2025-01-26T17:00+09:00"
+                  data-subevent-start="2025-01-26T18:00+09:00"
+                  data-subevent-ended="2025-01-26T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="SEKAI to MIRAI vol. 10"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://twipla.jp/events/654735"
+              data-event-start="2025-01-31T19:00+09:00"
+              data-event-ended="2025-01-31T23:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="CLUB of SEKAI vol. 7"
+              data-event-loc="Tokyo Ueno"
+              data-event-link="https://twipla.jp/events/646875"
+              data-event-start="2025-02-01T14:00+09:00"
+              data-event-ended="2025-02-01T20:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="75th Sapporo Snow Festival"
+              data-event-loc="Sapporo"
+              data-event-link="https://www.snowfes.com/"
+              data-event-start="2025-02-04T00:00+09:00"
+              data-event-ended="2025-02-12T00:00+09:00"
+              class="related"></li>
+          <li data-event-name="Snow Miku 2025"
+              data-event-loc="Sapporo/Otaru"
+              data-event-link="https://snowmiku.com/2025/index.html"
+              data-event-start="2025-02-08T10:00+09:00"
+              data-event-ended="2025-02-09T17:00+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day 1 Exhibit"
+                  data-subevent-loc="Wing Bay Otaru"
+                  data-subevent-start="2025-02-08T10:00+09:00"
+                  data-subevent-close="2025-02-08T16:30+09:00"
+                  data-subevent-ended="2025-02-08T17:00+09:00"></li>
+              <li data-subevent-name="Day 2 Exhibit"
+                  data-subevent-loc="Wing Bay Otaru"
+                  data-subevent-start="2025-02-09T10:00+09:00"
+                  data-subevent-close="2025-02-09T16:30+09:00"
+                  data-subevent-ended="2025-02-09T17:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="More More Join vol. 3"
+              data-event-loc="Nagoya"
+              data-event-link="https://twipla.jp/events/647780"
+              data-event-start="2025-02-09T12:00+09:00"
+              data-event-ended="2025-02-09T18:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="Miku Symphony 2025"
+              data-event-loc="Sapporo"
+              data-event-link="#miku-sym-2025"
+              data-event-start="2025-02-11T14:00+09:00"
+              data-event-ended="2025-02-11T21:00+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-doors="2025-02-11T13:00+09:00"
+                  data-subevent-start="2025-02-11T14:00+09:00"
+                  data-subevent-ended="2025-02-11T16:30+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-doors="2025-02-11T17:30+09:00"
+                  data-subevent-start="2025-02-11T18:30+09:00"
+                  data-subevent-ended="2025-02-11T21:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Vocaloid High -Remote-"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://twipla.jp/events/661068"
+              data-event-start="2025-02-11T15:00+09:00"
+              data-event-ended="2025-02-11T21:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="VOCALOiD LiMiT"
+              data-event-loc="Osaka"
+              data-event-link="https://twipla.jp/events/649710"
+              data-event-start="2025-02-16T12:00+09:00"
+              data-event-ended="2025-02-16T19:30+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Vocaroko"
+              data-event-loc="Sendai"
+              data-event-link="https://twipla.jp/events/663802"
+              data-event-start="2025-02-16T14:30+09:00"
+              data-event-ended="2025-02-16T19:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="SekaVoca ver. 2"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://twipla.jp/events/654863"
+              data-event-start="2025-02-22T14:00+09:00"
+              data-event-ended="2025-02-22T18:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="VocaNico 2025 Winter"
+              data-event-loc="Tokyo Shibuya"
+              data-event-link="#vocanico-2025-winter"
+              data-event-start="2025-02-24T15:30+09:00"
+              data-event-ended="2025-02-24T22:00+09:00"
+              class="related"></li>
+          <li data-event-name="IKEBOKARO"
+              data-event-loc="Tokyo Ikebukuro"
+              data-event-link="https://twipla.jp/events/663598"
+              data-event-start="2025-03-02T13:00+09:00"
+              data-event-ended="2025-03-02T17:00+09:00"
+              class="unofficial-miku"></li>
+          <li data-event-name="VocaCive DJ"
+              data-event-loc="Kofu"
+              data-event-link="https://twipla.jp/events/662388"
+              data-event-start="2025-03-02T13:00+09:00"
+              data-event-ended="2025-03-02T18:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Project Vivid Journey"
+              data-event-loc="Osaka Namba"
+              data-event-link="https://twipla.jp/events/647733"
+              data-event-start="2025-03-02T14:00+09:00"
+              data-event-ended="2025-03-02T18:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="39RUSH!! Vol.8"
+              data-event-loc="Fukui"
+              data-event-link="https://twipla.jp/events/658921"
+              data-event-start="2025-03-08T13:00+09:00"
+              data-event-ended="2025-03-08T19:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Luka 16th Anni. ~Rondo Roseo~"
+              data-event-loc="Tokyo"
+              data-event-link="#luka-16th"
+              data-event-start="2025-03-15T13:00+09:00"
+              data-event-ended="2025-03-15T21:00+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-doors="2025-03-15T13:30+09:00"
+                  data-subevent-start="2025-03-15T14:30+09:00"
+                  data-subevent-ended="2025-03-15T17:00+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-doors="2025-03-15T17:30+09:00"
+                  data-subevent-start="2025-03-15T18:30+09:00"
+                  data-subevent-ended="2025-03-15T21:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="MiraMiku Vol.8"
+              data-event-loc="Osaka"
+              data-event-link="https://twipla.jp/events/662744"
+              data-event-start="2025-03-22T13:00+09:00"
+              data-event-ended="2025-03-22T19:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Fukuseka Fan Meet"
+              data-event-loc="Fukuoka"
+              data-event-link="https://twipla.jp/events/664118"
+              data-event-start="2025-03-23T11:00+09:00"
+              data-event-ended="2025-03-23T16:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="VocaTie vol.9"
+              data-event-loc="Osaka"
+              data-event-link="https://twipla.jp/events/663193"
+              data-event-start="2025-03-23T12:40+09:00"
+              data-event-ended="2025-03-23T19:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Colorful SHOW TIME! vol. 4"
+              data-event-loc="Okayama"
+              data-event-link="https://twipla.jp/events/665190"
+              data-event-start="2025-03-23T13:00+09:00"
+              data-event-ended="2025-03-23T19:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="Vocaloid High 77th session"
+              data-event-loc="Kawasaki"
+              data-event-link="https://twipla.jp/events/661384"
+              data-event-start="2025-03-23T14:00+09:00"
+              data-event-ended="2025-03-23T20:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="39 Connection!! Akiba Vol. 18"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://twipla.jp/events/660198"
+              data-event-start="2025-03-27T19:00+09:00"
+              data-event-ended="2025-03-27T23:00+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Miku Symphony 2025"
+              data-event-loc="Osaka"
+              data-event-link="#miku-sym-2025"
+              data-event-start="2025-04-12T16:00+09:00"
+              data-event-ended="2025-04-12T18:30+09:00"
+              class="official-miku">
+          </li>
+          <li data-event-name="Takada Castle Miku Live"
+              data-event-loc="Joetsu"
+              data-event-link="https://takada-mikulive.info/"
+              data-event-start="2025-04-12T18:30+09:00"
+              data-event-ended="2025-04-12T20:00+09:00"
+              class="unofficial-miku">
+          </li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Osaka"
+              data-event-start="2025-04-19T13:00+09:00"
+              data-event-ended="2025-04-19T20:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-loc="Zepp Namba"
+                  data-subevent-doors="2025-04-19T12:00+09:00"
+                  data-subevent-start="2025-04-19T13:00+09:00"
+                  data-subevent-ended="2025-04-19T15:30+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-loc="Zepp Namba"
+                  data-subevent-doors="2025-04-19T17:00+09:00"
+                  data-subevent-start="2025-04-19T18:00+09:00"
+                  data-subevent-ended="2025-04-19T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Cho-Touhou LIVE Stage 2025"
+              data-event-loc="Kawasaki CLUB CITTA"
+              data-event-link="#chokaigi-2025"
+              data-event-start="2025-04-19T15:45+09:00"
+              data-event-ended="2025-04-20T20:30+09:00"
+              class="other-event">
+            <ul>
+              <li data-subevent-name="Day 1"
+                  data-subevent-doors="2025-04-19T15:00+09:00"
+                  data-subevent-start="2025-04-19T15:45+09:00"
+                  data-subevent-ended="2025-04-19T20:30+09:00"></li>
+              <li data-subevent-name="Day 2"
+                  data-subevent-doors="2025-04-20T15:00+09:00"
+                  data-subevent-start="2025-04-20T15:45+09:00"
+                  data-subevent-ended="2025-04-20T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="VOCALOiD LiMiT Vol. 28"
+              data-event-loc="Osaka Namba"
+              data-event-link="https://twipla.jp/events/667031"
+              data-event-start="2025-04-20T12:00+09:00"
+              data-event-ended="2025-04-20T19:30+09:00"
+              class="unofficial-miku"></li>
+          <li data-event-name="Niconico Chokaigi 2025"
+              data-event-loc="Makuhari Messe Halls 1-8"
+              data-event-link="#chokaigi-2025"
+              data-event-start="2025-04-26T10:00+09:00"
+              data-event-ended="2025-04-27T17:00+09:00"
+              class="related">
+            <ul>
+              <li data-subevent-name="Day 1"
+                  data-subevent-start="2025-04-26T10:00+09:00"
+                  data-subevent-close="2025-04-26T17:30+09:00"
+                  data-subevent-ended="2025-04-26T18:00+09:00"></li>
+              <li data-subevent-name="Day 2"
+                  data-subevent-start="2025-04-27T10:00+09:00"
+                  data-subevent-close="2025-04-27T16:30+09:00"
+                  data-subevent-ended="2025-04-27T17:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Project Sekai Creator's Festa"
+              data-event-loc="Makuhari Messe Hall 3"
+              data-event-link="#chokaigi-2025"
+              data-event-start="2025-04-26T10:00+09:00"
+              data-event-ended="2025-04-27T17:00+09:00"
+              class="official-sekai">
+            <ul>
+              <li data-subevent-name="Day 1"
+                  data-subevent-start="2025-04-26T10:00+09:00"
+                  data-subevent-close="2025-04-26T17:30+09:00"
+                  data-subevent-ended="2025-04-26T18:00+09:00"></li>
+              <li data-subevent-name="Day 2"
+                  data-subevent-start="2025-04-27T10:00+09:00"
+                  data-subevent-close="2025-04-27T16:30+09:00"
+                  data-subevent-ended="2025-04-27T17:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Nikufes 2025"
+              data-event-loc="Tokyo Odaiba"
+              data-event-link="#nikufes-2025"
+              data-event-start="2025-04-26T12:00+09:00"
+              data-event-ended="2025-05-06T21:00+09:00"
+              class="other-event">
+            <ul>
+              <li data-subevent-name="Adrenaline Day"
+                  data-subevent-link="https://ticketdive.com/event/nikufesadrenaline250428"
+                  data-subevent-doors="2025-04-28T11:00+09:00"
+                  data-subevent-start="2025-04-28T11:30+09:00"
+                  data-subevent-ended="2025-04-28T20:00+09:00"></li>
+              <li data-subevent-name="Anisong & Akiba Culture Day"
+                  data-subevent-link="https://t.livepocket.jp/e/nikufes20250429"
+                  data-subevent-doors="2025-04-29T11:00+09:00"
+                  data-subevent-start="2025-04-29T12:00+09:00"
+                  data-subevent-ended="2025-04-29T20:00+09:00"></li>
+              <li data-subevent-name="Men's Idol Day"
+                  data-subevent-link="https://t.livepocket.jp/e/20250430"
+                  data-subevent-doors="2025-04-30T11:00+09:00"
+                  data-subevent-start="2025-04-30T12:00+09:00"
+                  data-subevent-ended="2025-04-30T20:00+09:00"></li>
+              <li data-subevent-name="Dear Stage Day"
+                  data-subevent-link="https://t.livepocket.jp/e/nikufes20250501dearstage"
+                  data-subevent-doors="2025-05-01T16:00+09:00"
+                  data-subevent-start="2025-05-01T17:00+09:00"
+                  data-subevent-ended="2025-05-01T20:00+09:00"></li>
+              <li data-subevent-name="Voice Actor's Day"
+                  data-subevent-link="https://t.livepocket.jp/e/nikufes20250503voiceactor"
+                  data-subevent-doors="2025-05-03T12:00+09:00"
+                  data-subevent-start="2025-05-03T13:00+09:00"
+                  data-subevent-ended="2025-05-03T19:00+09:00"></li>
+              <li data-subevent-name="Anisong & Akiba Culture Day 2"
+                  data-subevent-link="https://t.livepocket.jp/e/nikufes20250504"
+                  data-subevent-doors="2025-05-04T11:00+09:00"
+                  data-subevent-start="2025-05-04T12:00+09:00"
+                  data-subevent-ended="2025-05-04T20:00+09:00"></li>
+              <li data-subevent-name="Dance to MEAT you!"
+                  data-subevent-link="https://t.livepocket.jp/e/20250505"
+                  data-subevent-doors="2025-05-05T11:00+09:00"
+                  data-subevent-start="2025-05-05T12:00+09:00"
+                  data-subevent-ended="2025-05-05T20:00+09:00"></li>
+              <li data-subevent-name="NIKU ROCK FES"
+                  data-subevent-link="https://t.livepocket.jp/e/nikufes20250506nikurockfes"
+                  data-subevent-doors="2025-05-06T11:00+09:00"
+                  data-subevent-start="2025-05-06T12:00+09:00"
+                  data-subevent-ended="2025-05-06T20:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Nagoya"
+              data-event-start="2025-04-26T13:00+09:00"
+              data-event-ended="2025-04-26T20:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-loc="Zepp Nagoya"
+                  data-subevent-doors="2025-04-26T12:00+09:00"
+                  data-subevent-start="2025-04-26T13:00+09:00"
+                  data-subevent-ended="2025-04-26T15:30+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-loc="Zepp Nagoya"
+                  data-subevent-doors="2025-04-26T17:00+09:00"
+                  data-subevent-start="2025-04-26T18:00+09:00"
+                  data-subevent-ended="2025-04-26T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Legendary VOCALOID Anthem's vol.3"
+              data-event-loc="Oita"
+              data-event-link="https://twipla.jp/events/663411"
+              data-event-start="2025-04-26T13:30+09:00"
+              data-event-ended="2025-04-26T19:30+09:00"
+              class="unofficial"></li>
+          <li data-event-name="Virtual Rhythm vol.2"
+              data-event-loc="Morioka"
+              data-event-link="https://twipla.jp/events/666028"
+              data-event-start="2025-04-26T18:00+09:00"
+              data-event-ended="2025-04-27T00:00+09:00"
+              data-event-notes="end time not noted"
+              class="unofficial-miku"></li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Fukuoka"
+              data-event-start="2025-04-29T13:00+09:00"
+              data-event-ended="2025-04-29T20:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-loc="Zepp Fukuoka"
+                  data-subevent-doors="2025-04-29T12:00+09:00"
+                  data-subevent-start="2025-04-29T13:00+09:00"
+                  data-subevent-ended="2025-04-29T15:30+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-loc="Zepp Fukuoka"
+                  data-subevent-doors="2025-04-29T17:00+09:00"
+                  data-subevent-start="2025-04-29T18:00+09:00"
+                  data-subevent-ended="2025-04-29T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Tokyo"
+              data-event-start="2025-05-02T13:00+09:00"
+              data-event-ended="2025-05-03T20:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day 1 Day Show"
+                  data-subevent-loc="Zepp Haneda"
+                  data-subevent-doors="2025-05-02T12:00+09:00"
+                  data-subevent-start="2025-05-02T13:00+09:00"
+                  data-subevent-ended="2025-05-02T15:30+09:00"></li>
+              <li data-subevent-name="Day 1 Night Show"
+                  data-subevent-loc="Zepp Haneda"
+                  data-subevent-doors="2025-05-02T17:00+09:00"
+                  data-subevent-start="2025-05-02T18:00+09:00"
+                  data-subevent-ended="2025-05-02T20:30+09:00"></li>
+              <li data-subevent-name="Day 2 Day Show"
+                  data-subevent-loc="Zepp Haneda"
+                  data-subevent-doors="2025-05-03T12:00+09:00"
+                  data-subevent-start="2025-05-03T13:00+09:00"
+                  data-subevent-ended="2025-05-03T15:30+09:00"></li>
+              <li data-subevent-name="Day 2 Night Show"
+                  data-subevent-loc="Zepp Haneda"
+                  data-subevent-doors="2025-05-03T17:00+09:00"
+                  data-subevent-start="2025-05-03T18:00+09:00"
+                  data-subevent-ended="2025-05-03T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="PinocchioP Asia Tour - Osaka"
+              data-event-loc="Osaka"
+              data-event-link="#pinocchiop-2025"
+              data-event-start="2025-05-03T18:00+09:00"
+              data-event-ended="2025-05-03T20:30+09:00"
+              class="related"></li>
+          <li data-event-name="VOCALOID FIELD"
+              data-event-loc="Kawasaki"
+              data-event-link="https://twipla.jp/events/657004"
+              data-event-start="2025-05-04T14:00+09:00"
+              data-event-ended="2025-05-04T20:00+09:00"
+              class="unofficial-miku"></li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Takamatsu"
+              data-event-start="2025-05-06T13:00+09:00"
+              data-event-ended="2025-05-06T15:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-loc="Rexxam Hall"
+                  data-subevent-doors="2025-05-06T12:00+09:00"
+                  data-subevent-start="2025-05-06T13:00+09:00"
+                  data-subevent-ended="2025-05-06T15:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Sekai To Mirai"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://twipla.jp/events/671628"
+              data-event-start="2025-05-07T19:00+09:00"
+              data-event-ended="2025-05-07T23:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="PinocchioP Asia Tour - Tokyo"
+              data-event-loc="Tokyo Haneda"
+              data-event-link="#pinocchiop-2025"
+              data-event-start="2025-05-08T18:00+09:00"
+              data-event-ended="2025-05-08T20:30+09:00"
+              class="related"></li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Sapporo"
+              data-event-start="2025-05-17T17:00+09:00"
+              data-event-ended="2025-05-17T20:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Night Show"
+                  data-subevent-loc="Zepp Sapporo"
+                  data-subevent-doors="2025-05-17T17:00+09:00"
+                  data-subevent-start="2025-05-17T18:00+09:00"
+                  data-subevent-ended="2025-05-17T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Miku Japan Tour 2025 Blooming"
+              data-event-link="#blooming-2025"
+              data-event-loc="Okinawa"
+              data-event-start="2025-05-31T13:00+09:00"
+              data-event-ended="2025-05-31T20:00+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-loc="Naha Cultural Arts Theater"
+                  data-subevent-doors="2025-05-31T12:00+09:00"
+                  data-subevent-start="2025-05-31T13:00+09:00"
+                  data-subevent-ended="2025-05-31T15:30+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-loc="Naha Cultural Arts Theater"
+                  data-subevent-doors="2025-05-31T16:30+09:00"
+                  data-subevent-start="2025-05-31T17:30+09:00"
+                  data-subevent-ended="2025-05-31T20:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Love Festa LoveLive!"
+              data-event-loc="Osaka"
+              data-event-link="https://twipla.jp/events/666362"
+              data-event-start="2025-06-13T23:00+09:00"
+              data-event-ended="2025-06-14T05:00+09:00"
+              data-event-notes="End time TBA"
+              class="unofficial-other"></li>
+          <li data-event-name="CLUB of SEKAI vol. 8"
+              data-event-loc="TBA, likely Tokyo"
+              data-event-tba-est="2025-06-14T00:00+09:00"
+              data-event-tba="Date TBA (likely day before symphony)"
+              class="unofficial-sekai"></li>
+          <li data-event-name="Sekai Symphony 2025"
+              data-event-loc="Yokohama"
+              data-event-link="#seka-sym-2025"
+              data-event-start="2025-06-15T14:30+09:00"
+              data-event-ended="2025-06-15T21:00+09:00"
+              class="official-sekai">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-doors="2025-06-15T13:30+09:00"
+                  data-subevent-start="2025-06-15T14:30+09:00"
+                  data-subevent-ended="2025-06-15T17:00+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-doors="2025-06-15T17:30+09:00"
+                  data-subevent-start="2025-06-15T18:30+09:00"
+                  data-subevent-ended="2025-06-15T21:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Love Live Sunshine Aqours Finale"
+              data-event-loc="Saitama"
+              data-event-link="#aquors-finale"
+              data-event-start="2025-06-21T17:00+09:00"
+              data-event-ended="2025-06-22T20:30+09:00"
+              class="other-event">
+            <ul>
+              <li data-subevent-name="Day 1"
+                  data-subevent-doors="2025-06-21T15:00+09:00"
+                  data-subevent-start="2025-06-21T17:00+09:00"
+                  data-subevent-ended="2025-06-21T20:30+09:00"></li>
+              <li data-subevent-name="Day 2"
+                  data-subevent-doors="2025-06-22T15:00+09:00"
+                  data-subevent-start="2025-06-22T17:00+09:00"
+                  data-subevent-ended="2025-06-22T20:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Step 0 to Offkai"
+              data-event-loc="Akihabara MOGRA"
+              data-event-start="2025-06-23T19:00+09:00"
+              data-event-ended="2025-06-23T23:00+09:00"
+              data-event-notes="tickets required"
+              class="unofficial-other">
+          </li>
+          <li data-event-name="Miku Symphony 2025"
+              data-event-loc="Tokyo"
+              data-event-link="#miku-sym-2025"
+              data-event-start="2025-07-06T19:00+09:00"
+              data-event-ended="2025-07-06T21:30+09:00"
+              class="official-miku">
+          </li>
+          <li data-event-name="SekaVoca ver. 3"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://twipla.jp/events/668209"
+              data-event-start="2025-07-12T10:00+09:00"
+              data-event-ended="2025-07-12T18:00+09:00"
+              class="unofficial-sekai"></li>
+          <li data-event-name="Miku's Mirai Music Party 2025"
+              data-event-loc="Tokyo Akihabara"
+              data-event-link="https://x.com/mimimi_party/status/1902661667361833256"
+              data-event-tba-est="2025-07-13T00:00+09:00"
+              data-event-tba="Exact time TBA (date is 7/13)"
+              class="unofficial-miku"></li>
+          <li data-event-name="More More Join vol. 4"
+              data-event-loc="Nagoya"
+              data-event-start="2025-07-13T12:00+09:00"
+              data-event-ended="2025-07-13T19:00+09:00"
+              data-event-notes="end time tba"
+              class="unofficial-sekai"></li>
+          <li data-event-name="Magical Mirai 2025"
+              data-event-loc="Sendai"
+              data-event-link="#magimira-2025"
+              data-event-start="2025-08-01T10:00+09:00"
+              data-event-ended="2025-08-03T18:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day 1 Exhibit"
+                  data-subevent-start="2025-08-01T10:00+09:00"
+                  data-subevent-close="2025-08-01T19:00+09:00"
+                  data-subevent-ended="2025-08-01T19:30+09:00"></li>
+              <li data-subevent-name="Day 1 Night Show"
+                  data-subevent-doors="2025-08-01T16:00+09:00"
+                  data-subevent-start="2025-08-01T17:00+09:00"
+                  data-subevent-ended="2025-08-01T19:00+09:00"></li>
+              <li data-subevent-name="Day 2 Exhibit"
+                  data-subevent-start="2025-08-02T10:00+09:00"
+                  data-subevent-close="2025-08-02T19:00+09:00"
+                  data-subevent-ended="2025-08-02T19:30+09:00"></li>
+              <li data-subevent-name="Day 2 Day Show"
+                  data-subevent-doors="2025-08-02T11:00+09:00"
+                  data-subevent-start="2025-08-02T12:00+09:00"
+                  data-subevent-ended="2025-08-02T14:00+09:00"></li>
+              <li data-subevent-name="Day 2 Night Show"
+                  data-subevent-doors="2025-08-02T15:30+09:00"
+                  data-subevent-start="2025-08-02T16:30+09:00"
+                  data-subevent-ended="2025-08-02T18:30+09:00"></li>
+              <li data-subevent-name="Day 3 Exhibit"
+                  data-subevent-start="2025-08-03T10:00+09:00"
+                  data-subevent-close="2025-08-03T18:00+09:00"
+                  data-subevent-ended="2025-08-03T18:30+09:00"></li>
+              <li data-subevent-name="Day 3 Day Show"
+                  data-subevent-doors="2025-08-03T11:00+09:00"
+                  data-subevent-start="2025-08-03T12:00+09:00"
+                  data-subevent-ended="2025-08-03T14:00+09:00"></li>
+              <li data-subevent-name="Day 3 Night Show"
+                  data-subevent-doors="2025-08-03T15:30+09:00"
+                  data-subevent-start="2025-08-03T16:30+09:00"
+                  data-subevent-ended="2025-08-03T18:30+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Magical Mirai 2025"
+              data-event-loc="Osaka"
+              data-event-link="#magimira-2025"
+              data-event-start="2025-08-09T09:00+09:00"
+              data-event-ended="2025-08-11T18:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day 1 Exhibit"
+                  data-subevent-start="2025-08-09T09:00+09:00"
+                  data-subevent-close="2025-08-09T17:30+09:00"
+                  data-subevent-ended="2025-08-09T18:00+09:00"></li>
+              <li data-subevent-name="Day 1 Day Show"
+                  data-subevent-doors="2025-08-09T11:00+09:00"
+                  data-subevent-start="2025-08-09T12:00+09:00"
+                  data-subevent-ended="2025-08-09T14:00+09:00"></li>
+              <li data-subevent-name="Day 1 Night Show"
+                  data-subevent-doors="2025-08-09T15:30+09:00"
+                  data-subevent-start="2025-08-09T16:30+09:00"
+                  data-subevent-ended="2025-08-09T18:30+09:00"></li>
+              <li data-subevent-name="Day 2 Exhibit"
+                  data-subevent-start="2025-08-10T09:00+09:00"
+                  data-subevent-close="2025-08-10T17:30+09:00"
+                  data-subevent-ended="2025-08-10T18:00+09:00"></li>
+              <li data-subevent-name="Day 2 Day Show"
+                  data-subevent-doors="2025-08-10T11:00+09:00"
+                  data-subevent-start="2025-08-10T12:00+09:00"
+                  data-subevent-ended="2025-08-10T14:00+09:00"></li>
+              <li data-subevent-name="Day 2 Night Show"
+                  data-subevent-doors="2025-08-10T15:30+09:00"
+                  data-subevent-start="2025-08-10T16:30+09:00"
+                  data-subevent-ended="2025-08-10T18:30+09:00"></li>
+              <li data-subevent-name="Day 3 Exhibit"
+                  data-subevent-start="2025-08-11T09:00+09:00"
+                  data-subevent-close="2025-08-11T17:30+09:00"
+                  data-subevent-ended="2025-08-11T18:00+09:00"></li>
+              <li data-subevent-name="Day 3 Day Show"
+                  data-subevent-doors="2025-08-11T11:00+09:00"
+                  data-subevent-start="2025-08-11T12:00+09:00"
+                  data-subevent-ended="2025-08-11T14:00+09:00"></li>
+              <li data-subevent-name="Day 3 Night Show"
+                  data-subevent-doors="2025-08-11T15:30+09:00"
+                  data-subevent-start="2025-08-11T16:30+09:00"
+                  data-subevent-ended="2025-08-11T18:30+09:00"></li>
+            </ul>
+          <li data-event-name="Magical Sanka 2025"
+              data-event-loc="Osaka"
+              data-event-link="https://twipla.jp/events/672599"
+              data-event-start="2025-08-09T19:30+09:00"
+              data-event-ended="2025-08-09T21:30+09:00"
+              class="unofficial-miku"></li>
+          <li data-event-name="Magical Mirai 2025"
+              data-event-loc="Tokyo"
+              data-event-link="#magimira-2025"
+              data-event-start="2025-08-29T09:00+09:00"
+              data-event-ended="2025-08-31T18:30+09:00"
+              class="official-miku">
+            <ul>
+              <li data-subevent-name="Day 1 Exhibit"
+                  data-subevent-start="2025-08-29T09:00+09:00"
+                  data-subevent-close="2025-08-29T17:30+09:00"
+                  data-subevent-ended="2025-08-29T18:00+09:00"></li>
+              <li data-subevent-name="Day 1 Day Show"
+                  data-subevent-doors="2025-08-29T11:00+09:00"
+                  data-subevent-start="2025-08-29T12:00+09:00"
+                  data-subevent-ended="2025-08-29T14:00+09:00"></li>
+              <li data-subevent-name="Day 1 Night Show"
+                  data-subevent-doors="2025-08-29T15:30+09:00"
+                  data-subevent-start="2025-08-29T16:30+09:00"
+                  data-subevent-ended="2025-08-29T18:30+09:00"></li>
+              <li data-subevent-name="Day 2 Exhibit"
+                  data-subevent-start="2025-08-30T09:00+09:00"
+                  data-subevent-close="2025-08-30T17:30+09:00"
+                  data-subevent-ended="2025-08-30T18:00+09:00"></li>
+              <li data-subevent-name="Day 2 Day Show"
+                  data-subevent-doors="2025-08-30T11:00+09:00"
+                  data-subevent-start="2025-08-30T12:00+09:00"
+                  data-subevent-ended="2025-08-30T14:00+09:00"></li>
+              <li data-subevent-name="Day 2 Night Show"
+                  data-subevent-doors="2025-08-30T15:30+09:00"
+                  data-subevent-start="2025-08-30T16:30+09:00"
+                  data-subevent-ended="2025-08-30T18:30+09:00"></li>
+              <li data-subevent-name="Day 3 Exhibit"
+                  data-subevent-start="2025-08-31T09:00+09:00"
+                  data-subevent-close="2025-08-31T17:30+09:00"
+                  data-subevent-ended="2025-08-31T18:00+09:00"></li>
+              <li data-subevent-name="Day 3 Day Show"
+                  data-subevent-doors="2025-08-31T11:00+09:00"
+                  data-subevent-start="2025-08-31T12:00+09:00"
+                  data-subevent-ended="2025-08-31T14:00+09:00"></li>
+              <li data-subevent-name="Day 3 Night Show"
+                  data-subevent-doors="2025-08-31T15:30+09:00"
+                  data-subevent-start="2025-08-31T16:30+09:00"
+                  data-subevent-ended="2025-08-31T18:30+09:00"></li>
+            </ul>
+          <li data-event-name="FUKU_SEKA vol. 2"
+              data-event-loc="Fukuoka"
+              data-event-start="2025-09-07T12:00+09:00"
+              data-event-ended="2025-09-07T18:00+09:00"
+              data-event-notes="exact time TBA"
+              class="unofficial-sekai"></li>
+          <li data-event-name="5th Anniversary Kanshasai"
+              data-event-loc="Location TBA"
+              data-event-tba-est="2025-09-27T00:00+09:00"
+              data-event-tba="Dates TBA (Late Sep.)"
+              class="official-sekai"></li>
+          <li data-event-name="Miku Symphony 2025"
+              data-event-loc="Yokohama"
+              data-event-link="#miku-sym-2025"
+              data-event-start="2025-10-04T12:00+09:00"
+              data-event-ended="2025-10-04T18:00+09:00"
+              data-event-notes="exact time TBA"
+              class="official-miku">
+          </li>
+          <li data-event-name="Sekai Symphony 2025"
+              data-event-loc="Osaka"
+              data-event-link="#seka-sym-2025"
+              data-event-start="2025-11-30T14:30+09:00"
+              data-event-ended="2025-11-30T21:00+09:00"
+              class="official-sekai">
+            <ul>
+              <li data-subevent-name="Day Show"
+                  data-subevent-doors="2025-11-30T13:30+09:00"
+                  data-subevent-start="2025-11-30T14:30+09:00"
+                  data-subevent-ended="2025-11-30T17:00+09:00"></li>
+              <li data-subevent-name="Night Show"
+                  data-subevent-doors="2025-11-30T17:30+09:00"
+                  data-subevent-start="2025-11-30T18:30+09:00"
+                  data-subevent-ended="2025-11-30T21:00+09:00"></li>
+            </ul>
+          </li>
+          <li data-event-name="Miku Symphony 2025"
+              data-event-loc="Kobe"
+              data-event-link="#miku-sym-2025"
+              data-event-start="2025-12-27T12:00+09:00"
+              data-event-ended="2025-12-27T18:00+09:00"
+              data-event-notes="exact time TBA"
+              class="official-miku">
+          </li>
+        </ul>
+
+        <h2>2026</h2>
+
+        <ul>
+          <li data-event-name="76th Sapporo Snow Festival"
+              data-event-loc="Sapporo"
+              data-event-start="2026-02-04T00:00+09:00"
+              data-event-ended="2026-02-12T00:00+09:00"
+              class="related">
+          </li>
+          <li data-event-name="Snow Miku 2026"
+              data-event-loc="Sapporo/Otaru"
+              data-event-start="2026-02-07T10:00+09:00"
+              data-event-ended="2026-02-08T17:00+09:00"
+              data-event-notes="details TBA likely on this weekend"
+              class="official-miku">
+          </li>
+        </ul>
+      </div>
+
+      <h1 id="ticket-info">Ticket/Lottery Info</h1>
+
+      <div id="ticket-info-container">
+        <h2 id="miku-sym-2025" class="official-miku">Miku Symphony 2025</h2>
+
+        <ul>
+          <li><a href="https://sp.wmg.jp/mikusymphony/" target="_blank">Website</a></li>
+          <li><a href="https://x.com/mikusymphony" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Sapporo General Sales (e+/L-Tike/Pia)"
+                  data-lotto-link="https://sp.wmg.jp/mikusymphony/"
+                  data-lotto-start="2024-12-29T20:00+09:00"
+                  data-lotto-ended="2025-02-11T00:00+09:00"></li>
+              <li data-lotto-name="Osaka Tokyo Advance Lottery (Pia)"
+                  data-lotto-start="2024-12-29T20:00+09:00"
+                  data-lotto-ended="2025-01-08T00:00+09:00"
+                  data-lotto-resul="2025-01-11T18:00+09:00"></li>
+              <li data-lotto-name="Osaka Tokyo General Sales (Pia)"
+                  data-lotto-start="2025-02-28T15:00+09:00"
+                  data-lotto-ended="2025-07-06T00:00+09:00"></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Goods</h4>
+            <ul class="goods-info">
+              <li data-lotto-name="Osaka Pre-order"
+                  data-lotto-link="https://axelstore.jp/mikusymphony/item_list.php?artist_id=143&head_id=3204"
+                  data-lotto-start="2025-03-17T18:00+09:00"
+                  data-lotto-ended="2025-03-24T00:00+09:00"></li>
+              <li data-lotto-name="Osaka Venue Pick-up"
+                  data-lotto-link="https://acqua-store.jp/pages/mikusymphony2025"
+                  data-lotto-start="2025-03-17T20:00+09:00"
+                  data-lotto-ended="2025-04-04T23:00+09:00"></li>
+              <li data-lotto-name="Osaka Goods Sale"
+                  data-lotto-start="2025-04-12T12:00+09:00"
+                  data-lotto-ended="2025-04-12T16:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="vocanico-2025-winter" class="related">VocaNico 2025 Winter</h2>
+
+        <ul>
+          <li><a href="https://vocaloid-collection.jp/" target="_blank">Website</a></li>
+          <li><a href="https://x.com/the_voca_colle" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (e+)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="General Sales"
+                  data-lotto-link="https://eplus.jp/vocaloid/"
+                  data-lotto-start="2025-02-06T19:00+09:00"
+                  data-lotto-ended="2025-02-24T16:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="luka-16th" class="official-miku">Luka 16th Anniversary ~Rondo Roseo~</h2>
+
+        <ul>
+          <li><a href="https://blog.piapro.net/2024/12/e2412131.html" target="_blank">Website</a></li>
+          <li>
+            <h4>Tickets (e+)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Advance Round 1 Lottery"
+                  data-lotto-link="https://eplus.jp/luka16th/"
+                  data-lotto-start="2024-12-27T18:00+09:00"
+                  data-lotto-ended="2025-01-13T00:00+09:00"
+                  data-lotto-resul="2025-01-17T13:00+09:00"></li>
+              <li data-lotto-name="Advance Round 2 Lottery"
+                  data-lotto-link="https://eplus.jp/luka16th/"
+                  data-lotto-start="2025-01-17T18:00+09:00"
+                  data-lotto-ended="2025-02-03T00:00+09:00"
+                  data-lotto-resul="2025-02-07T13:00+09:00"
+                  data-lotto-money="2025-02-10T18:00+09:00"></li>
+              <li data-lotto-name="General Sales"
+                  data-lotto-link="https://eplus.jp/luka16th/"
+                  data-lotto-start="2025-02-14T12:00+09:00"
+                  data-lotto-ended="2025-03-15T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="blooming-2025" class="official-miku">Miku Japan Tour 2025 Blooming</h2>
+
+        <ul>
+          <li><a href="https://piapro.net/japantour2025/index.html" target="_blank">Website (JP)</a></li>
+          <li><a href="https://piapro.net/japantour2025/index_en.html" target="_blank">Website (EN)</a></li>
+          <li><a href="https://x.com/cfm_miku" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Lawson Ticket)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Official Advance Lottery (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2024-11-29T12:00+09:00"
+                  data-lotto-ended="2024-12-17T00:00+09:00"
+                  data-lotto-resul="2024-12-21T15:00+09:00"
+                  data-lotto-money="2024-12-25T23:00+09:00"></li>
+              <li data-lotto-name="Official Advance Lottery (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2024-11-29T12:00+09:00"
+                  data-lotto-ended="2024-12-17T00:00+09:00"
+                  data-lotto-resul="2024-12-21T15:00+09:00"></li>
+              <li data-lotto-name="Pre-request Advance Lottery (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2024-12-27T12:00+09:00"
+                  data-lotto-ended="2025-01-21T00:00+09:00"
+                  data-lotto-resul="2025-01-25T15:00+09:00"
+                  data-lotto-money="2025-01-28T23:00+09:00"></li>
+              <li data-lotto-name="Pre-request Advance Lottery (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2024-12-27T12:00+09:00"
+                  data-lotto-ended="2025-01-21T00:00+09:00"
+                  data-lotto-resul="2025-01-25T15:00+09:00"></li>
+              <li data-lotto-name="Pre-request Advance 2nd Lottery (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-start="2025-01-31T12:00+09:00"
+                  data-lotto-ended="2025-02-18T00:00+09:00"
+                  data-lotto-resul="2025-02-22T15:00+09:00"
+                  data-lotto-money="2025-02-26T23:00+09:00"></li>
+              <li data-lotto-name="Pre-request Advance 2nd Lottery (Foreign)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2025-01-31T12:00+09:00"
+                  data-lotto-ended="2025-02-18T00:00+09:00"
+                  data-lotto-resul="2025-02-22T15:00+09:00"></li>
+              <li data-lotto-name="General Sales (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket.html"
+                  data-lotto-sold="yes"
+                  data-lotto-start="2025-03-22T10:00+09:00"
+                  data-lotto-ended="2025-05-31T00:00+09:00"></li>
+              <li data-lotto-name="General Sales (Foreign)"
+                  data-lotto-sold="yes"
+                  data-lotto-link="https://piapro.net/japantour2025/ticket_en.html"
+                  data-lotto-start="2025-03-22T12:00+09:00"
+                  data-lotto-ended="2025-05-31T00:00+09:00"></li>
+              <li data-lotto-name="Osaka Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-04-05T10:00+09:00"
+                  data-lotto-ended="2025-04-08T00:00+09:00"
+                  data-lotto-resul="2025-04-10T15:00+09:00"></li>
+              <li data-lotto-name="Nagoya Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-04-12T10:00+09:00"
+                  data-lotto-ended="2025-04-15T00:00+09:00"
+                  data-lotto-resul="2025-04-17T15:00+09:00"></li>
+              <li data-lotto-name="Fukuoka Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-04-15T10:00+09:00"
+                  data-lotto-ended="2025-04-18T00:00+09:00"
+                  data-lotto-resul="2025-04-22T15:00+09:00"></li>
+              <li data-lotto-name="Tokyo Day 1 Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-04-18T10:00+09:00"
+                  data-lotto-ended="2025-04-21T00:00+09:00"
+                  data-lotto-resul="2025-04-23T15:00+09:00"></li>
+              <li data-lotto-name="Tokyo Day 2 Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-04-19T10:00+09:00"
+                  data-lotto-ended="2025-04-22T00:00+09:00"
+                  data-lotto-resul="2025-04-24T15:00+09:00"></li>
+              <li data-lotto-name="Kagawa Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-04-22T10:00+09:00"
+                  data-lotto-ended="2025-04-25T00:00+09:00"
+                  data-lotto-resul="2025-04-29T15:00+09:00"></li>
+              <li data-lotto-name="Sapporo Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-05-03T10:00+09:00"
+                  data-lotto-ended="2025-05-06T00:00+09:00"
+                  data-lotto-resul="2025-05-09T15:00+09:00"></li>
+              <li data-lotto-name="Okinawa Resale Lotto"
+                  data-lotto-link="https://l-tike.com/hatsunemiku_2025tour_blooming_resale/"
+                  data-lotto-start="2025-05-17T10:00+09:00"
+                  data-lotto-ended="2025-05-20T00:00+09:00"
+                  data-lotto-resul="2025-05-22T15:00+09:00"></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Goods</h4>
+            <ul class="goods-info">
+              <li data-lotto-name="Pre-order (Domestic)"
+                  data-lotto-link="https://piapro.net/japantour2025/goods.html"
+                  data-lotto-start="2025-02-03T18:00+09:00"
+                  data-lotto-ended="2025-02-15T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="chokaigi-2025" class="related">Niconico Chokaigi 2025</h2>
+
+        <ul>
+          <li><a href="https://chokaigi.jp/2025/about/" target="_blank">Website</a></li>
+          <li><a href="https://x.com/chokaigi_PR" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Subevents (Chokaigi Ticket Required)</h4>
+            <li class="official-sekai">
+              <a href="https://pjsekai.sega.jp/creatorsfesta2025/index.html" target="_blank">Project SEKAI Creators Festa</a>
+            </li>
+            <li class="unofficial-miku">
+              <a href="https://chokaigi.jp/2025/plan/vocanico/" target="_blank">Cho-VocaNico 2025</a>
+            </li>
+            <li class="unofficial-miku">
+              <a href="https://chokaigi.jp/2025/plan/vocaloidmaster/" target="_blank">The VOC@LOiD Cho-M@STER 59</a>
+            </li>
+            <li class="other-event">
+              <a href="https://chokaigi.jp/2025/plan/zun/" target="_blank">Cho! ZUN Beer & Hiroyuki Beer</a>
+            </li>
+          </li>
+          <li>
+            <h4>Subevents (Separate Ticket Required)</h4>
+            <li class="other-event">
+              <a href="https://hakurei-sukeikai.com/LIVE2025/" target="_blank">Cho-Touhou LIVE Stage 2025</a>
+            </li>
+          </li>
+          <li>
+            <h4>Tickets</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Advance Sales (e+)"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T19:00+09:00"
+                  data-lotto-ended="2025-03-06T19:00+09:00"></li>
+              <li data-lotto-name="General Sales"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-03-06T19:00+09:00"
+                  data-lotto-ended="2025-04-27T16:00+09:00"></li>
+              <li data-lotto-name="VIP Accommodation Plans"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T07:00+09:00"
+                  data-lotto-ended="2025-04-11T07:00+09:00"></li>
+              <li data-lotto-name="Accommodation Plans"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T07:00+09:00"
+                  data-lotto-ended="2025-04-12T07:00+09:00"></li>
+              <li data-lotto-name="Overnight Bus Plans"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/"
+                  data-lotto-start="2025-02-06T07:00+09:00"
+                  data-lotto-ended="2025-04-21T00:00+09:00"></li>
+              <li data-lotto-name="Cosplay Ticket Advance Sales (e+)"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/cosplay"
+                  data-lotto-start="2025-02-06T19:00+09:00"
+                  data-lotto-ended="2025-03-06T19:00+09:00"></li>
+              <li data-lotto-name="Cho-Touhou LIVE Stage 2025 (e+)"
+                  data-lotto-link="https://eplus.jp/cthlive2025/"
+                  data-lotto-start="2025-02-15T10:00+09:00"
+                  data-lotto-ended="2025-04-18T18:00+09:00"></li>
+              <li data-lotto-name="Cosplay Ticket General Sales"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/cosplay"
+                  data-lotto-start="2025-03-06T19:00+09:00"
+                  data-lotto-ended="2025-04-27T13:00+09:00"></li>
+              <li data-lotto-name="Cho Prison Festival Member Lottery"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/warewareda"
+                  data-lotto-start="2025-03-07T10:00+09:00"
+                  data-lotto-ended="2025-03-16T19:00+09:00"
+                  data-lotto-resul="2025-03-22T13:00+09:00"></li>
+              <li data-lotto-name="Cho-MAZI Yoru Bar Member Lottery"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/yabacity"
+                  data-lotto-start="2025-03-07T10:00+09:00"
+                  data-lotto-ended="2025-03-16T19:00+09:00"
+                  data-lotto-resul="2025-03-22T13:00+09:00"></li>
+              <li data-lotto-name="Cho-Yaba City 2025 Kanpai Set"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/yabacity-goods"
+                  data-lotto-start="2025-03-22T13:00+09:00"
+                  data-lotto-ended="2025-03-30T21:00+09:00"></li>
+              <li data-lotto-name="VTuber Talk Festival Member Sales"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/shabefes"
+                  data-lotto-start="2025-03-21T20:00+09:00"
+                  data-lotto-ended="2025-04-01T00:00+09:00"></li>
+              <li data-lotto-name="VTuber Talk Festival General Sales"
+                  data-lotto-link="https://chokaigi.jp/2025/ticket/shabefes"
+                  data-lotto-start="2025-04-01T20:00+09:00"
+                  data-lotto-ended="2025-04-26T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="nikufes-2025" class="other-event">Nikufes 2025</h2>
+
+        <ul>
+          <li><a href="https://www.nikufes.jp/" target="_blank">Website</a></li>
+          <li><a href="https://x.com/nikufes" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Livepocket)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Anisong Day 1 Paid Area Round 1"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250429"
+                  data-lotto-start="2025-01-29T19:00+09:00"
+                  data-lotto-ended="2025-02-06T00:00+09:00"
+                  data-lotto-resul="2025-02-06T18:00+09:00"></li>
+              <li data-lotto-name="Anisong Day 1 Paid Area Round 2"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250429"
+                  data-lotto-start="2025-02-09T22:00+09:00"
+                  data-lotto-ended="2025-02-18T00:00+09:00"
+                  data-lotto-resul="2025-02-18T18:00+09:00"></li>
+              <li data-lotto-name="Anisong Day 1 Paid Area General Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250429"
+                  data-lotto-start="2025-03-04T19:00+09:00"
+                  data-lotto-ended="2025-04-29T19:00+09:00"></li>
+              <li data-lotto-name="Anisong Day 2 Paid Area General Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250504"
+                  data-lotto-start="2025-03-01T18:55+09:00"
+                  data-lotto-ended="2025-05-04T19:00+09:00"></li>
+              <li data-lotto-name="Dear Stage Paid Area Advance Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250501dearstage"
+                  data-lotto-start="2025-01-31T19:00+09:00"
+                  data-lotto-ended="2025-05-01T19:00+09:00"></li>
+              <li data-lotto-name="Voice Actor's Day Paid Area Round 1"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250503voiceactor"
+                  data-lotto-start="2025-02-01T19:00+09:00"
+                  data-lotto-ended="2025-02-09T00:00+09:00"
+                  data-lotto-resul="2025-02-09T18:00+09:00"></li>
+              <li data-lotto-name="Voice Actor's Day Paid Area Round 2"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250503voiceactor"
+                  data-lotto-start="2025-02-10T19:00+09:00"
+                  data-lotto-ended="2025-02-18T00:00+09:00"
+                  data-lotto-resul="2025-02-18T18:00+09:00"></li>
+              <li data-lotto-name="Voice Actor's Day Paid Area General Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250503voiceactor"
+                  data-lotto-start="2025-03-01T20:00+09:00"
+                  data-lotto-ended="2025-05-03T18:00+09:00"></li>
+              <li data-lotto-name="NIKU ROCK FES Paid Area Round 1"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250506nikurockfes"
+                  data-lotto-start="2025-02-09T19:00+09:00"
+                  data-lotto-ended="2025-02-17T00:00+09:00"
+                  data-lotto-resul="2025-02-17T18:00+09:00"></li>
+              <li data-lotto-name="NIKU ROCK FES Paid Area General Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/nikufes20250506nikurockfes"
+                  data-lotto-start="2025-02-04T05:10+09:00"
+                  data-lotto-ended="2025-05-06T10:00+09:00"></li>
+              <li data-lotto-name="Nice to MEAT you! Paid Area Round 1"
+                  data-lotto-link="https://t.livepocket.jp/e/20250505"
+                  data-lotto-start="2025-02-28T21:00+09:00"
+                  data-lotto-ended="2025-03-10T19:00+09:00"
+                  data-lotto-resul="2025-03-12T18:00+09:00"></li>
+              <li data-lotto-name="Nice to MEAT you! Paid Area General Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/20250505"
+                  data-lotto-start="2025-03-23T12:00+09:00"
+                  data-lotto-ended="2025-05-05T11:00+09:00"></li>
+              <li data-lotto-name="Men's Idol Day Paid Area General Sales"
+                  data-lotto-link="https://t.livepocket.jp/e/20250430"
+                  data-lotto-start="2025-03-02T20:00+09:00"
+                  data-lotto-ended="2025-04-30T19:00+09:00"></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Tickets (Ticket Dive)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Adrenaline Day Paid Area Advance Round"
+                  data-lotto-link="https://ticketdive.com/event/nikufesadrenaline250428"
+                  data-lotto-start="2025-02-27T18:00+09:00"
+                  data-lotto-ended="2025-03-12T00:00+09:00"
+                  data-lotto-resul="2025-03-12T18:00+09:00"></li>
+              <li data-lotto-name="Adrenaline Day Paid Area General Sales"
+                  data-lotto-link="https://ticketdive.com/event/nikufesadrenaline250428"
+                  data-lotto-start="2025-03-18T18:00+09:00"
+                  data-lotto-ended="2025-04-28T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="seka-sym-2025" class="official-sekai">Sekai Symphony 2025</h2>
+
+        <ul>
+          <li><a href="https://pjsekai.sega.jp/sekaisymphony/index.html" target="_blank">Website</a></li>
+          <li><a href="https://x.com/sekaisymphony" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Pia)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Pass Lottery"
+                  data-lotto-start="2025-01-21T21:00+09:00"
+                  data-lotto-ended="2025-01-28T00:00+09:00"
+                  data-lotto-resul="2025-01-31T18:00+09:00"></li>
+              <li data-lotto-name="Advance Lottery"
+                  data-lotto-link="https://w.pia.jp/t/sekaisymphony2025/"
+                  data-lotto-start="2025-01-31T12:00+09:00"
+                  data-lotto-ended="2025-02-10T00:00+09:00"
+                  data-lotto-resul="2025-02-13T18:00+09:00"></li>
+              <li data-lotto-name="Ticket Play Guide Advance Lottery"
+                  data-lotto-link="https://w.pia.jp/t/sekaisymphony2025/"
+                  data-lotto-start="2025-02-11T12:00+09:00"
+                  data-lotto-ended="2025-02-24T00:00+09:00"
+                  data-lotto-resul="2025-02-27T18:00+09:00"></li>
+              <li data-lotto-name="Ticket Play Guide Advance Lottery 2"
+                  data-lotto-link="https://x.com/sekaisymphony/status/1894583165554946127"
+                  data-lotto-start="2025-02-26T12:00+09:00"
+                  data-lotto-ended="2025-03-05T00:00+09:00"
+                  data-lotto-resul="2025-03-07T15:00+09:00"></li>
+              <li data-lotto-name="General Sales"
+                  data-lotto-link="https://x.com/sekaisymphony/status/1900388922246488332"
+                  data-lotto-start="2025-03-15T10:00+09:00"
+                  data-lotto-ended="2025-11-30T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="aquors-finale" class="other-event">Love Live Sunshine Aquors Finale</h2>
+
+        <ul>
+          <li><a href="https://www.lovelive-anime.jp/uranohoshi/live/live_detail.php?p=Aqours_Finale" target="_blank">Website</a></li>
+          <li><a href="https://x.com/LoveLive_staff" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (e+)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="CD Lottery"
+                  data-lotto-start="2024-12-28T12:00+09:00"
+                  data-lotto-ended="2025-02-03T00:00+09:00"
+                  data-lotto-resul="2025-02-08T13:00+09:00"
+                  data-lotto-money="2025-02-11T21:00+09:00"></li>
+              <li data-lotto-name="Aqours CLUB Lottery"
+                  data-lotto-start="2025-02-22T12:00+09:00"
+                  data-lotto-ended="2025-03-24T18:00+09:00"
+                  data-lotto-resul="2025-03-29T13:00+09:00"
+                  data-lotto-money="2025-04-01T21:00+09:00"></li>
+              <li data-lotto-name="Foreigner Accommodation Pack"
+                  data-lotto-link="https://www.knt.co.jp/ec/2025/aqours_finale"
+                  data-lotto-start="2025-03-19T19:00+09:00"
+                  data-lotto-ended="2025-04-02T00:00+09:00"
+                  data-lotto-resul="2025-04-04T12:00+09:00"
+                  data-lotto-money="2025-04-09T12:00+09:00"></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Goods</h4>
+            <ul class="goods-info">
+              <li data-lotto-name="Goods Pre-order Round 1"
+                  data-lotto-link="https://lovelive.fannect.jp/collections/ll-34-01"
+                  data-lotto-start="2025-02-07T19:00+09:00"
+                  data-lotto-ended="2025-02-27T00:00+09:00"></li>
+              <li data-lotto-name="Goods Pre-order Round 2"
+                  data-lotto-link="https://lovelive.fannect.jp/collections/ll-34-02"
+                  data-lotto-start="2025-03-28T18:00+09:00"
+                  data-lotto-ended="2025-04-15T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="pinocchiop-2025" class="related">PinocchioP Asia Tour</h2>
+
+        <ul>
+          <li><a href="https://pinocchiop.com/news/1040" target="_blank">Website</a></li>
+          <li>
+            <h4>Tickets</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="General Sales"
+                  data-lotto-link="https://pinocchiop.com/news/1040"
+                  data-lotto-start="2025-04-07T18:00+09:00"
+                  data-lotto-ended="2025-05-08T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2 id="magimira-2025" class="official-miku">Magical Mirai 2025</h2>
+
+        <ul>
+          <li><a href="https://magicalmirai.com/2025/" target="_blank">Website (JP)</a></li>
+          <li><a href="https://magicalmirai.com/2025/index_en.html" target="_blank">Website (EN)</a></li>
+          <li><a href="https://x.com/magicalmirai" target="_blank">Twitter</a></li>
+          <li>
+            <h4>Tickets (Pia)</h4>
+            <ul class="ticket-info">
+              <li data-lotto-name="Official Advance Lottery (Domestic)"
+                  data-lotto-link="https://pia.jp/v/magicalmirai25-1/"
+                  data-lotto-start="2025-03-14T12:00+09:00"
+                  data-lotto-ended="2025-04-01T00:00+09:00"
+                  data-lotto-resul="2025-04-05T18:00+09:00"
+                  data-lotto-money="2025-04-17T00:00+09:00"></li>
+              <li data-lotto-name="Resale Tickets (Domestic)"
+                  data-lotto-start="2025-04-16T18:00+09:00"
+                  data-lotto-ended="2025-08-31T00:00+09:00"></li>
+              <li data-lotto-name="Official Advance Lottery 2 (Domestic)"
+                  data-lotto-link="https://pia.jp/v/magicalmirai25-2/"
+                  data-lotto-start="2025-04-18T12:00+09:00"
+                  data-lotto-ended="2025-05-13T00:00+09:00"></li>
+              <li data-lotto-name="Official Advance Lottery (Foreign)"
+                  data-lotto-link="https://pia.jp/v/magicalmirai25-1en/"
+                  data-lotto-start="2025-04-18T12:00+09:00"
+                  data-lotto-ended="2025-05-13T00:00+09:00"></li>
+              <li data-lotto-name="Official Advance Lottery 2 (Foreign)"
+                  data-lotto-link="https://pia.jp/v/magicalmirai25-2en/"
+                  data-lotto-start="2025-05-16T12:00+09:00"
+                  data-lotto-ended="2025-06-03T00:00+09:00"></li>
+              <li data-lotto-name="General Sales (Domestic)"
+                  data-lotto-start="2025-07-12T10:00+09:00"
+                  data-lotto-ended="2025-08-31T00:00+09:00"></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </body>
+
+    <script>
+      GenUniqueIds();
+      RefreshTimers();
+      AddMonthBorders();
+      setInterval(RefreshTimers, 5 * 1000);
+    </script>
+
+    <div style="margin-bottom: 10em;"></div>
+</html>
