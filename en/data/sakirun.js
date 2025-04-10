@@ -438,6 +438,39 @@ events = {
         "start": 1742680800.0,
         "end": 1743220800.0,
         "len": 150
+    },
+    "126": {
+        "event_id": "126",
+        "event_type": "cheerful_carnival",
+        "name": "Rise as One!",
+        "orderedName": "126 Rise as One!",
+        "nick": "dog",
+        "orderedNick": "126 dog",
+        "start": 1743372000.0,
+        "end": 1744171200.0,
+        "len": 222
+    },
+    "127": {
+        "event_id": "127",
+        "event_type": "marathon",
+        "name": "Knowing the Unseen",
+        "orderedName": "127 Knowing the Unseen",
+        "nick": "unseen",
+        "orderedNick": "127 unseen",
+        "start": 1744322400.0,
+        "end": 1745035200.0,
+        "len": 198
+    },
+    "128": {
+        "event_id": "128",
+        "event_type": "marathon",
+        "name": "Parallel Harmonies",
+        "orderedName": "128 Parallel Harmonies",
+        "nick": "harmonies",
+        "orderedNick": "128 harmonies",
+        "start": 1745186400.0,
+        "end": 1745899200.0,
+        "len": 198
     }
 };data = [
     [
