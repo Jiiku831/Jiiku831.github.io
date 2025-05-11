@@ -425,7 +425,7 @@ function UpdateLottoTimers() {
       over = false;
     }
 
-    if (e.dataset.lottoSold) {
+    if (e.dataset.lottoSold && end > cur) {
       state = "lotto-ended";
       stateText = "Sold Out";
       over = true;
