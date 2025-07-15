@@ -1,4 +1,5 @@
 var __idCounter = 0;
+const tokyoTz = "Asia/Tokyo";
 
 function UpdateFilter(e) {
   cls = e.dataset.cls;
@@ -105,14 +106,6 @@ function FormatLongLocalTime(d, opts) {
   return d.toLocaleString([], options);
 }
 
-function FormatLongTime(d, options) {
-  let newOpts = {
-    ...options,
-    timeZone: "Asia/Tokyo",
-  }
-  return FormatLongLocalTime(d, newOpts);
-}
-
 function FormatDuration(dur, neg) {
   let suffix = neg ? " ago" : "";
   let minutes = dur / 60000;
@@ -168,9 +161,10 @@ function FormatTimer(label, d, cur, opts, cls, formatOpts) {
   }
 
   const prefix = opts.hideDuration ? label : " at";
-  const jst = FormatLongTime(d, {
+  const jst = FormatLongLocalTime(d, {
     ...formatOpts,
-    formatTz: opts.includeLocal ? "short" : ""
+    formatTz: (opts.includeLocal  || opts.timeZone != tokyoTz) ? "short" : "",
+    timeZone: opts.timeZone,
   });
   if (opts.includeLocal) {
     const local = FormatLongLocalTime(d, {
@@ -225,9 +219,10 @@ function MakeTimeTable(times) {
       let row = document.createElement("tr");
       table.appendChild(row);
       row.appendChild(MakeHeaderCell(t[0]));
-      row.appendChild(MakeCell(FormatLongTime(d, {
+      row.appendChild(MakeCell(FormatLongLocalTime(d, {
         formatTz: "long",
         includeYear: true,
+        timeZone: t[2],
       })));
       row.appendChild(MakeCell(FormatLongLocalTime(d, {
         formatTz: "long",
@@ -277,7 +272,8 @@ function UpdateEventTimers() {
         ongoing = true;
       }
       eventDetails.appendChild(FormatTimer(text, d, cur, {
-        includeLocal: false
+        includeLocal: false,
+        timeZone: e.dataset.timeZone ?? tokyoTz,
       }, "event-timer"));
       eventDates = FormatShortDateDuration(start, end);
     }
@@ -290,8 +286,8 @@ function UpdateEventTimers() {
         NewSpanWithHover(
           eventDates,
           MakeTimeTable([
-            ["Start", e.dataset.eventStart],
-            ["End", e.dataset.eventEnded],
+            ["Start", e.dataset.eventStart, e.dataset.timeZone ?? tokyoTz],
+            ["End", e.dataset.eventEnded, e.dataset.timeZone ?? tokyoTz],
           ]),
           ongoing ? "ongoing-event-dates" : (over ? "past-event-dates" : "event-dates"),
           checked),
@@ -352,10 +348,10 @@ function UpdateSubeventTimers() {
     e.appendChild(
         NewSpanWithHover(eventDates,
           MakeTimeTable([
-            ["Doors", e.dataset.subeventDoors],
-            ["Start", e.dataset.subeventStart],
-            ["Last Entry", e.dataset.subeventClose],
-            ["End", e.dataset.subeventEnded],
+            ["Doors", e.dataset.subeventDoors, e.dataset.timeZone ?? tokyoTz],
+            ["Start", e.dataset.subeventStart, e.dataset.timeZone ?? tokyoTz],
+            ["Last Entry", e.dataset.subeventClose, e.dataset.timeZone ?? tokyoTz],
+            ["End", e.dataset.subeventEnded, e.dataset.timeZone ?? tokyoTz],
           ]),
           ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates"),
           checked));
@@ -366,6 +362,7 @@ function UpdateSubeventTimers() {
       let options = {
           includeLocal: false,
           hideDuration: !includeDur,
+          timeZone: e.dataset.timeZone ?? tokyoTz,
       };
       let fmtOptions = {
         hideDate: true,
@@ -464,17 +461,18 @@ function UpdateLottoTimers() {
       NewSpanWithHover(
           stateText,
           MakeTimeTable([
-            ["Start", e.dataset.lottoStart],
-            ["Close", e.dataset.lottoEnded],
-            ["Results", e.dataset.lottoResul],
-            ["Payment", e.dataset.lottoMoney],
+            ["Start", e.dataset.lottoStart, e.dataset.timeZone ?? tokyoTz],
+            ["Close", e.dataset.lottoEnded, e.dataset.timeZone ?? tokyoTz],
+            ["Results", e.dataset.lottoResul, e.dataset.timeZone ?? tokyoTz],
+            ["Payment", e.dataset.lottoMoney, e.dataset.timeZone ?? tokyoTz],
           ]), state, checked));
     e.appendChild(
       !over && e.dataset.lottoLink
         ? NewLink(e.dataset.lottoName, e.dataset.lottoLink, "lotto-name")
         : NewSpan(e.dataset.lottoName, "lotto-name"));
     e.appendChild(FormatTimer(text, d, cur, {
-      includeLocal: true
+      includeLocal: true,
+      timeZone: e.dataset.timeZone ?? tokyoTz,
     }, "lotto-timer"));
     if (over) {
       e.classList.add("lotto-over");
