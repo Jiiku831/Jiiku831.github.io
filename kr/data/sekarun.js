@@ -1,15 +1,4 @@
 events = {
-    "100": {
-        "event_id": "100",
-        "event_type": "marathon",
-        "name": "\uac00\uba74 \uc4f4 \ub098\uc5d0\uac8c \uc791\ubcc4 \uc778\uc0ac\ub97c",
-        "orderedName": "100 \uac00\uba74 \uc4f4 \ub098\uc5d0\uac8c \uc791\ubcc4 \uc778\uc0ac\ub97c",
-        "nick": "persona",
-        "orderedNick": "100 persona",
-        "start": 1720677600.0,
-        "end": 1721390400.0,
-        "len": 198
-    },
     "101": {
         "event_id": "101",
         "event_type": "marathon",
