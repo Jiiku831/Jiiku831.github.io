@@ -757,5 +757,16 @@ events = {
         "start": 1756296000.0,
         "end": 1756468800.0,
         "len": 48
+    },
+    "141": {
+        "event_id": "141",
+        "event_type": "marathon",
+        "name": "Wonderhorror\uff5e\uff01\uff1f\u7684\u8a66\u81bd\u5927\u6703\uff01",
+        "orderedName": "141 Wonderhorror\uff5e\uff01\uff1f\u7684\u8a66\u81bd\u5927\u6703\uff01",
+        "nick": "wondahora",
+        "orderedNick": "141 wondahora",
+        "start": 1756623600.0,
+        "end": 1757336400.0,
+        "len": 198
     }
 };data = [];currentEvent = "137";currentChapter = "137-1";
