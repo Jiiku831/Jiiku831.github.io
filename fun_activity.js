@@ -340,6 +340,9 @@ function UpdateSubeventTimers() {
       const end = new Date(e.dataset.subeventEnded);
       if (end > cur) {
         over = false;
+        if (start <= cur) {
+          ongoing = true;
+        }
       }
       subeventTimes.push({label: "End", durLabel: "Ends in", ts: end});
       eventDates = FormatShortDateDuration(start, end);
