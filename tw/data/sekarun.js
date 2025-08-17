@@ -1,15 +1,4 @@
 events = {
-    "103": {
-        "event_id": "103",
-        "event_type": "marathon",
-        "name": "On Your Feet",
-        "orderedName": "103 On Your Feet",
-        "nick": "feet",
-        "orderedNick": "103 feet",
-        "start": 1723273200.0,
-        "end": 1724072400.0,
-        "len": 222
-    },
     "104": {
         "event_id": "104",
         "event_type": "marathon",
