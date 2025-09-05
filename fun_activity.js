@@ -190,13 +190,14 @@ function MakeCell(content) {
   return cell;
 }
 
-function FormatEventTitle(name, link, loc) {
+function FormatEventTitle(name, link, loc, locLink) {
   const node = document.createElement("span");
   node.classList.add("event-title");
   node.appendChild(
     link ? NewLink(name, link, "event-name") : NewSpan(name, "event-name"));
   if (loc) {
-    node.appendChild(NewSpan(loc, "event-loc"));
+    node.appendChild(
+      locLink ? NewLink(loc, locLink, "event-loc") : NewSpan(loc, "event-loc"));
   }
   return node;
 }
@@ -246,7 +247,8 @@ function UpdateEventTimers() {
     const eventNode = NewSpan("", "event-node");
     e.insertBefore(eventNode, e.firstChild);
     eventNode.appendChild(
-      FormatEventTitle(e.dataset.eventName, e.dataset.eventLink, e.dataset.eventLoc));
+      FormatEventTitle(
+        e.dataset.eventName, e.dataset.eventLink, e.dataset.eventLoc, e.dataset.eventLocLink));
     let eventDetails = NewSpan("", "event-details");
     eventNode.appendChild(eventDetails);
 
@@ -359,7 +361,9 @@ function UpdateSubeventTimers() {
           ongoing ? "ongoing-subevent-dates" : (over ? "past-subevent-dates" : "subevent-dates"),
           checked));
     e.appendChild(
-      FormatEventTitle(e.dataset.subeventName, e.dataset.subeventLink, e.dataset.subeventLoc));
+      FormatEventTitle(
+        e.dataset.subeventName, e.dataset.subeventLink, e.dataset.subeventLoc,
+        e.dataset.subeventLocLink));
     for (let i = 0; i < subeventTimes.length; ++i) {
       const includeDur = subeventTimes[i].ts > cur && (i == 0 || subeventTimes[i-1].ts <= cur);
       let options = {
