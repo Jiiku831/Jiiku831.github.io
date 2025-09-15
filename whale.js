@@ -1,5 +1,5 @@
-const currentPerm = 246;
-const currentFes = 20;
+const currentPerm = 351;
+const currentFes = 37;
 
 const RollType = {
     Normal: 0,
