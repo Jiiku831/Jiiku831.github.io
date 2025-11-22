@@ -1,0 +1,109 @@
+#load {
+  height: 3ex;
+  margin-bottom: 1ex;
+}
+
+#map {
+  min-height: 800px;
+  height: calc(100% - 4ex);
+}
+
+#credits {
+  margin-top: 1ex;
+}
+
+.leaflet-tooltip.tooltip {
+  background-color: transparent;
+  border: transparent;
+  box-shadow: none;
+}
+
+th:first-child {
+  text-align: left;
+}
+
+.summary-table-subgroup-header {
+  padding-left: 2em;
+}
+
+table, tr, th, td {
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 0 0.5ex;
+  text-align: right;
+}
+
+th, h2 {
+  --score-weight: 30%;
+}
+
+td {
+  --score-weight: 10%;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+[data-score="5"] {
+  --score-color: magenta;
+}
+[data-score="4"] {
+  --score-color: red;
+}
+[data-score="3"] {
+  --score-color: yellow;
+}
+[data-score="2"] {
+  --score-color: lime;
+}
+[data-score="1"] {
+  --score-color: deepskyblue;
+}
+[data-score="0"] {
+  --score-color: #ddd;
+}
+
+.score-color {
+  background-color: color-mix(in srgb, var(--score-color) var(--score-weight), transparent);
+}
+
+.local-list {
+  display: flex;
+  gap: 1ex;
+  flex-wrap: wrap;
+}
+
+.local-item {
+  border: solid thin;
+  border-color: color-mix(in srgb, var(--score-color) 70%, black);
+  background-color: color-mix(in srgb, var(--score-color) 10%, transparent);
+  padding: 0.1ex 0.5ex;
+  white-space: nowrap;
+  border-radius: 5px;
+}
+
+h2 {
+  padding: 0.5ex;
+}
+
+details[open] {
+  padding-bottom: 1em;
+}
+
+/*
+#summary {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow: auto;
+  z-index: 999;
+  width: 50%;
+  min-width: 30em;
+  background: white;
+  padding: 1ex;
+}
+*/

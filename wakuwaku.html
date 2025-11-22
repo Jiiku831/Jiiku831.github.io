@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script async
+                src="https://www.googletagmanager.com/gtag/js?id=G-5ZKGR285DS">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag("js", new Date());
+            gtag("config", "G-5ZKGR285DS");
+        </script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+              integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+              crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+                crossorigin=""></script>
+        <link rel="stylesheet" href="wakuwaku.css">
+        <title>:wakuwaku:</title>
+    </head>
+    <body>
+      <div id="load">Viewing Jiiku's data.
+        <input id="load-button" type="button"
+               value="Load Saved Data" onclick="LoadData()" disabled>
+      </div>
+      <div id="map"></div>
+      <div id="summary">
+      </div>
+      <div id="credits">
+          Data from OSM (via osm-boundaries) licensed under ODbL and Natural
+          Earth (under public domain).
+      </div>
+      <script src="wakuwaku.js?v=1" type="text/javascript"></script>
+    </body>
+</html>

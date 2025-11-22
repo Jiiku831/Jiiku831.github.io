@@ -1,0 +1,587 @@
+body {
+  width: fit-content;
+}
+
+li,
+.lotto-timer {
+  white-space: nowrap;
+}
+
+.event-list > ul > li > .event-details {
+  margin-right: 2em;
+}
+
+.event-list {
+  width: fit-content;
+}
+
+.event-list > ul {
+  width: 100%;
+}
+
+.event-details {
+  margin-right: 2em;
+}
+
+.month-change:not(:first-child) {
+  border-top: thin solid #ccc;
+  padding-top: 2px;
+  margin-top: 2px;
+}
+
+.month-change-label {
+  float: right;
+  color: #aaa;
+}
+
+.lotto-name,
+.event-name,
+.subevent-name {
+  font-weight: bold;
+}
+
+.event-notes::before,
+.event-name + .event-loc::before,
+.subevent-name + .subevent-loc::before{
+  content: " (";
+}
+
+.event-notes::after,
+.event-loc::after,
+.subevent-loc::after {
+  content: ") ";
+}
+
+.lotto-over,
+.event-over,
+.event-over span:not(.month-change-label),
+.subevent-over,
+.subevent-over span,
+.ts-over {
+  color: #555;
+  text-decoration: line-through;
+}
+
+.event-dates {
+  background: #6cf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  position: relative;
+  font-weight: bold;
+  top: -2px;
+}
+
+.ongoing-event-dates {
+  background: #fc9cbf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.past-event-dates {
+  background: #bbb;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.subevent-dates {
+  background: #b4e5fd;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.ongoing-subevent-dates {
+  background: #fed7e5;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.past-subevent-dates {
+  background: #d5d5d5;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.official-sekai::before {
+  content: "Official Sekai";
+  background: #fc9cbf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.official-miku::before {
+  content: "Official Miku";
+  background: #70dbcf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.related::before {
+  content: "Related Event";
+  background: #facd6b;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.unofficial-sekai::before {
+  content: "Sekai Fan Event";
+  background: #fed7e5;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.unofficial-miku::before {
+  content: "Miku Fan Event";
+  background: #c2f0ea;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.unofficial::before {
+  content: "Fan Event";
+  background: #b4e5fd;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.unofficial-other::before {
+  content: "Other Fan Event";
+  background: #ddd;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -2px;
+}
+
+.other-event::before {
+  content: "Other Event";
+  background: #bbb;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 7em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+h2.official-sekai::before,
+h2.official-miku::before,
+h2.related::before,
+h2.unofficial-sekai::before,
+h2.unofficial-miku::before,
+h2.unofficial-other::before,
+h2.unofficial::before,
+h2.other-event::before {
+  font-size: 0.8em;
+}
+
+ul {
+  list-style-type: none;
+}
+
+:not(li) > ul {
+  padding-left: 0;
+}
+
+ul ul:not(.ticket-info):not(.goods-info) {
+  padding-left: 6.5em;
+}
+
+.ticket-info, .goods-info {
+  padding-left: 0;
+}
+
+.lotto-payment {
+  background: #fc9cbf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.lotto-upcoming {
+  background: #6cf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.lotto-ended {
+  background: #ccc;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.lotto-open {
+  background: #facd6b;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.lotto-closed {
+  background: #70dbcf;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+}
+
+.past-event-dates,
+.ongoing-event-dates,
+.event-dates,
+.past-subevent-dates,
+.ongoing-subevent-dates,
+.subevent-dates,
+.lotto-upcoming,
+.lotto-open,
+.lotto-closed,
+.lotto-payment,
+.lotto-ended {
+  cursor: pointer;
+}
+
+.past-event-dates:hover,
+.ongoing-event-dates:hover,
+.event-dates:hover,
+.past-subevent-dates:hover,
+.ongoing-subevent-dates:hover,
+.subevent-dates:hover,
+.lotto-upcoming:hover,
+.lotto-open:hover,
+.lotto-closed:hover,
+.lotto-payment:hover,
+.lotto-ended:hover {
+  outline: thin solid #064571;
+}
+
+:checked ~ .past-event-dates,
+:checked ~ .ongoing-event-dates,
+:checked ~ .event-dates,
+:checked ~ .past-subevent-dates,
+:checked ~ .ongoing-subevent-dates,
+:checked ~ .subevent-dates,
+:checked ~ .lotto-upcoming,
+:checked ~ .lotto-open,
+:checked ~ .lotto-closed,
+:checked ~ .lotto-payment,
+:checked ~ .lotto-ended {
+  outline: thin solid #f9397f;
+}
+
+h4 {
+  margin: 1ex 0;
+}
+
+h1 + h2.official-sekai,
+h1 + h2.official-miku,
+h1 + h2.related,
+h1 + h2.unofficial-sekai,
+h1 + h2.unofficial-miku,
+h1 + h2.unofficial-other,
+h1 + h2.unofficial,
+h1 + h2.other-event {
+  margin-top: 0;
+}
+
+h2.official-sekai,
+h2.official-miku,
+h2.related,
+h2.unofficial-sekai,
+h2.unofficial-miku,
+h2.unofficial-other,
+h2.unofficial,
+h2.other-event {
+  margin-top: 2em;
+}
+
+h2 {
+  margin-bottom: 1ex;
+}
+
+h2 + ul {
+  margin-top: 1ex;
+}
+
+.hover {
+  display: none;
+}
+
+.hover-container {
+  position: relative;
+  display: inline-block;
+}
+
+input.hover-checkbox:checked ~ .hover,
+.hover-trigger:hover ~ .hover {
+  display: block;
+  position: absolute;
+  z-index: 999999;
+}
+
+.time-table th,
+.time-table td {
+  border: thin solid #064571;
+  white-space: nowrap;
+  padding: 0.5ex;
+  font-size: small;
+}
+
+.time-table th {
+  background: #6cf;
+}
+
+.time-table table tr:first-child th,
+.time-table table tr:first-child td {
+  border-top: 0;
+}
+.time-table table tr:last-child th,
+.time-table table tr:last-child td {
+  border-bottom: 0;
+}
+.time-table table tr td:first-child,
+.time-table table tr th:first-child {
+  border-left: 0;
+}
+.time-table table tr td:last-child,
+.time-table table tr th:last-child {
+  border-right: 0;
+}
+
+.time-table table {
+  border-collapse: collapse;
+}
+
+.time-table {
+  background: #cdeefe;
+  border-radius: 5px;
+  border: thin solid #064571;
+}
+
+.duration-crit,
+.duration-close {
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 0 5px;
+  position: relative;
+}
+
+.duration-crit,
+.duration-close,
+.event-title + .subevent-timer .duration-crit,
+.event-title + .subevent-timer .duration-close {
+  left: -5px;
+  margin-right: -5px;
+}
+
+.subevent-timer .lotto-timer-duration {
+  left: 0;
+  margin-right: 0;
+}
+
+.duration-crit {
+  background-color: #fed7e5;
+}
+
+.duration-close {
+  background-color: #fce6b5;
+}
+
+.event-title {
+  display: inline-block;
+  padding-right: 1ex;
+  min-width: 25em;
+}
+
+.event-list > ul > li:nth-child(even),
+.ticket-info li:nth-child(even),
+.goods-info li:nth-child(even) {
+  background: #f4f4f4;
+}
+
+.lotto-name {
+  display: inline-block;
+  min-width: 20em;
+}
+
+.ongoing-lotto-chip::before {
+  content: "Tickets";
+  background: #fed7e5;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+  margin-left: 2em;
+}
+
+.ongoing-goods-chip::before {
+  content: "Goods";
+  background: #fce6b5;
+  border-radius: 5px;
+  font-size: small;
+  padding: 0 5px;
+  margin-right: 0.25em;
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+  margin-left: 2em;
+}
