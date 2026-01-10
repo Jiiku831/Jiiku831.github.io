@@ -1,28 +1,329 @@
+function RemapCountries(data) {
+  const countries = {
+    "AD": -9407,
+    "AT": -16239,
+    "KH": -49898,
+    "DK": -50046,
+    "CZ": -51684,
+    "BE": -52411,
+    "AL": -53292,
+    "BY": -59065,
+    "BR": -59470,
+    "AU": -80500,
+    "EC": -108089,
+    "CO": -120027,
+    "US": -148838,
+    "CL": -167454,
+    "BT": -184629,
+    "BD": -184640,
+    "BG": -186382,
+    "DZ": -192756,
+    "CI": -192779,
+    "BF": -192783,
+    "BJ": -192784,
+    "CF": -192790,
+    "GQ": -192791,
+    "CG": -192794,
+    "CD": -192795,
+    "DJ": -192801,
+    "CM": -192830,
+    "AO": -195267,
+    "BI": -195269,
+    "HR": -214885,
+    "BO": -252645,
+    "CN": -270056,
+    "VG": -285454,
+    "AR": -286393,
+    "CR": -287667,
+    "BZ": -287827,
+    "AF": -303427,
+    "TL": -305142,
+    "CY": -307787,
+    "DM": -307823,
+    "DO": -307828,
+    "CU": -307833,
+    "AM": -364066,
+    "AZ": -364110,
+    "BH": -378734,
+    "JP": -382313,
+    "CV": -535774,
+    "KM": -535790,
+    "AG": -536900,
+    "BS": -547469,
+    "BB": -547511,
+    "CA": -1428125,
+    "EG": -1473947,
+    "SV": -1520612,
+    "BW": -1889339,
+    "BM": -1993208,
+    "IO": -1993867,
+    "BN": -2103120,
+    "AI": -2177161,
+    "CK": -2184233,
+    "KY": -2185366,
+    "TD": -2361304,
+    "BA": -2528142,
+    "HU": -21335,
+    "GE": -28699,
+    "LA": -49903,
+    "DE": -51477,
+    "FO": -52939,
+    "FI": -54224,
+    "IM": -62269,
+    "IE": -62273,
+    "LV": -72594,
+    "LT": -72596,
+    "EE": -79510,
+    "SZ": -88210,
+    "KG": -178009,
+    "JO": -184818,
+    "LB": -184843,
+    "GR": -192307,
+    "LY": -192758,
+    "GW": -192776,
+    "GN": -192778,
+    "LR": -192780,
+    "GH": -192781,
+    "GA": -192793,
+    "KE": -192798,
+    "ET": -192800,
+    "MW": -195290,
+    "KZ": -214665,
+    "GG": -270009,
+    "GY": -287083,
+    "HN": -287670,
+    "ER": -296961,
+    "IS": -299133,
+    "IN": -304716,
+    "ID": -304751,
+    "IQ": -304934,
+    "IR": -304938,
+    "KW": -305099,
+    "HT": -307829,
+    "IT": -365331,
+    "JE": -367988,
+    "MG": -447325,
+    "GD": -550727,
+    "JM": -555017,
+    "KI": -571178,
+    "FJ": -571747,
+    "FM": -571802,
+    "LI": -1155955,
+    "LS": -2093234,
+    "MY": -2108121,
+    "LU": -2171347,
+    "GL": -2184073,
+    "FK": -2185374,
+    "FR": -2202162,
+    "GI": -1278736,
+    "IL": -1473946,
+    "GT": -1521463,
+    "XK": -2088990,
+    "PW": -571805,
+    "NU": -1558556,
+    "SS": -1656678,
+    "RS": -1741311,
+    "SB": -1857436,
+    "WS": -1872673,
+    "NE": -192786,
+    "NG": -192787,
+    "SO": -192799,
+    "NA": -195266,
+    "MZ": -195273,
+    "SI": -218657,
+    "PY": -287077,
+    "NI": -287666,
+    "PA": -287668,
+    "PE": -288247,
+    "PT": -295480,
+    "QA": -305095,
+    "OM": -305138,
+    "PK": -307573,
+    "SA": -307584,
+    "KR": -307756,
+    "PG": -307866,
+    "MT": -365307,
+    "PH": -443174,
+    "MU": -535828,
+    "ST": -535880,
+    "SC": -536765,
+    "MV": -536773,
+    "SG": -536780,
+    "KN": -536899,
+    "MS": -537257,
+    "SK": -14296,
+    "PL": -49715,
+    "MM": -50371,
+    "MK": -53293,
+    "ME": -53296,
+    "SM": -54624,
+    "MD": -58974,
+    "RU": -60189,
+    "ZA": -87565,
+    "RO": -90689,
+    "MX": -114686,
+    "MN": -161033,
+    "RW": -171496,
+    "NP": -184633,
+    "KP": -192734,
+    "MR": -192763,
+    "SN": -192775,
+    "SL": -192777,
+    "ML": -192785,
+    "VC": -550725,
+    "LC": -550728,
+    "NZ": -556706,
+    "MH": -571771,
+    "NR": -571804,
+    "MC": -1124039,
+    "SH": -1964272,
+    "GS": -1983628,
+    "PN": -2185375,
+    "NL": -2323309,
+    "NO": -2978650,
+    "MA": -3630439,
+    "VA": -36989,
+    "VN": -49915,
+    "CH": -51701,
+    "SE": -52822,
+    "UA": -60199,
+    "GB": -62149,
+    "TR": -174737,
+    "SY": -184840,
+    "TN": -192757,
+    "GM": -192774,
+    "TG": -192782,
+    "SD": -192789,
+    "UG": -192796,
+    "TZ": -195270,
+    "ZM": -195271,
+    "ZW": -195272,
+    "UZ": -196240,
+    "TJ": -214626,
+    "TM": -223026,
+    "VE": -272644,
+    "UY": -287072,
+    "SR": -287082,
+    "YE": -305092,
+    "AE": -307763,
+    "TW": -449220,
+    "CN-TW": -449220,
+    "LK": -536807,
+    "TC": -547479,
+    "TT": -555717,
+    "ES": -1311341,
+    "TH": -2067731,
+    "VU": -2177246,
+    "TV": -2177266,
+    "TK": -2186600,
+    "TO": -2186665
+  };
+  const new_visited = {};
+  for (key of Object.keys(data)) {
+    if (!key) continue;
+    let new_key = key;
+    if (countries[key]) {
+      new_key = countries[key];
+      console.log(`Remapped ${key} -> ${new_key}`);
+    }
+    new_visited[new_key] = data[key];
+  }
+  return new_visited;
+}
+
 async function LoadWakuWaku() {
   try {
     const response = await fetch("wakuwaku.json");
-    return response.json();
+    return RemapCountries(await response.json());
   } catch (e) {
     console.error(e);
     return null;
   }
 }
 
-async function LoadGeoJson(dsts, path) {
-  const response = await fetch(path);
-  if (!response.ok) {
-    console.error(`HTTP error! status: ${response.status}`);
+function StyleVisited(local_id, base_style) {
+  return {
+    ...base_style,
+    fillColor: fill_colors[visited[local_id] ?? 0],
+    fill: true,
+  };
+}
+
+function StyleOutline(properties, zoom, dims) {
+  const invisible = {
+    weight: 0,
+    opacity: 0,
+  };
+  const outline_style = {
+    color: "black",
+    weight: zoom >= tileLayerMinZoom ? 2 : 1.5,
+  };
+  if (zoom >= 9) {
+    return outline_style;
   }
-  try {
-    const ds = new DecompressionStream("gzip");
-    const decompressed_stream = response.body.pipeThrough(ds);
-    const json_data = await new Response(decompressed_stream).json();
-    const markers = new Array();
-    json_data.features.forEach((f) => {
-      const local_id = GetLocalId(f);
-      const group = GetGroup(f);
-      const subgroup = GetSubGroup(f);
-      names[local_id] = f.properties.name;
+  return invisible;
+}
+
+function StyleFeature(properties, zoom, dims) {
+  const invisible = {
+    weight: 0,
+    opacity: 0,
+  };
+  const base_style = {
+    color: "grey",
+    weight: 1,
+  };
+  const local_id = GetLocalId(properties);
+  if (zoom < 5) {
+    if (properties.admin_level > 2) return invisible;
+    return StyleVisited(local_id, base_style);
+  } else if (zoom < 9) {
+    if (properties.admin_level < 4 &&
+        (local_id == aliases["JP"] || local_id == aliases["US"]))
+      return invisible;
+    if (properties.admin_level > 4) return invisible;
+    return StyleVisited(local_id, base_style);
+  } else {
+    if (properties.admin_level < 4 &&
+        (local_id == aliases["JP"] || local_id == aliases["US"]))
+      return invisible;
+    if (properties.admin_level < 7 &&
+        properties.parents_administrative &&
+        properties.parents_administrative.includes(aliases["JP"]))
+      return invisible;
+    return StyleVisited(local_id, {
+      ...base_style,
+      color: zoom >= tileLayerMinZoom ? "black" : "grey",
+    });
+  }
+}
+
+function CreateMarker(properties, name) {
+  const center = GetLabelPos(properties);
+  if (!center) {
+    return null;
+  }
+  // console.log(`Add marker for ${name} at ${center}`);
+  const marker = L.tooltip(center, {
+    content: name,
+    permanent: true,
+    className: "tooltip",
+    direction: "center",
+  });
+  marker.properties = properties;
+  return marker;
+}
+
+function LoadHierarchy(data) {
+  for (object of Object.keys(data.objects)) {
+    data.objects[object].geometries.forEach((f) => {
+      const local_id = GetLocalId(f.properties);
+      const group = GetGroup(f.properties);
+      const subgroup = GetSubGroup(f.properties);
+      const name = GetName(f.properties);
+      names[local_id] = name;
+      // console.log(`Added ${name}: ${local_id}`);
+      all_ids.add(local_id);
       feature_groups[local_id] = new Set();
       if (!(group in groups)) {
         groups[group] = new Set();
@@ -40,20 +341,47 @@ async function LoadGeoJson(dsts, path) {
         feature_groups[local_id].add([group, subgroup]);
       }
 
-      const label_pos = GetLabelPos(f);
-      if (label_pos) {
-        markers.push({
-          type: "Feature",
-          geometry: {
-            type: "Point",
-            coordinates: label_pos,
-          },
-          properties: f.properties,
-        });
+      const marker = CreateMarker(f.properties, name);
+      if (marker) {
+        markers.push(marker);
       }
     });
-    json_data.features.push(...markers);
-    dsts.forEach((d) => { d.layer.addData(json_data); });
+  }
+}
+
+function OnMapClick(e) {
+  const local_id = GetLocalId(e.layer.properties);
+  if (!local_id) return;
+  L.popup()
+    .setLatLng(e.latlng)
+    .setContent(CreateControls(local_id, e.layer.properties))
+    .openOn(map);
+}
+
+async function LoadTopology(path, map) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    console.error(`HTTP error! status: ${response.status}`);
+  }
+  try {
+    const ds = new DecompressionStream("gzip");
+    const decompressed_stream = response.body.pipeThrough(ds);
+    const data = await new Response(decompressed_stream).json();
+    LoadHierarchy(data);
+    const options = {
+      vectorTileLayerStyles: {
+        level2: StyleFeature,
+        level4: StyleFeature,
+        level7: StyleFeature,
+        level4_detailed: StyleOutline,
+      },
+      attribution: "&copy; OpenStreetMap contributors",
+      interactive: true,
+      getFeatureId: (f) => GetLocalId(f.properties),
+    };
+    grid = L.vectorGrid.slicer(data, options);
+    grid.on("click", OnMapClick);
+    grid.addTo(map);
   } catch (error) {
     console.error("Error loading JSON:", error);
   }
@@ -72,8 +400,7 @@ function LoadData() {
     LoadVisited();
     ClearNode(document.getElementById("summary"));
     CreateSummary();
-    RefreshLayers(map, layers);
-    RestyleLayers(map, layers);
+    all_ids.forEach((local_id) => grid.setFeatureStyle(local_id, StyleFeature));
     l.innerHTML =
       "Viewing your data. Changes are saved automatically. Reload the page " +
       "to see Jiiku's data. To export your data, open the console " +
@@ -89,7 +416,7 @@ function LoadData() {
 function LoadVisited() {
   const item = localStorage.getItem('visited');
   if (item != null) {
-    visited = JSON.parse(localStorage.getItem('visited'));
+    visited = RemapCountries(JSON.parse(localStorage.getItem('visited')));
   } else {
     visited = {};
   }
@@ -123,234 +450,84 @@ function UpdateVisited(e) {
       SetVisited(alias, Math.max(e.target.value, visited[alias] ?? 0));
     }
   });
-  RestyleLayers(map, layers);
   SaveVisited();
 }
 
-function IsCountry(f) {
-  return f.properties.iso_a2 != "-99";
+function GetLocalId(properties) {
+  return properties.osm_id;
 }
 
-function GetLocalId(f) {
-  if (f.properties.osm_id) {
-    return f.properties.osm_id;
-  }
-  if (IsCountry(f)) {
-    return f.properties.iso_a2;
-  }
-  return `NE-${f.properties.ne_id}`;
-}
-
-function GetGroup(f) {
-  if (f.properties.featurecla == "Admin-0 country" && IsCountry(f)) {
+function GetGroup(properties) {
+  if (properties.admin_level == 2) {
     return countries_group;
   }
-  if (f.properties.featurecla == "Admin-0 country") {
-    return "Other Territories";
-  }
-  if (f.properties.admin_level == 4 &&
-      f.properties.parents_administrative.includes(aliases["JP"])) {
+  if (properties.admin_level == 4 &&
+      properties.parents_administrative.includes(aliases["JP"])) {
     return japan_prefectures_group;
   }
-  if (f.properties.admin_level == 4 &&
-      f.properties.parents_administrative.includes(aliases["US"])) {
+  if (properties.admin_level == 4 &&
+      properties.parents_administrative.includes(aliases["US"])) {
     return us_states_group;
   }
-  if (f.properties.admin_level == 7 &&
-      f.properties.parents_administrative.includes(aliases["JP"])) {
+  if (properties.admin_level == 7 &&
+      properties.parents_administrative.includes(aliases["JP"])) {
     return japan_cities_group;
   }
   console.log("Unclassified feature: ", f);
   return "Others";
 }
 
-function GetSubGroup(f) {
-  if (f.properties.admin_level == 7 &&
-      f.properties.parents_administrative.includes(aliases["JP"])) {
-    return f.properties.parents_administrative.filter((p) => {
+function GetSubGroup(properties) {
+  if (properties.admin_level == 7 &&
+      properties.parents_administrative.includes(aliases["JP"])) {
+    return properties.parents_administrative.filter((p) => {
       return groups[japan_prefectures_group].has(p);
     })[0];
   }
 }
 
-function GetLabelPos(f) {
-  if (f.properties.ne_id) {
-    return [f.properties.label_x, f.properties.label_y];
+function GetName(properties) {
+  if (properties.admin_level == 2) {
+    return properties.name_en ?? properties.name;
   }
-  if (f.properties.osm_id && f.properties.label_node_lng) {
-    return [f.properties.label_node_lng, f.properties.label_node_lat];
-  }
-  if (f.properties.osm_id && f.properties.admin_centre_node_lng) {
-    return [f.properties.admin_centre_node_lng, f.properties.admin_centre_node_lat];
-  }
-  if (f.properties.osm_id && f.geometry.type == "MultiPolygon") {
-    return f.geometry.coordinates[0][0][0];
-  }
-  console.log("No center: ", f);
+  return properties.name;
 }
 
-function CreateRadio(f, val) {
+function GetLabelPos(properties) {
+  if (properties.label_pos) {
+    return properties.label_pos;
+  }
+  console.log("No center: ", properties);
+}
+
+function CreateRadio(local_id, properties, val) {
   const node = document.createElement("div");
   const input = document.createElement("input");
   const label = document.createElement("label");
   node.appendChild(input);
   node.appendChild(label);
   input.type = "radio";
-  input.name = `R${f.properties.osm_id ?? f.properties.osm_id}`;
-  input.id = `R${f.properties.osm_id ?? f.properties.osm_id}_${val}`;
+  input.name = `R${local_id}`;
+  input.id = `R${local_id}_${val}`;
   input.value = val;
-  input.dataset.local_id = GetLocalId(f);
+  input.dataset.local_id = local_id;
   input.checked = (visited[input.dataset.local_id] ?? 0) == val;
-  input.dataset.parents = (f.properties.parents_administrative ?? []).join();
+  input.dataset.parents = (properties.parents_administrative ?? []).join();
   input.addEventListener('change', UpdateVisited);
   label.innerText = score_names[val];
   label.htmlFor = input.id;
   return node;
 }
 
-function CreateControls(l) {
+function CreateControls(local_id, properties) {
   const node = document.createElement("div");
   const title = document.createElement("h3");
-  title.innerText = `${l.feature.properties.name}`;
+  title.innerText = names[local_id];
   node.appendChild(title);
   for (score of score_order) {
-    node.appendChild(CreateRadio(l.feature, score));
+    node.appendChild(CreateRadio(local_id, properties, score));
   }
   return node;
-}
-
-function NeStyle(f) {
-  return {
-    ...base_style,
-    fillColor: fill_colors[visited[f.properties.iso_a2] ?? 0],
-  };
-}
-
-function PointToLayer(p, latlng) {
-  return L.circleMarker(latlng, {
-    stroke: false,
-    fill: false,
-  });
-}
-
-function WorldLayer() {
-  return L.geoJSON(null, {
-    pointToLayer: PointToLayer,
-    style: NeStyle,
-    filter: function (f) {
-      return f.properties.admin != "Japan" &&
-             f.properties.admin != "United States of America" &&
-             IsCountry(f);
-    },
-    onEachFeature: function (f, l) {
-      l.bindPopup(CreateControls);
-    },
-  });
-}
-
-function UsaLayer() {
-  return L.geoJSON(null, {
-    pointToLayer: PointToLayer,
-    style: NeStyle,
-    filter: function (f) {
-      return f.properties.admin == "United States of America";
-    },
-    onEachFeature: function (f, l) {
-      l.bindPopup(CreateControls);
-    },
-  });
-}
-
-function UsaLayer2() {
-  return L.geoJSON(null, {
-    pointToLayer: PointToLayer,
-    style: OsmStyle,
-    onEachFeature: function (f, l) {
-      l.bindPopup(CreateControls);
-    },
-  });
-}
-
-function JapanLayer() {
-  return L.geoJSON(null, {
-    pointToLayer: PointToLayer,
-    style: NeStyle,
-    filter: function (f) {
-      return f.properties.admin == "Japan";
-    },
-    onEachFeature: function (f, l) {
-      l.bindPopup(CreateControls);
-    },
-  });
-}
-
-function OsmStyle(f) {
-  return {
-    ...base_style,
-    fillColor: fill_colors[visited[f.properties.osm_id] ?? 0],
-  };
-}
-
-function JapanLayer2() {
-  return L.geoJSON(null, {
-    pointToLayer: PointToLayer,
-    style: OsmStyle,
-    onEachFeature: function (f, l) {
-      l.bindPopup(CreateControls);
-    },
-  });
-}
-
-function BorderStyle(f) {
-  return {
-    ...base_style,
-    weight: map.getZoom() > 8 ? 3 : 1.7,
-    fill: false,
-  };
-}
-
-function JapanLayerBorderOnly() {
-  return L.geoJSON(null, {
-    pointToLayer: function (f, c) { return null; },
-    style: BorderStyle,
-  });
-}
-
-function RefreshLayers(map, layers) {
-  Object.values(layers).forEach((l) => {
-    const zoom = map.getZoom();
-    if (l.min_zoom <= zoom && zoom <= l.max_zoom && !map.hasLayer(l.layer)) {
-      l.layer.addTo(map);
-    } else if ((l.min_zoom > zoom || zoom > l.max_zoom) && map.hasLayer(l.layer)) {
-      l.layer.remove();
-    }
-
-    if (l.style && zoom >= l.tt_zoom) {
-      l.layer.eachLayer((f) => {
-        if (f.feature.geometry.type == "Point") {
-          f.bindTooltip(function () {
-            return f.feature.properties.name;
-          }, {permanent: true, direction: "center", className: "tooltip"}).openTooltip();
-        }
-      });
-    } else {
-      l.layer.eachLayer((f) => {
-        f.unbindTooltip();
-      });
-    }
-  });
-}
-
-function RestyleLayers(map, layers) {
-  Object.values(layers).forEach((l) => {
-    if (l.style) {
-      l.layer.eachLayer((f) => {
-        if (f.setStyle) {
-          f.setStyle(l.style(f.feature));
-        }
-      });
-    }
-  });
 }
 
 function CreateSummary() {
@@ -483,6 +660,7 @@ function UpdateFeature(local_id) {
     }
   }
   UpdateLocalItem(local_id);
+  grid.setFeatureStyle(local_id, StyleFeature);
 }
 
 function UpdateGroup(group) {
@@ -541,17 +719,23 @@ function CreateSummaryGroup(dst, gs, group) {
   }
 }
 
-async function LoadMaps() {
+async function LoadMaps(map) {
   visited = await LoadWakuWaku();
-  LoadGeoJson([layers.world0, layers.japan0, layers.usa0], "data/world0.geojson.gz");
-  LoadGeoJson([layers.world1, layers.japan1, layers.usa1], "data/world1.geojson.gz");
-  LoadGeoJson([layers.world2], "data/world2.geojson.gz");
-  LoadGeoJson([layers.usa2], "data/usa2.geojson.gz");
-  LoadGeoJson([layers.japan2], "data/japan2.geojson.gz");
-  await LoadGeoJson([layers.japan31], "data/japan3-1.geojson.gz");
-  await LoadGeoJson([layers.japan3], "data/japan3.geojson.gz");
+  await LoadTopology("data/data.topojson.gz", map);
   CreateSummary();
   document.getElementById("load-button").disabled = false;
+}
+
+const tileLayerMinZoom = 10;
+function RefreshMarkers() {
+  const zoom = map.getZoom();
+  markers.forEach((m) => {
+    if (StyleFeature(m.properties, zoom - 1, 1).weight == 0 || zoom < 5 || zoom >= tileLayerMinZoom) {
+      m.close();
+    } else {
+      m.openOn(map);
+    }
+  });
 }
 
 const countries_group = "Countries";
@@ -577,14 +761,10 @@ const score_names = {
   0: "Never Been There",
 };
 
-const base_style = {
-  color: "grey",
-  weight: 1,
-  fillColor: "white",
-};
-
 var visited = {};
 var own_data = false;
+const all_ids = new Set();
+const markers = [];
 const groups = {};
 const subgroups = {};
 const feature_groups = {};
@@ -600,24 +780,17 @@ const map = L.map("map", {
   minZoom: 0,
   maxZoom: 20
 }).setView([0, 0], 3);
+L.tileLayer(
+  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    attribution: "&copy; OpenStreetMap contributors",
+    minZoom: tileLayerMinZoom,
+    opacity: 0.8,
+  }).addTo(map);
+var grid = null;
 
-const layers = {
-  world0: { layer: WorldLayer(), min_zoom: 0, max_zoom: 2, style: NeStyle, },
-  world1: { layer: WorldLayer(), min_zoom: 3, max_zoom: 5, style: NeStyle, tt_zoom: 5 },
-  world2: { layer: WorldLayer(), min_zoom: 6, max_zoom: map.getMaxZoom(), style: NeStyle, tt_zoom: 5 },
-  japan0: { layer: JapanLayer(), min_zoom: 0, max_zoom: 2, style: NeStyle, },
-  japan1: { layer: JapanLayer(), min_zoom: 3, max_zoom: 5, style: NeStyle, tt_zoom: 5 },
-  japan2: { layer: JapanLayer2(), min_zoom: 6, max_zoom: 7, style: OsmStyle, tt_zoom: 7, },
-  japan31: { layer: JapanLayerBorderOnly(), min_zoom: 8, max_zoom: map.getMaxZoom(), style: BorderStyle, },
-  japan3: { layer: JapanLayer2(), min_zoom: 8, max_zoom: map.getMaxZoom(), style: OsmStyle, tt_zoom: 10, },
-  usa0: { layer: UsaLayer(), min_zoom: 0, max_zoom: 2, style: NeStyle, },
-  usa1: { layer: UsaLayer(), min_zoom: 3, max_zoom: 4, style: NeStyle, },
-  usa2: { layer: UsaLayer2(), min_zoom: 5, max_zoom: 7, style: OsmStyle, tt_zoom: 5, },
-};
-
-LoadMaps();
-RefreshLayers(map, layers);
+LoadMaps(map);
+RefreshMarkers();
 map.on("zoomend", (e) => {
-  RefreshLayers(map, layers);
-  RestyleLayers(map, layers);
+  RefreshMarkers();
 });
