@@ -855,7 +855,7 @@ function RefreshMarkers() {
                zoom > tileLayerMinZoom || zoom < 6)) {
       m.close();
     } else if (m.properties.admin_level < 4 &&
-               (zoom >= 6 || zoom < 5)) {
+               (StyleFeature(m.properties, zoom, 1).weight == 0 || zoom < 5)) {
       m.close();
     } else {
       m.openOn(map);
