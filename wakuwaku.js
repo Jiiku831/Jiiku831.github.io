@@ -327,7 +327,7 @@ function StyleFeature(properties, zoom, dims) {
   if (zoom < 5) {
     if (properties.admin_level > 2) return invisible;
     return StyleVisited(local_id, base_style);
-  } else if (zoom < 9) {
+  } else if (zoom < 8) {
     if (properties.admin_level < 4 &&
         (local_id == aliases["JP"] || local_id == aliases["US"]))
       return invisible;
@@ -849,7 +849,13 @@ const tileLayerMinZoom = 10;
 function RefreshMarkers() {
   const zoom = map.getZoom();
   markers.forEach((m) => {
-    if (StyleFeature(m.properties, zoom - 1, 1).weight == 0 || zoom < 5 || zoom >= tileLayerMinZoom) {
+    if (m.properties.admin_level > 4) {
+      m.close();
+    } else if (m.properties.admin_level == 4 && (
+               zoom > tileLayerMinZoom || zoom < 6)) {
+      m.close();
+    } else if (m.properties.admin_level < 4 &&
+               (zoom >= 6 || zoom < 5)) {
       m.close();
     } else {
       m.openOn(map);
