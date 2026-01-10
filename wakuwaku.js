@@ -445,10 +445,6 @@ function UpdateVisited(e) {
   e.target.dataset.parents.split(",").forEach((p) => {
     if (!p) return;
     SetVisited(p, Math.max(e.target.value, visited[p] ?? 0));
-    const alias = aliases[p];
-    if (alias) {
-      SetVisited(alias, Math.max(e.target.value, visited[alias] ?? 0));
-    }
   });
   SaveVisited();
 }
