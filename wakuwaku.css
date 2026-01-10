@@ -30,9 +30,14 @@ table, tr, th, td {
   border-collapse: collapse;
 }
 
-td, th {
+td {
   padding: 0 0.5ex;
   text-align: right;
+}
+
+th {
+  padding: 0 0.5ex;
+  text-align: center;
 }
 
 th, h2 {
@@ -68,6 +73,15 @@ tr:nth-child(even) {
 
 .score-color {
   background-color: color-mix(in srgb, var(--score-color) var(--score-weight), transparent);
+  min-width: 2em;
+}
+
+.count-color {
+  background-color: color-mix(in srgb, orange var(--score-weight), transparent);
+}
+
+.score-percent, .score-total-percent {
+  color: #888;
 }
 
 .local-list {

@@ -1,3 +1,53 @@
+const prefecture_order = [
+  -3795658,
+  -1834655,
+  -3792412,
+  -3790801,
+  -3791413,
+  -3790869,
+  -1800608,
+  -2682940,
+  -1800742,
+  -1851649,
+  -1768185,
+  -2679957,
+  -1543125,
+  -2689487,
+  -3559887,
+  -3793529,
+  -3794726,
+  -357112,
+  -3578391,
+  -3560284,
+  -760746,
+  -3793581,
+  -3560336,
+  -812190,
+  -357800,
+  -2137477,
+  -341906,
+  -356912,
+  -358631,
+  -908959,
+  -3285636,
+  -3346137,
+  -3794962,
+  -3218753,
+  -4016543,
+  -3795000,
+  -3795064,
+  -3795063,
+  -3795031,
+  -1553735,
+  -1842150,
+  -1842151,
+  -1842185,
+  -356911,
+  -1842184,
+  -1842186,
+  -3795635,
+];
+
 function RemapCountries(data) {
   const countries = {
     "AD": -9407,
@@ -541,9 +591,12 @@ function CreateSummary() {
   }
 }
 
-function Th(content) {
+function Th(content, colspan) {
   const th = document.createElement("th");
   th.append(content);
+  if (colspan) {
+    th.colSpan = colspan;
+  }
   return th;
 }
 
@@ -567,6 +620,36 @@ function TotalNode(group) {
   return total_node;
 }
 
+function TotalPercentNode(group) {
+  const total_node = Td("-");
+  total_node.classList.add("score-total-percent");
+  total_node.classList.add("score-color");
+  total_node.dataset.group = group;
+  return total_node;
+}
+
+function TotalCountNode(group) {
+  const total_node = Td("-");
+  total_node.classList.add("count-total");
+  total_node.classList.add("count-color");
+  total_node.dataset.group = group;
+  return total_node;
+}
+
+function TotalCountHeader() {
+  const node = Th("Count");
+  node.classList.add("count-color");
+  return node;
+}
+
+function CommonHeader(group) {
+  return [
+    TotalCountNode(group),
+    TotalNode(group),
+    TotalPercentNode(group),
+  ];
+}
+
 function CreateSummaryTable(dst, group_order) {
   const details = document.createElement("details");
   details.open = true;
@@ -578,39 +661,66 @@ function CreateSummaryTable(dst, group_order) {
   details.appendChild(table);
   table.classList.add("summary-table");
   table.appendChild(
-    Tr([Th(""), Th("Score")].concat(...(score_order.map((v) => {
-      const node = Th(score_names[v]);
+    Tr([Th(""), TotalCountHeader(), Th("Score", 2)].concat(...(score_order.map((v) => {
+      const node = Th(score_names[v], 2);
       node.dataset.score = v;
       node.classList.add("score-color");
       return node;
     })))));
   for (group of group_order) {
     table.appendChild(
-      Tr([Th(group), TotalNode(group)].concat(...(score_order.map((v) => {
+      Tr([Th(group), ...CommonHeader(group)].concat(...(score_order.map((v) => {
         const node = Td("-");
         node.classList.add("score-count");
         node.classList.add("score-color");
         node.dataset.group = group;
         node.dataset.score = v;
-        return node;
-      })))));
+
+        const percent_node = Td("-");
+        percent_node.classList.add("score-percent");
+        percent_node.classList.add("score-color");
+        percent_node.dataset.group = group;
+        percent_node.dataset.score = v;
+        return [node, percent_node];
+      }).flat()))));
     const sgs = subgroups[group];
     if (sgs) {
-      for (subgroup of Object.keys(sgs)) {
+      let subgroups = Object.keys(sgs);
+      if (group == japan_cities_group) {
+        subgroups = prefecture_order;
+      }
+      for (subgroup of subgroups) {
         const header = Th(names[subgroup]);
         header.classList.add("summary-table-subgroup-header");
         table.appendChild(
-          Tr([header, TotalNode(subgroup)].concat(...(score_order.map((v) => {
+          Tr([header, ...CommonHeader(subgroup)].concat(...(score_order.map((v) => {
             const node = Td("-");
             node.classList.add("score-count");
             node.classList.add("score-color");
             node.dataset.group = subgroup;
             node.dataset.score = v;
-            return node;
-          })))));
+
+            const percent_node = Td("-");
+            percent_node.classList.add("score-percent");
+            percent_node.classList.add("score-color");
+            percent_node.dataset.group = subgroup;
+            percent_node.dataset.score = v;
+            return [node, percent_node];
+          }).flat()))));
       }
     }
   }
+}
+
+function SetGroupCount(gs, group) {
+  document.querySelectorAll(`.count-total[data-group="${group}"]`).forEach((e) => {
+    e.innerText = gs[group].size;
+    e.dataset.total = gs[group].size;
+  });
+}
+
+function FormatPercentage(ratio) {
+  return `(${(ratio * 100).toFixed(0)}%)`;
 }
 
 function UpdateGroupScores(gs, group) {
@@ -622,6 +732,7 @@ function UpdateGroupScores(gs, group) {
     1: 0,
     0: 0,
   };
+  const total_count = document.querySelector(`.count-total[data-group="${group}"]`).dataset.total;
   for (local_id of gs[group]) {
     ++scores[visited[local_id] ?? 0];
   }
@@ -630,10 +741,16 @@ function UpdateGroupScores(gs, group) {
     document.querySelectorAll(`.score-count[data-group="${group}"][data-score="${score}"]`).forEach((e) => {
       e.innerText = count;
     });
+    document.querySelectorAll(`.score-percent[data-group="${group}"][data-score="${score}"]`).forEach((e) => {
+      e.innerText = FormatPercentage(count / total_count);
+    });
     total += score * count;
   }
   document.querySelectorAll(`.score-total[data-group="${group}"]`).forEach((e) => {
     e.innerText = `${total}`;
+  });
+  document.querySelectorAll(`.score-total-percent[data-group="${group}"]`).forEach((e) => {
+    e.innerText = FormatPercentage(total / total_count / 5);
   });
 }
 
@@ -660,10 +777,12 @@ function UpdateFeature(local_id) {
 }
 
 function UpdateGroup(group) {
+  SetGroupCount(groups, group);
   UpdateGroupScores(groups, group);
   const sgs = subgroups[group];
   if (sgs) {
     for (subgroup of Object.keys(sgs)) {
+      SetGroupCount(subgroups[group], subgroup);
       UpdateGroupScores(subgroups[group], subgroup);
     }
   }
@@ -709,7 +828,11 @@ function CreateSummaryGroup(dst, gs, group) {
   CreateLocaleList(node, gs, group);
   const sgs = subgroups[group];
   if (sgs) {
-    for (subgroup of Object.keys(sgs)) {
+    let sorted_sgs = Object.keys(sgs);
+    if (group == japan_cities_group) {
+      sorted_sgs = prefecture_order;
+    }
+    for (subgroup of sorted_sgs) {
       CreateSummaryGroup(node, subgroups[group], subgroup);
     }
   }
@@ -737,7 +860,7 @@ function RefreshMarkers() {
 const countries_group = "Countries";
 const japan_prefectures_group = "Japan Prefectures";
 const japan_cities_group = "Japan Cities, Towns and Villages";
-const us_states_group = "US States";
+const us_states_group = "US States and Territories";
 
 const score_order = [5, 4, 3, 2, 1, 0]
 const fill_colors = {
