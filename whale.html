@@ -1,0 +1,473 @@
+<html>
+    <head>
+        <title>:mikuwhale:</title>
+        <script async
+                src="https://www.googletagmanager.com/gtag/js?id=G-5ZKGR285DS">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5ZKGR285DS');
+        </script>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+        <script src="whale.js" type="text/javascript"></script>
+        <style>
+            input[type="range"] {
+                width: 20em;
+            }
+
+            input[type="number"] {
+                width: 5em;
+            }
+
+            .t {
+                min-width: 1200px;
+            }
+
+            .t > tbody > tr > td {
+                width: 33%;
+            }
+
+            td {
+                vertical-align: top;
+            }
+
+            .st, .st tr, .st td, .st th {
+                border-collapse: collapse;
+                border: thin black solid;
+            }
+
+            form td, .st td, .st th {
+                padding-left: 0.5ex;
+                padding-right: 0.5ex;
+            }
+
+            .x {
+                background: #ccc;
+                text-decoration: underline dashed;
+                text-underline-offset: 2px;
+                cursor: help;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="border: solid black thin; background-color: #cff; width: 40em;
+                    text-align: center; padding: 1em;">
+          <b>Ad!</b> Try out our new team recommender at <a href="https://jiiku.pages.dev/sajii">
+            https://jiiku.pages.dev/sajii</a> (desktop only).
+        </div>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <label for="pool-text">Pool size:<sup>&dagger;</sup>
+                        </label>
+                    </td>
+                    <td>
+                        <input id="pool-slider" type="range" min="1" max="500"
+                               value="351"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="pool-text" type="number" min="1" max="500"
+                               value="351"
+                               onchange="Sync(this)">
+                    </td>
+                    <td><i>All 4&#9733; cards in the pool, including PU.</i></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pu-text">
+                            PU Count:<sup>&dagger;</sup><sup>&ddagger;</sup>
+                        </label>
+                    </td>
+                    <td>
+                        <input id="pu-slider" type="range" min="0" max="10"
+                               value="3"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="pu-text" type="number" min="0" max="10"
+                               value="3"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        <i>
+                            If this is greater than 7, you must enable fes
+                            rates or else the math does not work out.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="fes-rates-checkbox">Fes Rates:</label></td>
+                    <td><input id="fes-rates-checkbox" type="checkbox"></td>
+                    <td></td>
+                    <td><i>If checked, the 4&#9733; rate is 6%.</i></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="multi-checkbox">Simulate Multis:</label>
+                    </td>
+                    <td><input id="multi-checkbox" type="checkbox"></td>
+                    <td></td>
+                    <td>
+                        <i>
+                            If checked, the estimated effects of multis will be
+                            added every 10-th roll.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pity-checkbox">Enable Gacha Bonus:</label>
+                    </td>
+                    <td><input id="pity-checkbox" type="checkbox"></td>
+                    <td></td>
+                    <td>
+                        <i>
+                            If checked, the effects of gacha bonus will be
+                            simulated.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="paid-checkbox">With Paid Crystals:</label>
+                    </td>
+                    <td><input id="paid-checkbox" type="checkbox"></td>
+                    <td></td>
+                    <td>
+                        <i>
+                            If checked, the bonus gauge will fill twice as fast.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Presets:</td>
+                    <td colspan="3">
+                        <input type="button" onclick="Perm3PUPreset()"
+                               value="Perm 3PU">
+                        <input type="button" onclick="Lim3PUPreset()"
+                               value="Lim 3PU">
+                        <input type="button" onclick="Lim5PUPreset()"
+                               value="Lim 5PU">
+                        <input type="button" onclick="Fes5PUPreset()"
+                               value="Fes 5PU">
+                        <input type="button" onclick="Fes6PUPreset()"
+                               value="Fes 6PU">
+                        <input type="button" onclick="Fes8PUPreset()"
+                               value="Fes 8PU">
+                        <input type="button" onclick="Fes10PUPreset()"
+                               value="Fes 10PU">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="num-rolls-text">Num Rolls:</label></td>
+                    <td>
+                        <input id="num-rolls-slider" type="range" min="1"
+                               max="3000" value="300"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="num-rolls-text" type="number" min="1"
+                               max="3000" value="300"
+                               onchange="Sync(this)">
+                    </td>
+                    <td><i>The number of rolls to simulate.</i></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="max-dupes-text">
+                            Max Dupes:<sup>&dagger;</sup>
+                        </label>
+                    </td>
+                    <td>
+                        <input id="max-dupes-slider" type="range" min="1"
+                               max="300" value="50"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="max-dupes-text" type="number" min="1"
+                               max="300" value="50"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        <i>
+                            Only increase this if you are at the cap. Set to 1
+                            if you don't care about dupes.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="init-np-text">Non-PU Owned:</label></td>
+                    <td>
+                        <input id="init-np-slider" type="range" min="0"
+                               max="300" value="0"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="init-np-text" type="number" min="0"
+                               max="300" value="0"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        <i>
+                            The number of cards in the Non-PU pool that you
+                            already own.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="init-pu-text">
+                            PU Owned:<sup>&ddagger;</sup>
+                        </label>
+                    </td>
+                    <td>
+                        <input id="init-pu-slider" type="range" min="0"
+                               max="10" value="0"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="init-pu-text" type="number" min="0" max="10"
+                               value="0"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        <i>
+                            The number of cards in the PU pool that you already
+                            own.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ticket-text">Gacha Tickets:</label></td>
+                    <td>
+                        <input id="ticket-slider" type="range" min="0"
+                               max="300" value="0"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="ticket-text" type="number" min="0" max="300"
+                               value="0"
+                               onchange="Sync(this)">
+                    </td>
+                    <td><i>Set to the number of gacha tickets you own.</i></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="track-dupes-text">Track Dupes:</label></td>
+                    <td>
+                        <input id="track-dupes-slider" type="range" min="1"
+                               max="300" value="1"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="track-dupes-text" type="number" min="1"
+                               max="300" value="1"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        <i>
+                            Track the stats of up to 10 values of dupes
+                            starting from this value.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="dupes-stride-text"
+                               style="padding-left: 2em">
+                            Stride:
+                        </label>
+                    </td>
+                    <td>
+                        <input id="dupes-stride-slider" type="range" min="1"
+                               max="10" value="1"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="dupes-stride-text" type="number" min="1"
+                              max="10" value="1"
+                              onchange="Sync(this)">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="track-np-text">Track New Non-Pu:</label>
+                    </td>
+                    <td>
+                        <input id="track-np-slider" type="range" min="1"
+                               max="300" value="1"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="track-np-text" type="number" min="1"
+                               max="300" value="1"
+                               onchange="Sync(this)">
+                    </td>
+                    <td>
+                        <i>
+                            Track the stats of up to 10 values of new non-pu
+                            starting from this value.
+                        </i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="np-stride-text"
+                               style="padding-left: 2em">
+                            Stride:
+                        </label>
+                    </td>
+                    <td>
+                        <input id="np-stride-slider" type="range" min="1"
+                               max="10" value="1"
+                               oninput="Sync(this)">
+                    </td>
+                    <td>
+                        <input id="np-stride-text" type="number" min="1"
+                               max="10" value="1"
+                               onchange="Sync(this)">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="3">
+                        <p>
+                            <sup>&dagger;</sup> Increasing these options will
+                            make each roll take longer.
+                        </p>
+                        <p>
+                            <sup>&ddagger;</sup> If you want to see the chance
+                            of collecting a subset of PUs, you may either
+                            increase the number of PU Owned or decrease the PU
+                            Count.
+                            <br>
+                            However, in these cases, the outcome of the number
+                            of dupes and non-PU may not be reliable.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <hr>
+                    </td>
+                </tr>
+            </table>
+            <input id="start" type="button" onclick="Roll()" value="Start!">
+            <input id="stop" type="button" onclick="Stop()" value="Stop"
+                   disabled="1">
+        </form>
+        <hr>
+        Progress:
+        <progress style="width: 40em;" id="progress" max="1" value="0">
+        </progress>
+        <span id="progress-text"></span>
+        <hr>
+        <table class="t">
+            <tr>
+                <th>#Dupe</th>
+                <th>#Unique PU</th>
+                <th>#Unique Non-PU</th>
+            </tr>
+            <tr>
+                <th>&mu; = <span id="dupe-exp"></span></th>
+                <th>&mu; = <span id="pu-exp"></span></th>
+                <th>&mu; = <span id="np-exp"></span></th>
+            </tr>
+            <tr>
+                <th>&sigma;<sup>2</sup> = <span id="dupe-var"></span></th>
+                <th>&sigma;<sup>2</sup> = <span id="pu-var"></span></th>
+                <th>&sigma;<sup>2</sup> = <span id="np-var"></span></th>
+            </tr>
+            <tr>
+                <th>&sigma; = <span id="dupe-stdev"></span></th>
+                <th>&sigma; = <span id="pu-stdev"></span></th>
+                <th>&sigma; = <span id="np-stdev"></span></th>
+            </tr>
+            <tr>
+                <td><div id="dupe-d"></div></td>
+                <td><div id="pu-d"></div></td>
+                <td><div id="np-d"></div></td>
+            </tr>
+            <tr>
+                <td><div id="dupe-c"></div></td>
+                <td><div id="pu-c"></div></td>
+                <td><div id="np-c"></div></td>
+            </tr>
+            <tr>
+                <th colspan="3" style: "text-align: center;">
+                    <hr>
+                    Stats
+                </th>
+            </tr>
+            <tr>
+                <td><div id="dupe-st"></div></td>
+                <td><div id="pu-st"></div></td>
+                <td><div id="np-st"></div></td>
+            </tr>
+            <tr>
+                <th colspan="3" style: "text-align: center;">
+                    <hr>
+                    Chance of reaching a specific count by a certain roll
+                </th>
+            </tr>
+            <tr>
+                <td><div id="dupe-cd"></div></td>
+                <td><div id="pu-cd"></div></td>
+                <td><div id="np-cd"></div></td>
+            </tr>
+            <tr>
+                <td><div id="dupe-sum"></div></td>
+                <td><div id="pu-sum"></div></td>
+                <td><div id="np-sum"></div></td>
+            </tr>
+            <tr>
+                <th colspan="3" style: "text-align: center;">
+                    <hr>
+                    Chance of reaching a specific count by a certain roll with
+                    sparking
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <i style="display: block; text-align: center;">
+                        Note: This assumes all PU cards are sparkable, you
+                        spark unowned cards first, and you only do so at the
+                        end.
+                    </i>
+                </td>
+            </tr>
+            <tr>
+                <td><div id="sp-dupe-cd"></div></td>
+                <td><div id="sp-pu-cd"></div></td>
+                <td><div id="sp-np-cd"></div></td>
+            </tr>
+            <tr>
+                <td><div id="sp-dupe-sum"></div></td>
+                <td><div id="sp-pu-sum"></div></td>
+                <td><div id="sp-np-sum"></div></td>
+            </tr>
+        </table>
+    </body>
+</html>
