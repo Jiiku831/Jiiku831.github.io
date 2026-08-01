@@ -1,15 +1,4 @@
 events = {
-    "102": {
-        "event_id": "102",
-        "event_type": "cheerful_carnival",
-        "name": "Bustling Cafe \u25cfREC!",
-        "orderedName": "102 Bustling Cafe \u25cfREC!",
-        "nick": "recording",
-        "orderedNick": "102 recording",
-        "start": 1722463200.0,
-        "end": 1723176000.0,
-        "len": 198
-    },
     "103": {
         "event_id": "103",
         "event_type": "marathon",
