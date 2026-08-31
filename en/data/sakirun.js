@@ -1,15 +1,4 @@
 events = {
-    "105": {
-        "event_id": "105",
-        "event_type": "cheerful_carnival",
-        "name": "Let SEKAI Hear Your Song!",
-        "orderedName": "105 Let SEKAI Hear Your Song!",
-        "nick": "cat",
-        "orderedNick": "105 cat",
-        "start": 1725141600.0,
-        "end": 1725854400.0,
-        "len": 198
-    },
     "106": {
         "event_id": "106",
         "event_type": "marathon",
