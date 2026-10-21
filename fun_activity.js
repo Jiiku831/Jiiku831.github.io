@@ -364,6 +364,7 @@ function UpdateSubeventTimers() {
       FormatEventTitle(
         e.dataset.subeventName, e.dataset.subeventLink, e.dataset.subeventLoc,
         e.dataset.subeventLocLink));
+
     for (let i = 0; i < subeventTimes.length; ++i) {
       const includeDur = subeventTimes[i].ts > cur && (i == 0 || subeventTimes[i-1].ts <= cur);
       let options = {
@@ -391,6 +392,10 @@ function UpdateSubeventTimers() {
     }
     if (over) {
       e.classList.add("subevent-over");
+    }
+
+    if (e.dataset.subeventNotes) {
+      e.appendChild(NewSpan(e.dataset.subeventNotes, "event-notes"));
     }
   });
 }
