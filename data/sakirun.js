@@ -1,15 +1,4 @@
 events = {
-    "149": {
-        "event_id": "149",
-        "event_type": "marathon",
-        "name": "The Power Of Regret",
-        "orderedName": "149 The Power Of Regret",
-        "nick": "regret",
-        "orderedNick": "149 regret",
-        "start": 1732082400.0,
-        "end": 1732795200.0,
-        "len": 198
-    },
     "150": {
         "event_id": "150",
         "event_type": "marathon",
