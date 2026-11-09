@@ -1,15 +1,4 @@
 events = {
-    "151": {
-        "event_id": "151",
-        "event_type": "marathon",
-        "name": "Grow glorious glow",
-        "orderedName": "151 Grow glorious glow",
-        "nick": "grow",
-        "orderedNick": "151 grow",
-        "start": 1733896800.0,
-        "end": 1734609600.0,
-        "len": 198
-    },
     "152": {
         "event_id": "152",
         "event_type": "marathon",
