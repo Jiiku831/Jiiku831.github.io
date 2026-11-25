@@ -1,15 +1,4 @@
 events = {
-    "154": {
-        "event_id": "154",
-        "event_type": "marathon",
-        "name": "Time to take off\uff01",
-        "orderedName": "154 Time to take off\uff01",
-        "nick": "take time off",
-        "orderedNick": "154 take time off",
-        "start": 1736575200.0,
-        "end": 1737288000.0,
-        "len": 198
-    },
     "155": {
         "event_id": "155",
         "event_type": "marathon",
